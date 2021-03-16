@@ -12,7 +12,9 @@ import java.util.List;
 public class PractitionerLogic {
 
     public Practitioner getPractitioner(final IdType idType) {
-        return new Practitioner();
+        Practitioner practitioner = new Practitioner();
+        practitioner.setId(idType);
+        return practitioner;
     }
 
     public List<Practitioner> findPractitioner(StringParam searchParamName) {

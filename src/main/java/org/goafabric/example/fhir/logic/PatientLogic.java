@@ -15,7 +15,9 @@ import java.util.List;
 public class PatientLogic {
     @Read
     public Patient getPatient(final IdType idType) {
-        return new Patient();
+        final Patient patient = new Patient();
+        patient.setId(idType);
+        return patient;
     }
 
     @Search
