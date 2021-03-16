@@ -19,8 +19,6 @@ hapi:
       request-only: true
 
 management:
-  validation:
-    disabled: false
   endpoints:
     web:
       exposure:
