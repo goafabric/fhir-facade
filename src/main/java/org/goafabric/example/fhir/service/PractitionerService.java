@@ -7,8 +7,10 @@ import ca.uhn.fhir.rest.annotation.OptionalParam;
 import ca.uhn.fhir.rest.annotation.Read;
 import ca.uhn.fhir.rest.annotation.Search;
 import ca.uhn.fhir.rest.param.StringParam;
+import org.goafabric.example.fhir.logic.PractitionerLogic;
 import org.hl7.fhir.dstu3.model.IdType;
 import org.hl7.fhir.dstu3.model.Practitioner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -16,6 +18,8 @@ import java.util.List;
 
 @Component
 public class PractitionerService extends AbstractJaxRsResourceProvider<Practitioner> {
+	@Autowired
+	private PractitionerLogic practitionerLogic;
 
 	public PractitionerService(FhirContext fhirContext) {
 		super(fhirContext);
@@ -28,7 +32,7 @@ public class PractitionerService extends AbstractJaxRsResourceProvider<Practitio
 
 	@Read
 	public Practitioner getPractitioner(@IdParam final IdType idType) {
-		return new Practitioner();
+		return practitionerLogic.getPractitioner(idType);
 	}
 
 	@Search
