@@ -55,7 +55,7 @@ import java.util.List;
  *
  * @author Mathieu Ouellet
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @AutoConfigureAfter({DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 @EnableConfigurationProperties(FhirProperties.class)
 public class FhirAutoConfiguration {
@@ -75,7 +75,7 @@ public class FhirAutoConfiguration {
 	}
 
 
-	@Configuration
+	@Configuration(proxyBeanMethods = false)
 	@ConditionalOnClass(AbstractJaxRsProvider.class)
 	@EnableConfigurationProperties(FhirProperties.class)
 	@ConfigurationProperties("hapi.fhir.rest")
@@ -136,7 +136,7 @@ public class FhirAutoConfiguration {
 		}
 	}
 
-	@Configuration
+	@Configuration(proxyBeanMethods = false)
 	@Conditional(FhirValidationConfiguration.SchemaAvailableCondition.class)
 	@ConditionalOnProperty(name = "hapi.fhir.validation.enabled", matchIfMissing = true)
 	static class FhirValidationConfiguration {
