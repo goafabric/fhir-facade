@@ -28,7 +28,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "hapi.fhir")
 public class FhirProperties {
 
-    private FhirVersionEnum version = FhirVersionEnum.DSTU2;
+    private FhirVersionEnum version = FhirVersionEnum.DSTU3;
 
     private Server server = new Server();
 
