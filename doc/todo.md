@@ -1,3 +1,5 @@
 - client + tests einbauen
 - hapi fhir upgrade
-- build für patient
+- builder für patient
+
+- builder für search
