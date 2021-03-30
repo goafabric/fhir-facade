@@ -1,6 +1,6 @@
 server:
-  port: 50300
-  tomcat.max-threads: 20
+  port: 50800
+  tomcat.threads.max: 20
 
 hapi:
   fhir:
