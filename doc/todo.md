@@ -4,4 +4,4 @@
 - builder für search
                    
 #spring native error
-docker run --name example-fhir --rm -p50300:50300 goafabric/example-fhir-service-arm64v8:1.0.0-SNAPSHOT
+Caused by: java.lang.IllegalStateException: Could not find the HAPI-FHIR structure JAR on the classpath for version DSTU3. Note that as of HAPI-FHIR v0.8, a separate FHIR strcture JAR must be added to your classpath (or project pom.xml if you are using Maven)
