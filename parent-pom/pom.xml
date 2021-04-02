@@ -28,11 +28,11 @@
 
         <!-- Spring Boot -->
         <spring.boot.version>2.4.4</spring.boot.version>
-        <spring-cloud.version>2020.0.1</spring-cloud.version>
+        <spring-cloud.version>2020.0.2</spring-cloud.version>
         <spring-native.version>0.9.1</spring-native.version>
 
         <!-- have to be synced manually with spring-boot-dependencies because of annotation and build processors -->
-        <lombok.version>1.18.18</lombok.version>
+        <lombok.version>1.18.20</lombok.version>
         <hibernate.version>5.4.29.Final</hibernate.version>
         
         <!-- 3rd Party -->
@@ -272,6 +272,7 @@
                                 <configuration>
                                     <from>
                                         <image>adoptopenjdk/openjdk11-openj9:x86_64-debian-jre-11.0.10_9_openj9-0.24.0</image>
+                                        <!-- <image>adoptopenjdk/openjdk16-openj9:x86_64-debian-jre-16_36_openj9-0.25.0</image> -->
                                     </from>
                                     <to>
                                         <image>${docker.registry}/${project.artifactId}</image>
@@ -314,6 +315,7 @@
                                 <configuration>
                                     <from>
                                         <image>adoptopenjdk/openjdk11-openj9:aarch64-debian-jre-11.0.10_9_openj9-0.24.0</image>
+                                        <!-- <image>adoptopenjdk/openjdk16-openj9:aarch64-debian-jre-16_36_openj9-0.25.0</image> -->
                                     </from>
                                     <to>
                                         <image>${docker.registry}/${project.artifactId}-arm64v8</image>
@@ -365,7 +367,6 @@
                                 <builder>paketobuildpacks/builder:tiny</builder>
                                 <env>
                                     <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
-                                    <BP_NATIVE_IMAGE_BUILD_ARGUMENTS>-H:IncludeResourceBundles=ca.uhn.fhir.i18n.hapi-messages</BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
                                 </env>
                             </image>
                         </configuration>
