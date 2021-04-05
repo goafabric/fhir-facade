@@ -7,7 +7,10 @@ import org.springframework.nativex.hint.TypeHint;
 
 @SpringBootApplication
 @TypeHint(typeNames = {
-        "org.hl7.fhir.dstu3.hapi.ctx.FhirDstu3"
+        "org.hl7.fhir.dstu3.hapi.ctx.FhirDstu3",
+        "ca.uhn.fhir.rest.param.StringParam",
+        "ca.uhn.fhir.rest.param.DateParam",
+
 }, access = AccessBits.ALL)
 public class Application {
 
