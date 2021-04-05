@@ -4,4 +4,8 @@
 - builder für search
                    
 #spring native error
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'patientService' defined in class path resource [org/goafabric/example/fhir/service/PatientService.class]: Bean instantiation via constructor failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.goafabric.example.fhir.service.PatientService]: Constructor threw exception; nested exception is ca.uhn.fhir.context.ConfigurationException: Query parameter type ca.uhn.fhir.rest.param.StringParam has no constructor with types []
+Caused by: ca.uhn.fhir.context.ConfigurationException: Query parameter type ca.uhn.fhir.rest.param.StringParam has no constructor with types []
+at ca.uhn.fhir.rest.param.binder.BaseBinder.<init>(BaseBinder.java:54)
+at ca.uhn.fhir.rest.param.binder.QueryParameterTypeBinder.<init>(QueryParameterTypeBinder.java:39)
+at ca.uhn.fhir.rest.server.method.SearchParameter.setType(SearchParameter.java:263)
+at ca.uhn.fhir.rest.server.method.MethodUtil.getResourceParameters(MethodUtil.java:157)
