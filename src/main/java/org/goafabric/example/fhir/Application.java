@@ -11,6 +11,7 @@ import org.springframework.nativex.hint.TypeHint;
         "ca.uhn.fhir.rest.param.StringParam",
         "ca.uhn.fhir.rest.param.DateParam",
         "org.hl7.fhir.dstu3.model.BooleanType",
+        "org.hl7.fhir.dstu3.model.Coding"
 
 }, access = AccessBits.ALL)
 public class Application {
