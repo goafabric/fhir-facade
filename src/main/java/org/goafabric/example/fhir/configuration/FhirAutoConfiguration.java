@@ -106,15 +106,6 @@ public class FhirAutoConfiguration {
 			this.customizers = customizers.getIfAvailable();
 		}
 
-		private void customize() {
-			if (this.customizers != null) {
-				AnnotationAwareOrderComparator.sort(this.customizers);
-				for (FhirRestfulServerCustomizer customizer : this.customizers) {
-					customizer.customize(this);
-				}
-			}
-		}
-
 		@Bean
 		public ServletRegistrationBean fhirServerRegistrationBean() {
 			ServletRegistrationBean registration = new ServletRegistrationBean(this, this.properties.getServer().getPath());
@@ -133,8 +124,21 @@ public class FhirAutoConfiguration {
 			setServerAddressStrategy(new HardcodedServerAddressStrategy(this.properties.getServer().getPath()));
 
 			customize();
+			this.registerInterceptor(new TenantIdInterceptor());
 		}
+
+		private void customize() {
+			if (this.customizers != null) {
+				AnnotationAwareOrderComparator.sort(this.customizers);
+				for (FhirRestfulServerCustomizer customizer : this.customizers) {
+					customizer.customize(this);
+				}
+			}
+		}
+
 	}
+
+	/*****/
 
 	@Configuration(proxyBeanMethods = false)
 	@Conditional(FhirValidationConfiguration.SchemaAvailableCondition.class)
