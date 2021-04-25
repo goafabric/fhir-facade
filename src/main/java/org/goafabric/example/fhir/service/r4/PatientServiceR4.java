@@ -1,4 +1,3 @@
-/*
 package org.goafabric.example.fhir.service.r4;
 
 
@@ -17,9 +16,9 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class PatientService extends AbstractJaxRsResourceProvider<Patient> {
+public class PatientServiceR4 extends AbstractJaxRsResourceProvider<Patient> {
 
-    public PatientService(FhirContext fhirContextR4) {
+    public PatientServiceR4(FhirContext fhirContextR4) {
         super(fhirContextR4);
     }
 
@@ -41,4 +40,3 @@ public class PatientService extends AbstractJaxRsResourceProvider<Patient> {
     }
 }
 
- */
