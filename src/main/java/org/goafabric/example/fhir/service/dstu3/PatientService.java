@@ -1,4 +1,4 @@
-package org.goafabric.example.fhir.service;
+package org.goafabric.example.fhir.service.dstu3;
 
 
 import ca.uhn.fhir.context.FhirContext;
@@ -9,7 +9,7 @@ import ca.uhn.fhir.rest.annotation.Read;
 import ca.uhn.fhir.rest.annotation.Search;
 import ca.uhn.fhir.rest.param.DateParam;
 import ca.uhn.fhir.rest.param.StringParam;
-import org.goafabric.example.fhir.logic.PatientLogic;
+import org.goafabric.example.fhir.logic.dstu3.PatientLogic;
 import org.hl7.fhir.dstu3.model.IdType;
 import org.hl7.fhir.dstu3.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ public class PatientService extends AbstractJaxRsResourceProvider<Patient> {
     @Autowired
     private PatientLogic patientLogic;
 
-    public PatientService(FhirContext fhirContext) {
-        super(fhirContext);
+    public PatientService(FhirContext fhirContexDstu3) {
+        super(fhirContexDstu3);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package org.goafabric.example.fhir.logic;
+package org.goafabric.example.fhir.logic.dstu3;
 
 import ca.uhn.fhir.rest.annotation.Read;
 import ca.uhn.fhir.rest.annotation.Search;

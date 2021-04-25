@@ -22,6 +22,7 @@ package org.goafabric.example.fhir.configuration;
 
 
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.context.FhirVersionEnum;
 import ca.uhn.fhir.jaxrs.server.AbstractJaxRsProvider;
 import ca.uhn.fhir.rest.server.HardcodedServerAddressStrategy;
 import ca.uhn.fhir.rest.server.IPagingProvider;
@@ -53,19 +54,19 @@ import java.util.List;
 @Configuration(proxyBeanMethods = false)
 @AutoConfigureAfter({DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 @EnableConfigurationProperties(FhirProperties.class)
-public class FhirAutoConfiguration {
+public class FhirAutoConfigurationDSTU3 {
 
 
 	private final FhirProperties properties;
 
-	public FhirAutoConfiguration(FhirProperties properties) {
+	public FhirAutoConfigurationDSTU3(FhirProperties properties) {
 		this.properties = properties;
 	}
 
 	@Bean
 	@ConditionalOnMissingBean
-	public FhirContext fhirContext() {
-		FhirContext fhirContext = new FhirContext(properties.getVersion());
+	public FhirContext fhirContextDstu3() {
+		FhirContext fhirContext = new FhirContext(FhirVersionEnum.DSTU3);
 		return fhirContext;
 	}
 
@@ -89,13 +90,13 @@ public class FhirAutoConfiguration {
 
 		public FhirRestfulServerConfiguration(
 				FhirProperties properties,
-				FhirContext fhirContext,
+				FhirContext fhirContextDstu3,
 				ObjectProvider<List<IResourceProvider>> resourceProviders,
 				ObjectProvider<IPagingProvider> pagingProvider,
 				ObjectProvider<List<IServerInterceptor>> interceptors,
 				ObjectProvider<List<FhirRestfulServerCustomizer>> customizers) {
 			this.properties = properties;
-			this.fhirContext = fhirContext;
+			this.fhirContext = fhirContextDstu3;
 			this.resourceProviders = resourceProviders.getIfAvailable();
 			this.pagingProvider = pagingProvider.getIfAvailable();
 			this.customizers = customizers.getIfAvailable();
@@ -103,7 +104,7 @@ public class FhirAutoConfiguration {
 
 		@Bean
 		public ServletRegistrationBean fhirServerRegistrationBean() {
-			ServletRegistrationBean registration = new ServletRegistrationBean(this, this.properties.getServer().getPath());
+			ServletRegistrationBean registration = new ServletRegistrationBean(this, "/fhir/dstu3/*");
 			registration.setLoadOnStartup(1);
 			return registration;
 		}

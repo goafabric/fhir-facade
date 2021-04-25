@@ -1,4 +1,4 @@
-package org.goafabric.example.fhir.logic;
+package org.goafabric.example.fhir.logic.dstu3;
 
 import ca.uhn.fhir.rest.param.StringParam;
 import org.hl7.fhir.dstu3.model.IdType;

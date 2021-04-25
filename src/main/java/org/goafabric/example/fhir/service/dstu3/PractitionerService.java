@@ -1,4 +1,4 @@
-package org.goafabric.example.fhir.service;
+package org.goafabric.example.fhir.service.dstu3;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.jaxrs.server.AbstractJaxRsResourceProvider;
@@ -7,7 +7,7 @@ import ca.uhn.fhir.rest.annotation.OptionalParam;
 import ca.uhn.fhir.rest.annotation.Read;
 import ca.uhn.fhir.rest.annotation.Search;
 import ca.uhn.fhir.rest.param.StringParam;
-import org.goafabric.example.fhir.logic.PractitionerLogic;
+import org.goafabric.example.fhir.logic.dstu3.PractitionerLogic;
 import org.hl7.fhir.dstu3.model.IdType;
 import org.hl7.fhir.dstu3.model.Practitioner;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +21,8 @@ public class PractitionerService extends AbstractJaxRsResourceProvider<Practitio
 	@Autowired
 	private PractitionerLogic practitionerLogic;
 
-	public PractitionerService(FhirContext fhirContext) {
-		super(fhirContext);
+	public PractitionerService(FhirContext fhirContextDstu3) {
+		super(fhirContextDstu3);
 	}
 
 	@Override
