@@ -37,7 +37,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -53,34 +52,23 @@ import java.util.List;
  */
 @Configuration(proxyBeanMethods = false)
 @AutoConfigureAfter({DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
-@EnableConfigurationProperties(FhirProperties.class)
-public class FhirAutoConfigurationDSTU3 {
-
-
-	private final FhirProperties properties;
-
-	public FhirAutoConfigurationDSTU3(FhirProperties properties) {
-		this.properties = properties;
-	}
+public class FhirAutoConfigurationR4 {
 
 	@Bean
 	@ConditionalOnMissingBean
-	public FhirContext fhirContextDstu3() {
-		FhirContext fhirContext = new FhirContext(FhirVersionEnum.DSTU3);
+	public FhirContext fhirContextR4() {
+		FhirContext fhirContext = new FhirContext(FhirVersionEnum.R4);
 		return fhirContext;
 	}
 
 
 	@Configuration(proxyBeanMethods = false)
 	@ConditionalOnClass(AbstractJaxRsProvider.class)
-	@EnableConfigurationProperties(FhirProperties.class)
 	@ConfigurationProperties("hapi.fhir.rest")
 	@SuppressWarnings("serial")
 	static class FhirRestfulServerConfiguration extends RestfulServer {
 
-		private final FhirProperties properties;
-
-		private final FhirContext fhirContext;
+		private final FhirContext fhirContextR4;
 
 		private final List<IResourceProvider> resourceProviders;
 
@@ -89,14 +77,12 @@ public class FhirAutoConfigurationDSTU3 {
 		private final List<FhirRestfulServerCustomizer> customizers;
 
 		public FhirRestfulServerConfiguration(
-				FhirProperties properties,
-				FhirContext fhirContextDstu3,
+				FhirContext fhirContextR4,
 				ObjectProvider<List<IResourceProvider>> resourceProviders,
 				ObjectProvider<IPagingProvider> pagingProvider,
 				ObjectProvider<List<IServerInterceptor>> interceptors,
 				ObjectProvider<List<FhirRestfulServerCustomizer>> customizers) {
-			this.properties = properties;
-			this.fhirContext = fhirContextDstu3;
+			this.fhirContextR4 = fhirContextR4;
 			this.resourceProviders = resourceProviders.getIfAvailable();
 			this.pagingProvider = pagingProvider.getIfAvailable();
 			this.customizers = customizers.getIfAvailable();
@@ -104,7 +90,7 @@ public class FhirAutoConfigurationDSTU3 {
 
 		@Bean
 		public ServletRegistrationBean fhirServerRegistrationBean() {
-			ServletRegistrationBean registration = new ServletRegistrationBean(this, "/fhir/dstu3/*");
+			ServletRegistrationBean registration = new ServletRegistrationBean(this, "/fhir/r4/*");
 			registration.setLoadOnStartup(1);
 			return registration;
 		}
@@ -113,11 +99,11 @@ public class FhirAutoConfigurationDSTU3 {
 		protected void initialize() throws ServletException {
 			super.initialize();
 
-			setFhirContext(this.fhirContext);
+			setFhirContext(this.fhirContextR4);
 			setResourceProviders(this.resourceProviders);
 			setPagingProvider(this.pagingProvider);
 
-			setServerAddressStrategy(new HardcodedServerAddressStrategy(this.properties.getServer().getPath()));
+			setServerAddressStrategy(new HardcodedServerAddressStrategy("/fhir/r4/*"));
 
 			customize();
 			this.registerInterceptor(new TenantIdInterceptor());

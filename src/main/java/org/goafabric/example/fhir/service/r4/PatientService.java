@@ -1,4 +1,4 @@
-package org.goafabric.example.fhir.service.dstu3;
+package org.goafabric.example.fhir.service.r4;
 
 
 import ca.uhn.fhir.context.FhirContext;
@@ -22,8 +22,8 @@ public class PatientService extends AbstractJaxRsResourceProvider<Patient> {
     @Autowired
     private PatientLogic patientLogic;
 
-    public PatientService(FhirContext fhirContextDstu3) {
-        super(fhirContextDstu3);
+    public PatientService(FhirContext fhirContextR4) {
+        super(fhirContextR4);
     }
 
     @Override
