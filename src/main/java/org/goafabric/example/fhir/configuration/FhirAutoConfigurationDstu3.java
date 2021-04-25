@@ -42,6 +42,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.AnnotationAwareOrderComparator;
 
 import javax.servlet.ServletException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -82,7 +83,9 @@ public class FhirAutoConfigurationDstu3 {
 				ObjectProvider<List<IServerInterceptor>> interceptors,
 				ObjectProvider<List<FhirRestfulServerCustomizer>> customizers) {
 			this.fhirContextDstu3 = fhirContextDstu3;
-			this.resourceProviders = resourceProviders.getIfAvailable();
+
+			this.resourceProviders = filterResourceProviders(resourceProviders);
+
 			this.pagingProvider = pagingProvider.getIfAvailable();
 			this.customizers = customizers.getIfAvailable();
 		}
@@ -118,5 +121,15 @@ public class FhirAutoConfigurationDstu3 {
 		}
 
 	}
-	
+
+	private static List<IResourceProvider> filterResourceProviders(ObjectProvider<List<IResourceProvider>> resourceProviders) {
+		final List<IResourceProvider> providers = new ArrayList<>();
+		for (IResourceProvider iResourceProvider : resourceProviders.getIfAvailable()) {
+			if (iResourceProvider.getResourceType().toString().contains("dstu3")) {
+				providers.add(iResourceProvider);
+			}
+		}
+		return providers;
+	}
+
 }
