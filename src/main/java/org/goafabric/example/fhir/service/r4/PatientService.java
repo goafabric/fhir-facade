@@ -1,3 +1,4 @@
+/*
 package org.goafabric.example.fhir.service.r4;
 
 
@@ -39,3 +40,5 @@ public class PatientService extends AbstractJaxRsResourceProvider<Patient> {
         return null;
     }
 }
+
+ */

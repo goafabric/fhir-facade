@@ -33,7 +33,6 @@ import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -55,7 +54,7 @@ import java.util.List;
 public class FhirAutoConfigurationDstu3 {
 
 	@Bean
-	@ConditionalOnMissingBean
+	//@ConditionalOnMissingBean
 	public FhirContext fhirContextDstu3() {
 		FhirContext fhirContext = new FhirContext(FhirVersionEnum.DSTU3);
 		return fhirContext;
@@ -89,7 +88,7 @@ public class FhirAutoConfigurationDstu3 {
 		}
 
 		@Bean
-		public ServletRegistrationBean fhirServerRegistrationBean() {
+		public ServletRegistrationBean fhirServerRegistrationBeanDstu3() {
 			ServletRegistrationBean registration = new ServletRegistrationBean(this, "/fhir/dstu3/*");
 			registration.setLoadOnStartup(1);
 			return registration;
