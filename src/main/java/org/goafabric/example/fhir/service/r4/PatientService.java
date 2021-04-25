@@ -9,18 +9,14 @@ import ca.uhn.fhir.rest.annotation.Read;
 import ca.uhn.fhir.rest.annotation.Search;
 import ca.uhn.fhir.rest.param.DateParam;
 import ca.uhn.fhir.rest.param.StringParam;
-import org.goafabric.example.fhir.logic.dstu3.PatientLogic;
-import org.hl7.fhir.dstu3.model.IdType;
-import org.hl7.fhir.dstu3.model.Patient;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hl7.fhir.r4.model.IdType;
+import org.hl7.fhir.r4.model.Patient;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class PatientService extends AbstractJaxRsResourceProvider<Patient> {
-    @Autowired
-    private PatientLogic patientLogic;
 
     public PatientService(FhirContext fhirContextR4) {
         super(fhirContextR4);
@@ -33,13 +29,13 @@ public class PatientService extends AbstractJaxRsResourceProvider<Patient> {
 
     @Read
     public Patient getPatient(@IdParam final IdType idType) {
-        return patientLogic.getPatient(idType);
+        return new Patient();
     }
 
     @Search
     public List<Patient> findPatient(@OptionalParam(name = Patient.SP_FAMILY) StringParam name,
         @OptionalParam(name = Patient.SP_GIVEN) StringParam given,
         @OptionalParam(name = Patient.SP_BIRTHDATE) DateParam birthday) {
-        return patientLogic.findPatient(name, given, birthday);
+        return null;
     }
 }
