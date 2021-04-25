@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Interceptor
 @Slf4j
-//TODO: #MT prototype for Interceptor, not working though
 public class TenantIdInterceptor {
 
     @Hook(Pointcut.SERVER_INCOMING_REQUEST_PRE_HANDLED)
