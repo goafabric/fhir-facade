@@ -35,7 +35,8 @@ public class FhirValidationConfiguration {
                     "schema-location",
                     "classpath:/org/hl7/fhir/instance/model/schema",
                     "classpath:/org/hl7/fhir/dstu2016may/model/schema",
-                    "classpath:/org/hl7/fhir/dstu3/model/schema");
+                    "classpath:/org/hl7/fhir/dstu3/model/schema",
+                    "classpath:/org/hl7/fhir/r4/model/schema");
         }
     }
 }
