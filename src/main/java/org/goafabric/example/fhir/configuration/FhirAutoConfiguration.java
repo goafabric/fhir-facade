@@ -120,8 +120,12 @@ public class FhirAutoConfiguration {
 
 			customize();
 			this.registerInterceptor(new TenantIdInterceptor());
-		}
 
+			//ExceptionHandlingInterceptor interceptor = new ExceptionHandlingInterceptor();
+			registerInterceptor(new MyExceptionHandlingInterceptor());
+
+		}
+		
 		private void customize() {
 			if (this.customizers != null) {
 				AnnotationAwareOrderComparator.sort(this.customizers);
