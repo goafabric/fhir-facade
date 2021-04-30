@@ -16,6 +16,10 @@ import java.util.List;
 public class PatientLogic {
     @Read
     public Patient getPatient(final IdType idType) {
+        if (!"1".equals(idType.getIdPart())) {
+            throw new IllegalStateException("patient not found");
+        }
+        
         final Patient patient = new Patient();
         patient.setId(idType);
         patient.setName(
