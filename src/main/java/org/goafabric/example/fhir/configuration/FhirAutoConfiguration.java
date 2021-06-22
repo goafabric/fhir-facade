@@ -40,7 +40,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.AnnotationAwareOrderComparator;
 
 import javax.servlet.ServletException;
 import java.util.List;
@@ -85,20 +84,17 @@ public class FhirAutoConfiguration {
 
 		private final IPagingProvider pagingProvider;
 
-		private final List<FhirRestfulServerCustomizer> customizers;
 
 		public FhirRestfulServerConfiguration(
 				FhirProperties properties,
 				FhirContext fhirContext,
 				ObjectProvider<List<IResourceProvider>> resourceProviders,
 				ObjectProvider<IPagingProvider> pagingProvider,
-				ObjectProvider<List<IServerInterceptor>> interceptors,
-				ObjectProvider<List<FhirRestfulServerCustomizer>> customizers) {
+				ObjectProvider<List<IServerInterceptor>> interceptors) {
 			this.properties = properties;
 			this.fhirContext = fhirContext;
 			this.resourceProviders = resourceProviders.getIfAvailable();
 			this.pagingProvider = pagingProvider.getIfAvailable();
-			this.customizers = customizers.getIfAvailable();
 		}
 
 		@Bean
@@ -118,19 +114,10 @@ public class FhirAutoConfiguration {
 
 			setServerAddressStrategy(new HardcodedServerAddressStrategy(this.properties.getServer().getPath()));
 
-			customize();
-			this.registerInterceptor(new TenantIdInterceptor());
-			this.registerInterceptor(new ExceptionHandler());
+			registerInterceptor(new ExceptionHandler());
+			registerInterceptor(new TenantIdInterceptor());
 		}
 		
-		private void customize() {
-			if (this.customizers != null) {
-				AnnotationAwareOrderComparator.sort(this.customizers);
-				for (FhirRestfulServerCustomizer customizer : this.customizers) {
-					customizer.customize(this);
-				}
-			}
-		}
 
 	}
 	
