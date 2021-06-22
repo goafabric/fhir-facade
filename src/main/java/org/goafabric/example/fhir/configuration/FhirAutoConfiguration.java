@@ -22,6 +22,7 @@ package org.goafabric.example.fhir.configuration;
 
 
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.context.FhirVersionEnum;
 import ca.uhn.fhir.jaxrs.server.AbstractJaxRsProvider;
 import ca.uhn.fhir.rest.server.HardcodedServerAddressStrategy;
 import ca.uhn.fhir.rest.server.IResourceProvider;
@@ -50,15 +51,12 @@ import java.util.List;
 @Configuration(proxyBeanMethods = false)
 @AutoConfigureAfter({DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 @EnableConfigurationProperties(FhirProperties.class)
-@RequiredArgsConstructor
 public class FhirAutoConfiguration {
 
-	private final FhirProperties properties;
-	
 	@Bean
 	@ConditionalOnMissingBean
 	public FhirContext fhirContext() {
-		FhirContext fhirContext = new FhirContext(properties.getVersion());
+		FhirContext fhirContext = new FhirContext(FhirVersionEnum.DSTU3);
 		return fhirContext;
 	}
 
@@ -79,7 +77,8 @@ public class FhirAutoConfiguration {
 
 		@Bean
 		public ServletRegistrationBean fhirServerRegistrationBean() {
-			ServletRegistrationBean registration = new ServletRegistrationBean(this, this.properties.getServer().getPath());
+			ServletRegistrationBean registration = new ServletRegistrationBean(this,
+					this.properties.getServer().getPath());
 			registration.setLoadOnStartup(1);
 			return registration;
 		}
@@ -91,7 +90,8 @@ public class FhirAutoConfiguration {
 			setFhirContext(this.fhirContext);
 			setResourceProviders(this.resourceProviders);
 
-			setServerAddressStrategy(new HardcodedServerAddressStrategy(this.properties.getServer().getPath()));
+			setServerAddressStrategy(new HardcodedServerAddressStrategy(
+			        this.properties.getServer().getPath()));
 
 			registerInterceptor(new ExceptionHandler());
 			registerInterceptor(new TenantIdInterceptor());

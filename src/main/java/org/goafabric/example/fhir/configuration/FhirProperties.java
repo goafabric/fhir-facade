@@ -21,14 +21,12 @@ package org.goafabric.example.fhir.configuration;
  */
 
 
-import ca.uhn.fhir.context.FhirVersionEnum;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "hapi.fhir")
 @Data
 public class FhirProperties {
-    private FhirVersionEnum version = FhirVersionEnum.DSTU3;
     private Server server = new Server();
     private Validation validation = new Validation();
 
