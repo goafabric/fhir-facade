@@ -50,7 +50,7 @@ import java.util.List;
 @ConditionalOnClass(AbstractJaxRsProvider.class)
 @ConfigurationProperties("hapi.fhir.rest")
 @AutoConfigureAfter({DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
-public class FhirAutoConfiguration extends RestfulServer {
+public class FhirRestfulServerConfiguration extends RestfulServer {
     @Autowired
     private FhirContext fhirContext;
 
@@ -73,7 +73,6 @@ public class FhirAutoConfiguration extends RestfulServer {
 
         setFhirContext(this.fhirContext);
         setResourceProviders(this.resourceProviders);
-
         setServerAddressStrategy(new HardcodedServerAddressStrategy(serverPath));
 
         registerInterceptor(new ExceptionHandler());
