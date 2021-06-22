@@ -1,8 +1,9 @@
 package org.goafabric.example.fhir.logic;
 
 import ca.uhn.fhir.rest.param.StringParam;
-import org.hl7.fhir.dstu3.model.IdType;
-import org.hl7.fhir.dstu3.model.Practitioner;
+import org.hl7.fhir.r4.model.HumanName;
+import org.hl7.fhir.r4.model.IdType;
+import org.hl7.fhir.r4.model.Practitioner;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -14,11 +15,20 @@ public class PractitionerLogic {
     public Practitioner getPractitioner(final IdType idType) {
         Practitioner practitioner = new Practitioner();
         practitioner.setId(idType);
+        practitioner.setName(
+                Arrays.asList(new HumanName()
+                        .setFamily("Hyde"))
+        );
         return practitioner;
     }
 
     public List<Practitioner> findPractitioner(StringParam searchParamName) {
-        return Arrays.asList(new Practitioner());
+        final Practitioner practitioner = new Practitioner();
+        practitioner.setName(
+                Arrays.asList(new HumanName()
+                        .setFamily("Hyde"))
+        );
+        return Arrays.asList(practitioner);
     }
 
 }
