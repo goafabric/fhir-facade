@@ -4,6 +4,7 @@ import ca.uhn.fhir.rest.param.StringParam;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Practitioner;
+import org.hl7.fhir.r4.model.StringType;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -17,7 +18,8 @@ public class PractitionerLogic {
         practitioner.setId(idType);
         practitioner.setName(
                 Arrays.asList(new HumanName()
-                        .setFamily("Hyde"))
+                        .setGiven(Arrays.asList(new StringType("Bruce")))
+                        .setFamily("Banner"))
         );
         return practitioner;
     }
@@ -26,7 +28,8 @@ public class PractitionerLogic {
         final Practitioner practitioner = new Practitioner();
         practitioner.setName(
                 Arrays.asList(new HumanName()
-                        .setFamily("Hyde"))
+                        .setGiven(Arrays.asList(new StringType("Bruce")))
+                        .setFamily("Banner"))
         );
         return Arrays.asList(practitioner);
     }

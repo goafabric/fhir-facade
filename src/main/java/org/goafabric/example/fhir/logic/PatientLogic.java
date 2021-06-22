@@ -7,6 +7,7 @@ import ca.uhn.fhir.rest.param.StringParam;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Patient;
+import org.hl7.fhir.r4.model.StringType;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -24,6 +25,7 @@ public class PatientLogic {
         patient.setId(idType);
         patient.setName(
              Arrays.asList(new HumanName()
+                     .setGiven(Arrays.asList(new StringType("Homer")))
                      .setFamily("Simpson"))
         );
         return patient;
@@ -36,6 +38,7 @@ public class PatientLogic {
         final Patient patient = new Patient();
         patient.setName(
                 Arrays.asList(new HumanName()
+                        .setGiven(Arrays.asList(new StringType("Homer")))
                         .setFamily("Simpson"))
         );
         return Arrays.asList(patient);
