@@ -27,7 +27,8 @@ import ca.uhn.fhir.jaxrs.server.AbstractJaxRsProvider;
 import ca.uhn.fhir.rest.server.HardcodedServerAddressStrategy;
 import ca.uhn.fhir.rest.server.IResourceProvider;
 import ca.uhn.fhir.rest.server.RestfulServer;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -35,7 +36,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -50,35 +50,30 @@ import java.util.List;
  */
 @Configuration(proxyBeanMethods = false)
 @AutoConfigureAfter({DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
-@EnableConfigurationProperties(FhirProperties.class)
 public class FhirAutoConfiguration {
 
 	@Bean
 	@ConditionalOnMissingBean
 	public FhirContext fhirContext() {
-		FhirContext fhirContext = new FhirContext(FhirVersionEnum.DSTU3);
-		return fhirContext;
+		return new FhirContext(FhirVersionEnum.DSTU3);
 	}
-
 
 	@Configuration(proxyBeanMethods = false)
 	@ConditionalOnClass(AbstractJaxRsProvider.class)
-	@EnableConfigurationProperties(FhirProperties.class)
 	@ConfigurationProperties("hapi.fhir.rest")
-	@SuppressWarnings("serial")
-	@RequiredArgsConstructor
 	static class FhirRestfulServerConfiguration extends RestfulServer {
+		@Autowired
+		private FhirContext fhirContext;
 
-		private final FhirProperties properties;
+		@Autowired
+		private List<IResourceProvider> resourceProviders;
 
-		private final FhirContext fhirContext;
-
-		private final List<IResourceProvider> resourceProviders;
+		@Value("${hapi.fhir.server.path}")
+		private String serverPath;
 
 		@Bean
 		public ServletRegistrationBean fhirServerRegistrationBean() {
-			ServletRegistrationBean registration = new ServletRegistrationBean(this,
-					this.properties.getServer().getPath());
+			ServletRegistrationBean registration = new ServletRegistrationBean(this, serverPath);
 			registration.setLoadOnStartup(1);
 			return registration;
 		}
@@ -90,8 +85,7 @@ public class FhirAutoConfiguration {
 			setFhirContext(this.fhirContext);
 			setResourceProviders(this.resourceProviders);
 
-			setServerAddressStrategy(new HardcodedServerAddressStrategy(
-			        this.properties.getServer().getPath()));
+			setServerAddressStrategy(new HardcodedServerAddressStrategy(serverPath));
 
 			registerInterceptor(new ExceptionHandler());
 			registerInterceptor(new TenantIdInterceptor());
