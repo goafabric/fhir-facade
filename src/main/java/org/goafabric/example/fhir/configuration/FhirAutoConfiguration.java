@@ -24,11 +24,9 @@ package org.goafabric.example.fhir.configuration;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.jaxrs.server.AbstractJaxRsProvider;
 import ca.uhn.fhir.rest.server.HardcodedServerAddressStrategy;
-import ca.uhn.fhir.rest.server.IPagingProvider;
 import ca.uhn.fhir.rest.server.IResourceProvider;
 import ca.uhn.fhir.rest.server.RestfulServer;
-import ca.uhn.fhir.rest.server.interceptor.IServerInterceptor;
-import org.springframework.beans.factory.ObjectProvider;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -52,15 +50,11 @@ import java.util.List;
 @Configuration(proxyBeanMethods = false)
 @AutoConfigureAfter({DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 @EnableConfigurationProperties(FhirProperties.class)
+@RequiredArgsConstructor
 public class FhirAutoConfiguration {
 
-
 	private final FhirProperties properties;
-
-	public FhirAutoConfiguration(FhirProperties properties) {
-		this.properties = properties;
-	}
-
+	
 	@Bean
 	@ConditionalOnMissingBean
 	public FhirContext fhirContext() {
@@ -74,6 +68,7 @@ public class FhirAutoConfiguration {
 	@EnableConfigurationProperties(FhirProperties.class)
 	@ConfigurationProperties("hapi.fhir.rest")
 	@SuppressWarnings("serial")
+	@RequiredArgsConstructor
 	static class FhirRestfulServerConfiguration extends RestfulServer {
 
 		private final FhirProperties properties;
@@ -81,21 +76,6 @@ public class FhirAutoConfiguration {
 		private final FhirContext fhirContext;
 
 		private final List<IResourceProvider> resourceProviders;
-
-		private final IPagingProvider pagingProvider;
-
-
-		public FhirRestfulServerConfiguration(
-				FhirProperties properties,
-				FhirContext fhirContext,
-				ObjectProvider<List<IResourceProvider>> resourceProviders,
-				ObjectProvider<IPagingProvider> pagingProvider,
-				ObjectProvider<List<IServerInterceptor>> interceptors) {
-			this.properties = properties;
-			this.fhirContext = fhirContext;
-			this.resourceProviders = resourceProviders.getIfAvailable();
-			this.pagingProvider = pagingProvider.getIfAvailable();
-		}
 
 		@Bean
 		public ServletRegistrationBean fhirServerRegistrationBean() {
@@ -110,15 +90,11 @@ public class FhirAutoConfiguration {
 
 			setFhirContext(this.fhirContext);
 			setResourceProviders(this.resourceProviders);
-			setPagingProvider(this.pagingProvider);
 
 			setServerAddressStrategy(new HardcodedServerAddressStrategy(this.properties.getServer().getPath()));
 
 			registerInterceptor(new ExceptionHandler());
 			registerInterceptor(new TenantIdInterceptor());
 		}
-		
-
 	}
-	
 }
