@@ -120,10 +120,7 @@ public class FhirAutoConfiguration {
 
 			customize();
 			this.registerInterceptor(new TenantIdInterceptor());
-
-			//ExceptionHandlingInterceptor interceptor = new ExceptionHandlingInterceptor();
-			//registerInterceptor(new MyExceptionHandlingInterceptor());
-
+			this.registerInterceptor(new ExceptionHandler());
 		}
 		
 		private void customize() {
