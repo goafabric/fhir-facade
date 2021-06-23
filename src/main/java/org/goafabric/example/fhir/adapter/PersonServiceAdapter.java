@@ -2,6 +2,8 @@ package org.goafabric.example.fhir.adapter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,18 +25,20 @@ public class PersonServiceAdapter {
     }
 
     public List<Person> findAll() {
-        return restTemplate.getForObject(serviceUrl + "/findAll",
+        return (List<Person>) restTemplate.getForObject(serviceUrl + "/findAll",
                 List.class);
     }
 
     public List<Person> findByFirstName(String firstName) {
-        return restTemplate.getForObject(serviceUrl + "/findByFirstName?firstName={firstName}",
-                List.class, firstName);
+        return restTemplate.exchange(serviceUrl + "/findByFirstName?firstName={firstName}",
+                HttpMethod.GET, null, new ParameterizedTypeReference<List<Person>>(){}, firstName)
+                .getBody();
     }
 
     public List<Person>findByLastName(String lastName) {
-        return restTemplate.getForObject(serviceUrl + "/findByLastName?lastName={lastName}",
-                List.class, lastName);
+        return restTemplate.exchange(serviceUrl + "/findByLastName?lastName={lastName}",
+                HttpMethod.GET, null, new ParameterizedTypeReference<List<Person>>(){}, lastName)
+                .getBody();
     }
 
     public Boolean isAlive() {

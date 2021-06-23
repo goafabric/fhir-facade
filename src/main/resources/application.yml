@@ -38,7 +38,7 @@ hapi:
 adapter:
   timeout: 10000
   personservice:
-    url: http://localhost:50900
+    url: http://localhost:50800
     user: YWRtaW4=
     password: YWRtaW4=
 
