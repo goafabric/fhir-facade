@@ -2,6 +2,10 @@ server:
   port: 50700
   tomcat.threads.max: 20
 
+security:
+  authentication:
+    enabled: true
+
 hapi:
   fhir:
     server:
