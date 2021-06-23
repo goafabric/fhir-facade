@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  fhir-service:
+  fhir-facade:
     container_name: ${_Values_root_name}-application
     image:  ${_Values_image_repository}${_Values_server_arch}:${_Values_image_tag}
 #    image: ${_Values_image_repository}-native:${_Values_image_tag}
@@ -46,5 +46,5 @@ volumes:
     applogs:
 
 networks:
-  fhir-service-net:
+  fhir-facade-net:
     driver: bridge
