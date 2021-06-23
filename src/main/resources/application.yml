@@ -1,7 +1,23 @@
+#web
 server:
   port: 50700
   tomcat.threads.max: 20
 
+#monitoring
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus,heapdump"
+
+security:
+  authentication:
+    enabled: true
+
+#hapi
 hapi:
   fhir:
     server:
@@ -17,19 +33,6 @@ hapi:
       enabled: true
       request-only: true
 
-#monitoring
-management:
-  endpoint:
-    health:
-      show-details: always
-  endpoints:
-    web:
-      exposure:
-        include: "health,prometheus,heapdump"
-
-security:
-  authentication:
-    enabled: true
 
 #adapter
 adapter:
