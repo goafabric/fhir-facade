@@ -2,10 +2,6 @@ server:
   port: 50700
   tomcat.threads.max: 20
 
-security:
-  authentication:
-    enabled: true
-
 hapi:
   fhir:
     server:
@@ -21,15 +17,29 @@ hapi:
       enabled: true
       request-only: true
 
+#monitoring
 management:
-  endpoints:
-    web:
-      exposure:
-        include: "info,health"
   endpoint:
     health:
       show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus,heapdump"
 
+security:
+  authentication:
+    enabled: true
+
+#adapter
+adapter:
+  timeout: 10000
+  personservice:
+    url: http://localhost:50900
+    user: YWRtaW4=
+    password: YWRtaW4=
+
+    
 #log levels
 logging.level.root: "WARN"
 logging.level.org.goafabric: "INFO"
