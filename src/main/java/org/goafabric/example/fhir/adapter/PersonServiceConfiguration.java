@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Duration;
 import java.util.Base64;
 import java.util.Collections;
 
@@ -20,8 +21,8 @@ public class PersonServiceConfiguration {
         @Value("${adapter.personservice.password}") String password,
         @Value("${adapter.timeout}") Integer timeout) {
         final RestTemplate restTemplate = new RestTemplateBuilder()
-                //.setConnectTimeout(Duration.ofMillis(timeout))
-                //.setReadTimeout(Duration.ofMillis(timeout))
+                .setConnectTimeout(Duration.ofMillis(timeout))
+                .setReadTimeout(Duration.ofMillis(timeout))
                 .build();
 
         restTemplate.setMessageConverters(Collections.singletonList(new MappingJackson2HttpMessageConverter()));
