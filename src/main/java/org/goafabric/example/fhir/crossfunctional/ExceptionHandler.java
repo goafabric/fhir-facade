@@ -1,4 +1,4 @@
-package org.goafabric.example.fhir.configuration;
+package org.goafabric.example.fhir.crossfunctional;
 
 import ca.uhn.fhir.interceptor.api.Hook;
 import ca.uhn.fhir.interceptor.api.Pointcut;

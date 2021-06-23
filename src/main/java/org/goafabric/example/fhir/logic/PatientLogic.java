@@ -5,10 +5,9 @@ import ca.uhn.fhir.rest.annotation.Search;
 import ca.uhn.fhir.rest.param.DateParam;
 import ca.uhn.fhir.rest.param.StringParam;
 import ca.uhn.fhir.rest.server.exceptions.ResourceNotFoundException;
-import org.hl7.fhir.r4.model.HumanName;
+import org.goafabric.example.fhir.logic.builder.PatientBuilder;
 import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Patient;
-import org.hl7.fhir.r4.model.StringType;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -21,28 +20,17 @@ public class PatientLogic {
         if (!"1".equals(idType.getIdPart())) {
             throw new ResourceNotFoundException("patient not found");
         }
-        
-        final Patient patient = new Patient();
-        patient.setId(idType);
-        patient.setName(
-             Arrays.asList(new HumanName()
-                     .setGiven(Arrays.asList(new StringType("Homer")))
-                     .setFamily("Simpson"))
-        );
-        return patient;
+
+        return PatientBuilder
+                .build(idType,"Homer", "Simpson");
     }
 
     @Search
     public List<Patient> findPatient(StringParam name,
                                      StringParam given,
                                      DateParam birthday) {
-        final Patient patient = new Patient();
-        patient.setName(
-                Arrays.asList(new HumanName()
-                        .setGiven(Arrays.asList(new StringType("Homer")))
-                        .setFamily("Simpson"))
-        );
-        return Arrays.asList(patient);
+        return Arrays.asList(PatientBuilder
+                .build(new IdType(),"Homer", "Simpson"));
     }
 
 }
