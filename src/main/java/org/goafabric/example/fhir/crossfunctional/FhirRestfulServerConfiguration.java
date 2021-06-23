@@ -22,6 +22,7 @@ package org.goafabric.example.fhir.crossfunctional;
 
 
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.context.FhirVersionEnum;
 import ca.uhn.fhir.jaxrs.server.AbstractJaxRsProvider;
 import ca.uhn.fhir.rest.server.HardcodedServerAddressStrategy;
 import ca.uhn.fhir.rest.server.IResourceProvider;
@@ -31,6 +32,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -65,6 +67,12 @@ public class FhirRestfulServerConfiguration extends RestfulServer {
         ServletRegistrationBean registration = new ServletRegistrationBean(this, serverPath);
         registration.setLoadOnStartup(1);
         return registration;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public FhirContext fhirContext() {
+        return new FhirContext(FhirVersionEnum.R4);
     }
 
     @Override
