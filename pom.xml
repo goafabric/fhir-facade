@@ -37,6 +37,14 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
+        <!-- Adapter -->
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-spring-boot2</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+
+
         <!-- Hapi -->
         <dependency>
             <groupId>ca.uhn.hapi.fhir</groupId>
