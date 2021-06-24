@@ -38,13 +38,14 @@
         </dependency>
 
         <!-- Adapter -->
+        <!--
         <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-spring-boot2</artifactId>
             <version>${resilience4j.version}</version>
         </dependency>
-
-
+        -->
+        
         <!-- Hapi -->
         <dependency>
             <groupId>ca.uhn.hapi.fhir</groupId>
@@ -65,13 +66,6 @@
             <optional>true</optional>
         </dependency>
 
-        <!--
-        <dependency>
-            <groupId>ca.uhn.hapi.fhir.openapi</groupId>
-            <artifactId>hapi-fhir-server-openapi</artifactId>
-            <version>${hapi.fihr.version}</version>
-        </dependency>
-        -->
 
         <!-- Monitoring -->
         <dependency>

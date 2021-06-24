@@ -12,6 +12,9 @@ management:
     web:
       exposure:
         include: "health,prometheus,heapdump"
+  health:
+    circuitbreakers:
+      enabled: true
 
 security:
   authentication:
@@ -53,8 +56,10 @@ resilience4j.circuitbreaker:
       waitDurationInOpenState: 30s #Time the CircuitBreaker should wait before transitioning back from open to half-open.
       minimumNumberOfCalls: 10 #The minimum number of calls which are required before the CircuitBreaker can calculate the error rate.
       permittedNumberOfCallsInHalfOpenState: 10 #Number of permitted calls when the CircuitBreaker is half open.
+#  instances:
+#    personservice:
+#      baseConfig: default
 
-    
 #log levels
 logging.level.root: "WARN"
 logging.level.org.goafabric: "INFO"
