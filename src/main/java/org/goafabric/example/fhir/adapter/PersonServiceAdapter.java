@@ -1,5 +1,6 @@
 package org.goafabric.example.fhir.adapter;
 
+import lombok.extern.slf4j.Slf4j;
 import org.goafabric.example.fhir.crossfunctional.BaseUrlBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Component
 //@CircuitBreaker(name = "personservice")
+@Slf4j
 public class PersonServiceAdapter {
 
     @Autowired
@@ -47,6 +49,8 @@ public class PersonServiceAdapter {
     }
 
     private String getServiceUrl() {
-        return baseUrlBean.getUrl() + "/persons";
+        final String baseUrl = baseUrlBean.getUrl() + "/persons";
+        log.info("calling {} ... ", baseUrl);
+        return baseUrl;
     }
 }
