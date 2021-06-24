@@ -1,7 +1,7 @@
 package org.goafabric.example.fhir.adapter;
 
+import org.goafabric.example.fhir.crossfunctional.BaseUrlBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
@@ -16,34 +16,37 @@ public class PersonServiceAdapter {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${adapter.personservice.url}/persons")
-    private String serviceUrl;
+    @Autowired
+    private BaseUrlBean baseUrlBean;
 
 
     public Person getById(String id) {
-        return restTemplate.getForObject(serviceUrl + "/getById/?id={id}",
+        return restTemplate.getForObject(getServiceUrl() + "/getById/?id={id}",
                 Person.class, id);
     }
 
     public List<Person> findAll() {
-        return (List<Person>) restTemplate.getForObject(serviceUrl + "/findAll",
+        return (List<Person>) restTemplate.getForObject(getServiceUrl() + "/findAll",
                 List.class);
     }
 
     public List<Person> findByFirstName(String firstName) {
-        return restTemplate.exchange(serviceUrl + "/findByFirstName?firstName={firstName}",
+        return restTemplate.exchange(getServiceUrl() + "/findByFirstName?firstName={firstName}",
                 HttpMethod.GET, null, new ParameterizedTypeReference<List<Person>>(){}, firstName)
                 .getBody();
     }
 
     public List<Person>findByLastName(String lastName) {
-        return restTemplate.exchange(serviceUrl + "/findByLastName?lastName={lastName}",
+        return restTemplate.exchange(getServiceUrl() + "/findByLastName?lastName={lastName}",
                 HttpMethod.GET, null, new ParameterizedTypeReference<List<Person>>(){}, lastName)
                 .getBody();
     }
 
     public Boolean isAlive() {
-        return restTemplate.getForObject(serviceUrl + "/isAlive", Boolean.class);
+        return restTemplate.getForObject(getServiceUrl() + "/isAlive", Boolean.class);
     }
 
+    private String getServiceUrl() {
+        return baseUrlBean.getUrl() + "/persons";
+    }
 }

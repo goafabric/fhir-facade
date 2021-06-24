@@ -42,8 +42,11 @@ adapter:
   timeout: 10000
   personservice:
     url: http://localhost:50800
+#    url: http://person-service-application.example-%TENANT_ID%:8080
     user: YWRtaW4=
     password: YWRtaW4=
+
+multi.tenancy.enabled: false
 
 resilience4j.circuitbreaker:
   configs:
