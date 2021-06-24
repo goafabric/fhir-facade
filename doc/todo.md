@@ -1,5 +1,3 @@
-- client + tests einbauen
-- builder für patient
-
-- builder für search
-
+- resilience4j
+- tracing
+- mock adapte profiles
