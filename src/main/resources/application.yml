@@ -16,6 +16,7 @@ management:
     circuitbreakers:
       enabled: true
 
+#security
 security:
   authentication:
     enabled: true
