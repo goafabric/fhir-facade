@@ -1,3 +1,5 @@
 - resilience4j
 - tracing
-- mock adapte profiles
+- mock adapter profiles
+
+- quarkus build
