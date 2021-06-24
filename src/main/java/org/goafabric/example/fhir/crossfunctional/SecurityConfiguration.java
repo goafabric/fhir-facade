@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration(proxyBeanMethods = false)
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@ConditionalOnProperty(value = "security.authentication.enabled", matchIfMissing = false)
+@ConditionalOnProperty(value = "security.authentication.enabled", matchIfMissing = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override //in memory authentication
     protected void configure(AuthenticationManagerBuilder auth)
