@@ -50,7 +50,7 @@ public class PersonServiceAdapter {
 
     private String getServiceUrl() {
         final String baseUrl = baseUrlBean.getUrl() + "/persons";
-        log.info("calling {} ... ", baseUrl);
+        log.info("calling {}", baseUrl);
         return baseUrl;
     }
 }

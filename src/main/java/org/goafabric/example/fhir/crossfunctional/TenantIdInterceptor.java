@@ -14,7 +14,7 @@ public class TenantIdInterceptor {
     @Hook(Pointcut.SERVER_INCOMING_REQUEST_PRE_HANDLED)
     public void preHandle(RequestDetails request) {
         final String tenantId = request.getHeader("X-TenantId");
-        log.info("#interceptor got tenant id {}", tenantId);
+        log.debug("#interceptor got tenant id {}", tenantId);
         tenantIdThreadLocal.set(request.getHeader("X-TenantId"));
     }
 
