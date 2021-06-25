@@ -6,3 +6,5 @@
 - mock adapter profiles, mongodb
 
 - quarkus build
+                      
+- retest istio integration
