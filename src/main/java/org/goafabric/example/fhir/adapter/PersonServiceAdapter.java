@@ -27,27 +27,12 @@ public class PersonServiceAdapter {
                 Person.class, id);
     }
 
-    public List<Person> findAll() {
-        return (List<Person>) restTemplate.getForObject(getServiceUrl() + "/findAll",
-                List.class);
-    }
-
     public List<Person> findByFirstName(String firstName) {
         return restTemplate.exchange(getServiceUrl() + "/findByFirstName?firstName={firstName}",
                 HttpMethod.GET, null, new ParameterizedTypeReference<List<Person>>(){}, firstName)
                 .getBody();
     }
-
-    public List<Person>findByLastName(String lastName) {
-        return restTemplate.exchange(getServiceUrl() + "/findByLastName?lastName={lastName}",
-                HttpMethod.GET, null, new ParameterizedTypeReference<List<Person>>(){}, lastName)
-                .getBody();
-    }
-
-    public Boolean isAlive() {
-        return restTemplate.getForObject(getServiceUrl() + "/isAlive", Boolean.class);
-    }
-
+    
     private String getServiceUrl() {
         final String baseUrl = baseUrlBean.getUrl() + "/persons";
         log.info("calling {}", baseUrl);
