@@ -1,6 +1,7 @@
 #1.0.2
 - DurationLogger added
 - Profiles added for Mock
+- Prometheus, Tracing added
 
 #1.0.1
 - Security added
