@@ -1,3 +1,5 @@
+#1.0.3
+
 #1.0.2
 - DurationLogger added
 - Profiles added for Mock
