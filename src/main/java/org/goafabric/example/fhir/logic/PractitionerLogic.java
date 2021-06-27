@@ -5,7 +5,7 @@ import ca.uhn.fhir.rest.server.exceptions.ResourceNotFoundException;
 import org.goafabric.example.fhir.adapter.Person;
 import org.goafabric.example.fhir.adapter.PersonServiceAdapter;
 import org.goafabric.example.fhir.crossfunctional.DurationLog;
-import org.goafabric.example.fhir.logic.builder.PractionerBuilder;
+import org.goafabric.example.fhir.logic.builder.PractionerMapper;
 import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Practitioner;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,17 +25,16 @@ public class PractitionerLogic {
             throw new ResourceNotFoundException("practioner not found");
         }
 
-        final List<Person> persons = personServiceAdapter.findByFirstName("Monty");
-        return PractionerBuilder.build(idType,
-                persons.get(0).getFirstName(), persons.get(0).getLastName());
+        return PractionerMapper.map(personServiceAdapter
+                .findByFirstName("Monty").get(0));
         //return PractionerBuilder.build(idType,"Monty", "Burns");
     }
 
     public List<Practitioner> findPractitioner(StringParam given,
                                                StringParam name) {
         final List<Person> persons = personServiceAdapter.findByFirstName("Monty");
-        return Arrays.asList(PractionerBuilder.build(new IdType(persons.get(0).getId()),
-                persons.get(0).getFirstName(), persons.get(0).getLastName()));
+        return Arrays.asList(PractionerMapper.map(personServiceAdapter
+                .findByFirstName("Monty").get(0)));
         //return Arrays.asList(PractionerBuilder.build(new IdType(),"Monty", "Burns"));
     }
 
