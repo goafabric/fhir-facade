@@ -1,3 +1,1 @@
-- Tracing
 - Quarkus build
-- Retest Istio/Linkerd Integration

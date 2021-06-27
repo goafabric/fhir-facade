@@ -20,4 +20,9 @@ public class PersonServiceMockAdapter implements PersonServiceAdapter{
         return Arrays.asList(Person.builder().id("0")
                 .firstName("Homer").lastName("Simpson").build());
     }
+
+    @Override
+    public Boolean isAlive() {
+        return Boolean.TRUE;
+    }
 }

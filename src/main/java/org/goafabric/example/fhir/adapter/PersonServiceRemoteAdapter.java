@@ -35,10 +35,14 @@ public class PersonServiceRemoteAdapter implements PersonServiceAdapter {
                 HttpMethod.GET, null, new ParameterizedTypeReference<List<Person>>(){}, firstName)
                 .getBody();
     }
-    
+
+    public Boolean isAlive() {
+        return restTemplate.getForObject(getServiceUrl() + "/isAlive", Boolean.class);
+    }
+
     private String getServiceUrl() {
         final String baseUrl = baseUrlBean.getUrl() + "/persons";
-        log.info("calling {}", baseUrl);
+        //log.info("calling {}", baseUrl);
         return baseUrl;
     }
 }
