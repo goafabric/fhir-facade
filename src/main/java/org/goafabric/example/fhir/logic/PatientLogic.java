@@ -12,7 +12,6 @@ import org.hl7.fhir.r4.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -27,17 +26,15 @@ public class PatientLogic {
             throw new ResourceNotFoundException("patient not found");
         }
 
-        return PatientMapper.map(personServiceAdapter
-                .findByFirstName("Homer").get(0));
-        //return PatientBuilder.build(idType,"Homer", "Simpson");
+        return PatientMapper.map(personServiceAdapter.findByFirstName("Homer").get(0));
+        //return PatientMapper.map(Person.builder().id("0").firstName("Monty").lastName("Burns").build());
     }
 
     @Search
     public List<Patient> findPatient(StringParam given,
                                      StringParam name) {
-        return Arrays.asList(PatientMapper.map(personServiceAdapter
-                .findByFirstName("Homer").get(0)));
-        //return Arrays.asList(PatientBuilder.build(new IdType(),"Homer", "Simpson"));
+        return PatientMapper.map(personServiceAdapter.findByFirstName("Homer"));
+        //return Arrays.asList(PatientMapper.map(Person.builder().id("0").firstName("Monty").lastName("Burns").build()));
     }
 
 }
