@@ -7,7 +7,6 @@ import ca.uhn.fhir.rest.annotation.IdParam;
 import ca.uhn.fhir.rest.annotation.OptionalParam;
 import ca.uhn.fhir.rest.annotation.Read;
 import ca.uhn.fhir.rest.annotation.Search;
-import ca.uhn.fhir.rest.param.DateParam;
 import ca.uhn.fhir.rest.param.StringParam;
 import org.goafabric.example.fhir.logic.PatientLogic;
 import org.hl7.fhir.r4.model.IdType;
@@ -37,9 +36,9 @@ public class PatientService extends AbstractJaxRsResourceProvider<Patient> {
     }
 
     @Search
-    public List<Patient> findPatient(@OptionalParam(name = Patient.SP_FAMILY) StringParam name,
+    public List<Patient> findPatient(
         @OptionalParam(name = Patient.SP_GIVEN) StringParam given,
-        @OptionalParam(name = Patient.SP_BIRTHDATE) DateParam birthday) {
-        return patientLogic.findPatient(name, given, birthday);
+        @OptionalParam(name = Patient.SP_FAMILY) StringParam name) {
+        return patientLogic.findPatient(name, given);
     }
 }

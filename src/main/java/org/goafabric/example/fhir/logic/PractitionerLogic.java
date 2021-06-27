@@ -28,12 +28,15 @@ public class PractitionerLogic {
         final List<Person> persons = personServiceAdapter.findByFirstName("Monty");
         return PractionerBuilder.build(idType,
                 persons.get(0).getFirstName(), persons.get(0).getLastName());
-        //return PractionerBuilder.build(idType,"Bruce", "Banner");
+        //return PractionerBuilder.build(idType,"Monty", "Burns");
     }
 
-    public List<Practitioner> findPractitioner(StringParam searchParamName) {
-        return Arrays.asList(PractionerBuilder
-                .build(new IdType(),"Bruce", "Banner"));
+    public List<Practitioner> findPractitioner(StringParam given,
+                                               StringParam name) {
+        final List<Person> persons = personServiceAdapter.findByFirstName("Monty");
+        return Arrays.asList(PractionerBuilder.build(new IdType(persons.get(0).getId()),
+                persons.get(0).getFirstName(), persons.get(0).getLastName()));
+        //return Arrays.asList(PractionerBuilder.build(new IdType(),"Monty", "Burns"));
     }
 
 }

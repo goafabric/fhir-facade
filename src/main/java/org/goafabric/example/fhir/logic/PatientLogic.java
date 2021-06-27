@@ -2,7 +2,6 @@ package org.goafabric.example.fhir.logic;
 
 import ca.uhn.fhir.rest.annotation.Read;
 import ca.uhn.fhir.rest.annotation.Search;
-import ca.uhn.fhir.rest.param.DateParam;
 import ca.uhn.fhir.rest.param.StringParam;
 import ca.uhn.fhir.rest.server.exceptions.ResourceNotFoundException;
 import org.goafabric.example.fhir.adapter.Person;
@@ -36,10 +35,12 @@ public class PatientLogic {
     }
 
     @Search
-    public List<Patient> findPatient(StringParam name,
-                                     StringParam given,
-                                     DateParam birthday) {
-        return Arrays.asList(PatientBuilder.build(new IdType(),"Homer", "Simpson"));
+    public List<Patient> findPatient(StringParam given,
+                                     StringParam name) {
+        final List<Person> persons = personServiceAdapter.findByFirstName("Homer");
+        return Arrays.asList(PatientBuilder.build(new IdType(),
+                persons.get(0).getFirstName(), persons.get(0).getLastName()));
+        //return Arrays.asList(PatientBuilder.build(new IdType(),"Homer", "Simpson"));
     }
 
 }

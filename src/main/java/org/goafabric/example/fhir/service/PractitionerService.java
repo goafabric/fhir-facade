@@ -9,11 +9,11 @@ import ca.uhn.fhir.rest.annotation.Search;
 import ca.uhn.fhir.rest.param.StringParam;
 import org.goafabric.example.fhir.logic.PractitionerLogic;
 import org.hl7.fhir.r4.model.IdType;
+import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Practitioner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -36,7 +36,10 @@ public class PractitionerService extends AbstractJaxRsResourceProvider<Practitio
 	}
 
 	@Search
-	public List<Practitioner> findPractitioner(@OptionalParam(name = Practitioner.SP_FAMILY) StringParam searchParamName) {
-		return Arrays.asList(new Practitioner());
+	public List<Practitioner> findPractitioner(
+			@OptionalParam(name = Patient.SP_GIVEN) StringParam given,
+			@OptionalParam(name = Patient.SP_FAMILY) StringParam name) {
+		return practitionerLogic.findPractitioner(given, name);
 	}
+
 }
