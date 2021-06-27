@@ -1,4 +1,4 @@
-package org.goafabric.example.fhir.crossfunctional;
+package org.goafabric.example.fhir.configuration;
 
 import ca.uhn.fhir.rest.server.interceptor.RequestValidatingInterceptor;
 import ca.uhn.fhir.rest.server.interceptor.ResponseValidatingInterceptor;

@@ -1,4 +1,4 @@
-package org.goafabric.example.fhir.crossfunctional;
+package org.goafabric.example.fhir.configuration;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package org.goafabric.example.fhir.crossfunctional;
+package org.goafabric.example.fhir.configuration;
 
 /*-
  * #%L
@@ -27,6 +27,8 @@ import ca.uhn.fhir.jaxrs.server.AbstractJaxRsProvider;
 import ca.uhn.fhir.rest.server.HardcodedServerAddressStrategy;
 import ca.uhn.fhir.rest.server.IResourceProvider;
 import ca.uhn.fhir.rest.server.RestfulServer;
+import org.goafabric.example.fhir.crossfunctional.ExceptionHandler;
+import org.goafabric.example.fhir.crossfunctional.TenantIdInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;

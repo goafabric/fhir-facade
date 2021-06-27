@@ -1,5 +1,5 @@
 #1.0.2
-- upgrade to 1.0.2
+- DurationLogger added
 
 #1.0.1
 - Security added
