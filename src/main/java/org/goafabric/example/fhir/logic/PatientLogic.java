@@ -6,7 +6,7 @@ import ca.uhn.fhir.rest.param.StringParam;
 import ca.uhn.fhir.rest.server.exceptions.ResourceNotFoundException;
 import org.goafabric.example.fhir.adapter.PersonServiceAdapter;
 import org.goafabric.example.fhir.crossfunctional.DurationLog;
-import org.goafabric.example.fhir.logic.builder.PatientMapper;
+import org.goafabric.example.fhir.logic.mapper.PatientMapper;
 import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;

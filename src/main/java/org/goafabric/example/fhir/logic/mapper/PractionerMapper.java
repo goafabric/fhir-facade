@@ -1,4 +1,4 @@
-package org.goafabric.example.fhir.logic.builder;
+package org.goafabric.example.fhir.logic.mapper;
 
 
 import org.goafabric.example.fhir.adapter.Person;
