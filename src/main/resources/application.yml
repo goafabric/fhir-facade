@@ -63,7 +63,7 @@ resilience4j.circuitbreaker:
       slowCallRateThreshold: 100 #Percentage of calls that that need be registered a slow for the CB to transitions from close to open
       failureRateThreshold: 50 #Failure rate when the Circuit Breaker transitions from closed to open
       waitDurationInOpenState: 30s #Time the CircuitBreaker should wait before transitioning back from open to half-open.
-      minimumNumberOfCalls: 10 #The minimum number of calls which are required before the CircuitBreaker can calculate the error rate.
+      minimumNumberOfCalls: 1 #The minimum number of calls which are required before the CircuitBreaker can calculate the error rate.
       permittedNumberOfCallsInHalfOpenState: 10 #Number of permitted calls when the CircuitBreaker is half open.
 #  instances:
 #    personservice:

@@ -1,4 +1,3 @@
-- resilience4j
 - tracing
 - Standard Interceptor (https://quarkus.io/guides/rest-json#http-filters-and-interceptors)
 
