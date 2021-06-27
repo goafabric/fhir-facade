@@ -23,14 +23,14 @@ public class PractitionerLogic {
             throw new ResourceNotFoundException("practioner not found");
         }
 
-        return PractionerMapper.map(personServiceAdapter.findByFirstName("Monty").get(0));
-        //return PractionerMapper.map(Person.builder().id("0").firstName("Monty").lastName("Burns").build());
+        return PractionerMapper.map(
+                personServiceAdapter.findByFirstName("Monty").get(0));
     }
 
     public List<Practitioner> findPractitioner(StringParam given,
                                                StringParam name) {
-        return PractionerMapper.map(personServiceAdapter.findByFirstName("Monty"));
-        //return Arrays.asList(PractionerMapper.map(Person.builder().id("0").firstName("Monty").lastName("Burns").build());
+        return PractionerMapper.map(
+                personServiceAdapter.findByFirstName("Monty"));
     }
 
 }

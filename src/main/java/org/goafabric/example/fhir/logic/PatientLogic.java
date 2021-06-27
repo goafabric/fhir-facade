@@ -26,15 +26,15 @@ public class PatientLogic {
             throw new ResourceNotFoundException("patient not found");
         }
 
-        return PatientMapper.map(personServiceAdapter.findByFirstName("Homer").get(0));
-        //return PatientMapper.map(Person.builder().id("0").firstName("Monty").lastName("Burns").build());
+        return PatientMapper.map(
+                personServiceAdapter.findByFirstName("Homer").get(0));
     }
 
     @Search
     public List<Patient> findPatient(StringParam given,
                                      StringParam name) {
-        return PatientMapper.map(personServiceAdapter.findByFirstName("Homer"));
-        //return Arrays.asList(PatientMapper.map(Person.builder().id("0").firstName("Monty").lastName("Burns").build()));
+        return PatientMapper.map(
+                personServiceAdapter.findByFirstName("Homer"));
     }
 
 }
