@@ -1,7 +1,9 @@
-package org.goafabric.example.fhir.adapter;
+package org.goafabric.example.fhir.adapter.remote;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.extern.slf4j.Slf4j;
+import org.goafabric.example.fhir.adapter.Person;
+import org.goafabric.example.fhir.adapter.PersonServiceAdapter;
 import org.goafabric.example.fhir.crossfunctional.BaseUrlBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;

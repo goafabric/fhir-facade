@@ -1,4 +1,4 @@
-package org.goafabric.example.fhir.adapter;
+package org.goafabric.example.fhir.adapter.remote;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -16,7 +16,7 @@ import java.util.Collections;
 
 @Configuration
 @Profile("remote")
-public class PersonServiceConfiguration {
+public class PersonServiceRestConfiguration {
     @Bean
     public RestTemplate restTemplateTest(
         @Value("${adapter.personservice.user}") String user,

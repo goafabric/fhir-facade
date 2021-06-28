@@ -1,5 +1,7 @@
-package org.goafabric.example.fhir.adapter;
+package org.goafabric.example.fhir.adapter.mock;
 
+import org.goafabric.example.fhir.adapter.Person;
+import org.goafabric.example.fhir.adapter.PersonServiceAdapter;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +10,7 @@ import java.util.List;
 
 @Component
 @Profile("mock")
-public class PersonServiceMockAdapter implements PersonServiceAdapter{
+public class PersonServiceMockAdapter implements PersonServiceAdapter {
     @Override
     public Person getById(String id) {
         return Person.builder().id(id)
