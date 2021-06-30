@@ -38,8 +38,8 @@ public class PersonServiceRemoteAdapter implements PersonServiceAdapter {
                 .getBody();
     }
 
-    public Boolean isAlive() {
-        return restTemplate.getForObject(getServiceUrl() + "/isAlive", Boolean.class);
+    public Person sayMyName(String name) {
+        return restTemplate.getForObject(getServiceUrl() + "/sayMyName?name={name}", Person.class, name);
     }
 
     private String getServiceUrl() {

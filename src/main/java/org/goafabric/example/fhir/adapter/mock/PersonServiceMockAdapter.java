@@ -24,7 +24,8 @@ public class PersonServiceMockAdapter implements PersonServiceAdapter {
     }
 
     @Override
-    public Boolean isAlive() {
-        return Boolean.TRUE;
+    public Person sayMyName(String name) {
+        return Person.builder().firstName(name).build();
     }
+
 }

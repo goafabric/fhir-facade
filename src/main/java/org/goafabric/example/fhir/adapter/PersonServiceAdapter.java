@@ -8,5 +8,5 @@ public interface PersonServiceAdapter {
 
     List<Person> findByFirstName(String firstName);
 
-    Boolean isAlive();
+    Person sayMyName(String name);
 }

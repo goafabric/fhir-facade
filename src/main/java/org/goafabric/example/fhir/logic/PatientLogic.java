@@ -26,7 +26,7 @@ public class PatientLogic {
             throw new ResourceNotFoundException("patient not found");
         }
 
-        personServiceAdapter.isAlive(); //just for showcasing
+        personServiceAdapter.sayMyName("Homer"); //just for showcasing
         
         return PatientMapper.map(
                 personServiceAdapter.findByFirstName("Homer").get(0));
