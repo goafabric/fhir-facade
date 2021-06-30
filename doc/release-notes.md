@@ -1,5 +1,6 @@
 #1.0.3
 - update to Spring Boot 2.5.2
+- Mock and Remote Adapter separation
 
 #1.0.2
 - DurationLogger added
