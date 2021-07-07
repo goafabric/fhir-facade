@@ -21,10 +21,10 @@ public class PersonServiceMockAdapter implements PersonServiceAdapter {
     @Override
     public List<Person> findByFirstName(String firstName) {
         if ("Homer".equals(firstName)) {
-            return Arrays.asList(Person.builder().id("0")
+            return Arrays.asList(Person.builder().id("1")
                     .firstName("Homer").lastName("Simpson").build());
         } else if ("Monty".equals(firstName)) {
-            return Arrays.asList(Person.builder().id("0")
+            return Arrays.asList(Person.builder().id("1")
                     .firstName("Monty").lastName("Burns").build());
         }  else {
             throw new ResourceNotFoundException("Person not found");
