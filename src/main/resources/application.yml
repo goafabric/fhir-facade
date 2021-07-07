@@ -5,8 +5,8 @@ server:
 
 spring:
   profiles:
-    active: remote
-#    active: mock
+#    active: remote
+    active: mock
 
 #monitoring
 management:
