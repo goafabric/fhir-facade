@@ -17,7 +17,7 @@ import java.util.List;
 @Slf4j
 @Component
 @Profile("remote")
-@CircuitBreaker(name = "personservice")
+@CircuitBreaker(name = "#{@baseUrlBean.getCBName()}")
 public class PersonServiceRemoteAdapter implements PersonServiceAdapter {
 
     @Autowired
