@@ -1,5 +1,6 @@
 package org.goafabric.example.fhir.adapter.mock;
 
+import ca.uhn.fhir.rest.server.exceptions.ResourceNotFoundException;
 import org.goafabric.example.fhir.adapter.Person;
 import org.goafabric.example.fhir.adapter.PersonServiceAdapter;
 import org.springframework.context.annotation.Profile;
@@ -19,8 +20,15 @@ public class PersonServiceMockAdapter implements PersonServiceAdapter {
 
     @Override
     public List<Person> findByFirstName(String firstName) {
-        return Arrays.asList(Person.builder().id("0")
-                .firstName("Homer").lastName("Simpson").build());
+        if ("Homer".equals(firstName)) {
+            return Arrays.asList(Person.builder().id("0")
+                    .firstName("Homer").lastName("Simpson").build());
+        } else if ("Monty".equals(firstName)) {
+            return Arrays.asList(Person.builder().id("0")
+                    .firstName("Monty").lastName("Burns").build());
+        }  else {
+            throw new ResourceNotFoundException("Person not found");
+        }
     }
 
     @Override
