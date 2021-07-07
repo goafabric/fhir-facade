@@ -24,4 +24,13 @@ class BundleServiceIT {
 
         assertThat(Bundle).isNotNull();
     }
+
+    @Test
+    void createBundle() {
+        final IGenericClient client = ClientFactory.createClient(port);
+
+        client.create()
+                .resource(new Bundle())
+                .execute();
+    }
 }
