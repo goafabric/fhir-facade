@@ -50,4 +50,22 @@ class BundleServiceIT {
                 .resource(bundle)
                 .execute();
     }
+
+    /*
+    @Test
+    void createMyPatientBundle() {
+        final IGenericClient client = ClientFactory.createClient(port);
+
+        final MyPatient myPatient = new MyPatient();
+        myPatient.setId("4711");
+
+        final Bundle bundle = new Bundle();
+        bundle.addEntry(new Bundle.BundleEntryComponent().setResource(myPatient));
+
+        client.create()
+                .resource(bundle)
+                .execute();
+    }
+
+     */
 }
