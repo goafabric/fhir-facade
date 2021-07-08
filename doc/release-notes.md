@@ -1,5 +1,6 @@
 #1.0.5
 - Bundleservice added
+- Default Profile set to Mock
 
 #1.0.4
 - Multi Tenancy CB added
