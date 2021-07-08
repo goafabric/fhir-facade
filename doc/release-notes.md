@@ -1,3 +1,6 @@
+#1.0.6
+- upgrade to 1.0.6
+
 #1.0.5
 - Bundleservice added
 - Default Profile set to Mock
