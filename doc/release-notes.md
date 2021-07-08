@@ -1,4 +1,5 @@
 #1.0.5
+- Bundleservice added
 
 #1.0.4
 - Multi Tenancy CB added

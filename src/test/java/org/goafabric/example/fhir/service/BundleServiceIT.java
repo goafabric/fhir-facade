@@ -4,7 +4,6 @@ import ca.uhn.fhir.rest.client.api.IGenericClient;
 import org.goafabric.example.fhir.adapter.Person;
 import org.goafabric.example.fhir.logic.mapper.PatientMapper;
 import org.goafabric.example.fhir.logic.mapper.PractionerMapper;
-import org.hl7.fhir.r4.model.BooleanType;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Practitioner;
@@ -46,22 +45,6 @@ class BundleServiceIT {
         final Bundle bundle = new Bundle();
         bundle.addEntry(new Bundle.BundleEntryComponent().setResource(patient));
         bundle.addEntry(new Bundle.BundleEntryComponent().setResource(practioner));
-
-        client.create()
-                .resource(bundle)
-                .execute();
-    }
-
-    @Test
-    void createMyPatientBundle() {
-        final IGenericClient client = ClientFactory.createClient(port);
-
-        final MyPatient myPatient = new MyPatient();
-        myPatient.setId("4711");
-        myPatient.setActive(new BooleanType(true));
-
-        final Bundle bundle = new Bundle();
-        bundle.addEntry(new Bundle.BundleEntryComponent().setResource(myPatient));
 
         client.create()
                 .resource(bundle)
