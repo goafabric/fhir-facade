@@ -1,6 +1,5 @@
 package org.goafabric.example.fhir.adapter.remote;
 
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.extern.slf4j.Slf4j;
 import org.goafabric.example.fhir.adapter.Person;
 import org.goafabric.example.fhir.adapter.PersonServiceAdapter;
@@ -17,7 +16,7 @@ import java.util.List;
 @Slf4j
 @Component
 @Profile("remote")
-@CircuitBreaker(name = "#{@baseUrlBean.getCBName()}")
+//@CircuitBreaker(name = "#{@baseUrlBean.getCBName()}")
 public class PersonServiceRemoteAdapter implements PersonServiceAdapter {
 
     @Autowired
