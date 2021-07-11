@@ -26,6 +26,7 @@ import org.springframework.nativex.hint.TypeHint;
 
 
         //R4 model classes
+        ca.uhn.fhir.rest.api.server.IFhirVersionServer.class,
         org.hl7.fhir.r4.hapi.ctx.FhirServerR4.class,
 
         org.hl7.fhir.r4.hapi.ctx.FhirR4.class,
