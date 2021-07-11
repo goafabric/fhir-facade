@@ -396,7 +396,7 @@
                                 <env>
                                     <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
                                     <BP_JVM_VERSION>11</BP_JVM_VERSION>
-                                    <BP_NATIVE_IMAGE_BUILD_ARGUMENTS>--enable-http</BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
+                                    <BP_NATIVE_IMAGE_BUILD_ARGUMENTS>--enable-http,-H:IncludeResourceBundles=ca.uhn.fhir.i18n.hapi-messages,-H:DynamicProxyConfigurationResources=proxy.json,--allow-incomplete-classpath</BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
                                 </env>
                             </image>
                         </configuration>

@@ -6,13 +6,16 @@ import org.springframework.boot.actuate.autoconfigure.security.servlet.Managemen
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
-import org.springframework.nativex.hint.JdkProxyHint;
+import org.springframework.nativex.hint.ResourceHint;
 import org.springframework.nativex.hint.TypeHint;
 
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class, UserDetailsServiceAutoConfiguration.class})
+/*
 @JdkProxyHint(types = {
         javax.ws.rs.core.HttpHeaders.class,
         javax.ws.rs.core.UriInfo.class})
+*/
+@ResourceHint(patterns = "org/hl7/fhir/r4/model/fhirversion.properties")
 @TypeHint(types = {
         //Base classes
         ca.uhn.fhir.context.FhirVersionEnum.class,

@@ -1,0 +1,4 @@
+[
+  ["javax.ws.rs.core.HttpHeaders"],
+  ["javax.ws.rs.core.UriInfo"]
+]
