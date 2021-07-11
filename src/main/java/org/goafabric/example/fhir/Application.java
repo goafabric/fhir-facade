@@ -24,7 +24,10 @@ import org.springframework.nativex.hint.TypeHint;
         //Parameter classes
         ca.uhn.fhir.rest.param.StringParam.class,
 
+
         //R4 model classes
+        org.hl7.fhir.r4.hapi.ctx.FhirServerR4.class,
+
         org.hl7.fhir.r4.hapi.ctx.FhirR4.class,
 
         Account.class,
