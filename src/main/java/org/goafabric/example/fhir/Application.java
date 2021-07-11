@@ -17,13 +17,17 @@ import org.springframework.nativex.hint.TypeHint;
 */
 @ResourceHint(patterns = "org/hl7/fhir/r4/model/fhirversion.properties")
 @TypeHint(types = {
+        //Service Classes
+        org.goafabric.example.fhir.service.BundleService.class,
+        org.goafabric.example.fhir.service.PatientService.class,
+        org.goafabric.example.fhir.service.PractitionerService.class,
+
         //Base classes
         ca.uhn.fhir.context.FhirVersionEnum.class,
         org.hl7.fhir.utilities.xhtml.XhtmlNode.class,
 
         //Parameter classes
         ca.uhn.fhir.rest.param.StringParam.class,
-
 
         //R4 model classes
         ca.uhn.fhir.rest.api.server.IFhirVersionServer.class,
