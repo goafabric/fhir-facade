@@ -16,7 +16,7 @@ import java.util.List;
 @DurationLog
 public class PractitionerLogic {
     @Autowired
-    private PersonServiceAdapter personServiceAdapter;
+    PersonServiceAdapter personServiceAdapter;
 
     public Practitioner getPractitioner(final IdType idType) {
         if (!"1".equals(idType.getIdPart())) {

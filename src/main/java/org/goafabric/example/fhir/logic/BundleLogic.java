@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class BundleLogic {
     @Autowired
-    private PatientLogic patientLogic;
+    PatientLogic patientLogic;
 
     @Autowired
-    private PractitionerLogic practitionerLogic;
+    PractitionerLogic practitionerLogic;
 
     public Bundle getBundle(IdType idType) {
         if (!"1".equals(idType.getIdPart())) {

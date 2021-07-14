@@ -1,7 +1,5 @@
 package org.goafabric.example.fhir.logic;
 
-import ca.uhn.fhir.rest.annotation.Read;
-import ca.uhn.fhir.rest.annotation.Search;
 import ca.uhn.fhir.rest.param.StringParam;
 import ca.uhn.fhir.rest.server.exceptions.ResourceNotFoundException;
 import org.goafabric.example.fhir.adapter.PersonServiceAdapter;
@@ -18,9 +16,8 @@ import java.util.List;
 @DurationLog
 public class PatientLogic {
     @Autowired
-    private PersonServiceAdapter personServiceAdapter;
+    PersonServiceAdapter personServiceAdapter;
 
-    @Read
     public Patient getPatient(final IdType idType) {
         if (!"1".equals(idType.getIdPart())) {
             throw new ResourceNotFoundException("patient not found");
@@ -32,7 +29,6 @@ public class PatientLogic {
                 personServiceAdapter.findByFirstName("Homer").get(0));
     }
 
-    @Search
     public List<Patient> findPatient(StringParam given,
                                      StringParam name) {
         return PatientMapper.map(
