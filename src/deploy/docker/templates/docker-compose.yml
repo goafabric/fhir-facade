@@ -32,7 +32,7 @@ services:
       - management.endpoint.health.show-details=always
       - management.endpoints.web.exposure.include=health,prometheus,heapdump
       #adapter
-      - adapter.personservice.url=http://host.docker.internal:50900
+      - adapter.personservice.url=http://host.docker.internal:50800
       - adapter.personservice.user=YWRtaW4=
       - adapter.personservice.password=YWRtaW4=
       - adapter.timeout=10000
