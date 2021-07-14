@@ -3,19 +3,22 @@ package org.goafabric.example.fhir.logic;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.rest.api.MethodOutcome;
 import ca.uhn.fhir.rest.server.exceptions.ResourceNotFoundException;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hl7.fhir.r4.model.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.goafabric.example.fhir.crossfunctional.DurationLog;
+import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.IdType;
+import org.hl7.fhir.r4.model.Resource;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
+@DurationLog
 public class BundleLogic {
-    @Autowired
-    PatientLogic patientLogic;
+    final PatientLogic patientLogic;
 
-    @Autowired
-    PractitionerLogic practitionerLogic;
+    final PractitionerLogic practitionerLogic;
 
     public Bundle getBundle(IdType idType) {
         if (!"1".equals(idType.getIdPart())) {
