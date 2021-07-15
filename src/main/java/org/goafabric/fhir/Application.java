@@ -21,17 +21,50 @@ import org.springframework.nativex.hint.TypeHint;
         ca.uhn.fhir.context.FhirVersionEnum.class,
         org.hl7.fhir.utilities.xhtml.XhtmlNode.class,
         ca.uhn.fhir.rest.api.server.IFhirVersionServer.class,
+        ca.uhn.fhir.rest.api.MethodOutcome.class,
 
         //Service Classes needed for Metadata
-        org.goafabric.example.fhir.service.PatientService.class,
-        org.goafabric.example.fhir.service.PractitionerService.class,
-        org.goafabric.example.fhir.service.BundleService.class,
+        org.goafabric.fhir.service.PatientService.class,
+        org.goafabric.fhir.service.PractitionerService.class,
+        org.goafabric.fhir.service.BundleService.class,
 
         //Parameter classes
         ca.uhn.fhir.rest.param.StringParam.class,
 
-        //R4 Context and Service classes
+        //R4 Context and Base classes
         org.hl7.fhir.r4.hapi.ctx.FhirR4.class,
+        OperationOutcome.class,
+        OperationOutcome.OperationOutcomeIssueComponent.class,
+        OperationOutcome.IssueTypeEnumFactory.class,
+        OperationOutcome.IssueSeverityEnumFactory.class,
+
+        CapabilityStatement.class,
+
+        //R4 Metadata classes
+        CapabilityStatement.CapabilityStatementDocumentComponent.class,
+        CapabilityStatement.CapabilityStatementMessagingSupportedMessageComponent.class,
+        CapabilityStatement.CapabilityStatementMessagingEndpointComponent.class,
+        CapabilityStatement.CapabilityStatementMessagingComponent.class,
+        CapabilityStatement.SystemInteractionComponent.class,
+        CapabilityStatement.CapabilityStatementRestResourceOperationComponent.class,
+        CapabilityStatement.CapabilityStatementRestResourceSearchParamComponent.class,
+        CapabilityStatement.ResourceInteractionComponent.class,
+        CapabilityStatement.CapabilityStatementRestResourceComponent.class,
+        CapabilityStatement.CapabilityStatementRestSecurityComponent.class,
+        CapabilityStatement.CapabilityStatementRestComponent.class,
+        CapabilityStatement.CapabilityStatementImplementationComponent.class,
+        CapabilityStatement.CapabilityStatementSoftwareComponent.class,
+        CapabilityStatement.DocumentModeEnumFactory.class,
+        CapabilityStatement.DocumentModeEnumFactory.class,
+        CapabilityStatement.EventCapabilityModeEnumFactory.class,
+        CapabilityStatement.SystemRestfulInteractionEnumFactory.class,
+        CapabilityStatement.ReferenceHandlingPolicyEnumFactory.class,
+        CapabilityStatement.ConditionalDeleteStatusEnumFactory.class,
+        CapabilityStatement.ConditionalReadStatusEnumFactory.class,
+        CapabilityStatement.ResourceVersionPolicyEnumFactory.class,
+        CapabilityStatement.TypeRestfulInteractionEnumFactory.class,
+        CapabilityStatement.RestfulCapabilityModeEnumFactory.class,
+        CapabilityStatement.CapabilityStatementKindEnumFactory.class,
 
         //R4 model classes
         Account.class,
@@ -60,7 +93,14 @@ import org.springframework.nativex.hint.TypeHint;
         BiologicallyDerivedProduct.class,
         BodyStructure.class,
         BooleanType.class,
+
         Bundle.class,
+        Bundle.BundleEntryComponent.class,
+        Bundle.BundleLinkComponent.class,
+        Bundle.BundleEntrySearchComponent.class,
+        Bundle.BundleEntryRequestComponent.class,
+        Bundle.BundleEntryResponseComponent.class,
+
         CanonicalType.class,
         CapabilityStatement.class,
         CarePlan.class,
@@ -196,7 +236,12 @@ import org.springframework.nativex.hint.TypeHint;
         OrganizationAffiliation.class,
         ParameterDefinition.class,
         Parameters.class,
+
         Patient.class,
+        Patient.PatientLinkComponent.class,
+        Patient.PatientCommunicationComponent.class,
+        Patient.ContactComponent.class,
+
         PaymentNotice.class,
         PaymentReconciliation.class,
         Period.class,
@@ -205,6 +250,7 @@ import org.springframework.nativex.hint.TypeHint;
         Population.class,
         PositiveIntType.class,
         Practitioner.class,
+        Practitioner.PractitionerQualificationComponent.class,
         PractitionerRole.class,
         PrimitiveType.class,
         Procedure.class,
@@ -273,8 +319,7 @@ import org.springframework.nativex.hint.TypeHint;
         UuidType.class,
         ValueSet.class,
         VerificationResult.class,
-        VisionPrescription.class,
-        XhtmlType.class
+        VisionPrescription.class
 })
 public class Application {
 
