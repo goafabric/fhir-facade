@@ -21,6 +21,7 @@ management:
     circuitbreakers:
       enabled: true
 
+#jaeger / zipkin
 spring.sleuth.enabled: false
 spring.zipkin.enabled: false
 
