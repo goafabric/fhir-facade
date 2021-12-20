@@ -70,6 +70,13 @@
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>ca.uhn.hapi.fhir</groupId>
+            <artifactId>hapi-fhir-server-openapi</artifactId>
+            <version>${hapi.fihr.version}</version>
+        </dependency>
+
+
 
         <!-- Monitoring -->
         <dependency>
