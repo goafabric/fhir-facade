@@ -1,5 +1,6 @@
 #1.1.0
-- upgrade to HAP FHIR 5.5.0
+- upgrade to HAP FHIR 5.6.0
+- upgrade to Spring Boot 2.6.1
 
 #1.0.5
 - Bundleservice added

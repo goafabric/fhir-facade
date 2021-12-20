@@ -22,7 +22,6 @@ package org.goafabric.fhir.configuration;
 
 
 import ca.uhn.fhir.context.FhirContext;
-import ca.uhn.fhir.context.FhirVersionEnum;
 import ca.uhn.fhir.jaxrs.server.AbstractJaxRsProvider;
 import ca.uhn.fhir.rest.server.HardcodedServerAddressStrategy;
 import ca.uhn.fhir.rest.server.IResourceProvider;
@@ -34,7 +33,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -56,10 +54,10 @@ import java.util.List;
 @AutoConfigureAfter({DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class FhirRestfulServerConfiguration extends RestfulServer {
     @Autowired
-    private FhirContext fhirContext;
+    private List<IResourceProvider> resourceProviders;
 
     @Autowired
-    private List<IResourceProvider> resourceProviders;
+    private FhirContext fhirContext;
 
     @Value("${hapi.fhir.server.path}")
     private String serverPath;
@@ -71,17 +69,11 @@ public class FhirRestfulServerConfiguration extends RestfulServer {
         return registration;
     }
 
-    @Bean
-    @ConditionalOnMissingBean
-    public FhirContext fhirContext() {
-        return new FhirContext(FhirVersionEnum.R4);
-    }
-
     @Override
     protected void initialize() throws ServletException {
         super.initialize();
 
-        setFhirContext(this.fhirContext);
+        setFhirContext(fhirContext);
         setResourceProviders(this.resourceProviders);
         setServerAddressStrategy(new HardcodedServerAddressStrategy(serverPath));
 
