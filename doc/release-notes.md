@@ -1,5 +1,5 @@
-#1.0.6
-- upgrade to 1.0.6
+#1.1.0
+- upgrade to HAP FHIR 5.5.0
 
 #1.0.5
 - Bundleservice added
