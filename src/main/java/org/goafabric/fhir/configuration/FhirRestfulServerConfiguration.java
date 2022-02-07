@@ -23,7 +23,6 @@ package org.goafabric.fhir.configuration;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.jaxrs.server.AbstractJaxRsProvider;
-import ca.uhn.fhir.rest.openapi.OpenApiInterceptor;
 import ca.uhn.fhir.rest.server.HardcodedServerAddressStrategy;
 import ca.uhn.fhir.rest.server.IResourceProvider;
 import ca.uhn.fhir.rest.server.RestfulServer;
@@ -81,6 +80,6 @@ public class FhirRestfulServerConfiguration extends RestfulServer {
         registerInterceptor(new ExceptionHandler());
         registerInterceptor(new TenantIdInterceptor());
 
-        registerInterceptor(new OpenApiInterceptor());
+        //registerInterceptor(new OpenApiInterceptor());
     }
 }
