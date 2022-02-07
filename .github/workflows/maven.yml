@@ -20,6 +20,4 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
     - name: JVM Build
-      run: mvn -B clean install -P docker-image,java-17 --file pom.xml
-#    - name: Native Build
-#      run: mvn -B clean spring-boot:build-image install -P docker-image-native --file pom.xml
+      run: mvn -B clean deploy -P docker-image,java-17 --file pom.xml
