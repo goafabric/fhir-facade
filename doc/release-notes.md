@@ -2,9 +2,10 @@
 - upgrade to Spring Boot 2.6.4
 - upgrade to Spring Native 0.11.3
 - upgrade to Lombok 1.18.22
+- upgrade to HAPI FHIR 5.7.0
 
 #1.1.0
-- upgrade to HAP FHIR 5.6.0
+- upgrade to HAPI FHIR 5.6.0
 
 - upgrade to Spring Boot 2.6.3
 - upgrade to Spring Native 0.11.1

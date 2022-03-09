@@ -16,7 +16,7 @@
     <version>1.1.1-SNAPSHOT</version>
 
     <properties>
-        <hapi.fihr.version>5.6.0</hapi.fihr.version>
+        <hapi.fihr.version>5.7.0</hapi.fihr.version>
         <docker.baseimage.multi>ibm-semeru-runtimes:open-17.0.2_8-jre-focal@sha256:727543ea31c493f0f4405d553d4cb28068fd38200c7d3d3962d691aa91a24d55</docker.baseimage.multi>
         <java.version>17</java.version>
     </properties>
