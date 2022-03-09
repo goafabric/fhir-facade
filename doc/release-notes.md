@@ -1,4 +1,7 @@
 #1.1.1
+- upgrade to Spring Boot 2.6.4
+- upgrade to Spring Native 0.11.3
+- upgrade to Lombok 1.18.22
 
 #1.1.0
 - upgrade to HAP FHIR 5.6.0
