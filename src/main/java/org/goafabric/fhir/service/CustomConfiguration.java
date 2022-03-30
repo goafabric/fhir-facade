@@ -24,18 +24,18 @@ public class CustomConfiguration extends DomainResource {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * We give the resource a field with name "television". This field has no
-     * specific type, so it's a choice[x] field for any type.
-     */
-    @Child(name="television", min=1, max=Child.MAX_UNLIMITED, order=0)
-    private List<Type> myTelevision;
 
-    /**
-     * We'll give it one more field called "dogs"
-     */
-    @Child(name = "dogs", min=0, max=1, order=1)
-    private StringType myDogs;
+    @Child(name = "clientSystemId", min=0, max=1, order=1)
+    private StringType clientSystemId;
+
+    @Child(name = "mandantId", min=0, max=1, order=2)
+    private StringType mandantId;
+
+    @Child(name = "workplaceId", min=0, max=1, order=3)
+    private StringType workplaceId;
+
+    @Child(name="examples", min=1, max=Child.MAX_UNLIMITED, order=4)
+    private List<Type> examples;
 
     @Override
     public ResourceType getResourceType() {
@@ -51,14 +51,16 @@ public class CustomConfiguration extends DomainResource {
     public CustomConfiguration copy() {
         CustomConfiguration retVal = new CustomConfiguration();
         super.copyValues(retVal);
-        retVal.myTelevision = myTelevision;
-        retVal.myDogs = myDogs;
+        retVal.clientSystemId = clientSystemId;
+        retVal.mandantId = mandantId;
+        retVal.workplaceId = workplaceId;
+        retVal.examples = examples;
         return retVal;
     }
 
     @Override
     public boolean isEmpty() {
-        return ElementUtil.isEmpty(myTelevision, myDogs);
+        return ElementUtil.isEmpty(clientSystemId, mandantId, workplaceId, examples);
     }
 
 }
