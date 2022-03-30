@@ -13,11 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This is an example of a custom resource that also uses a custom
- * datatype.
- *
- * Note that we are extending DomainResource for an STU3
- * resource. For DSTU2 it would be BaseResource.
+ * Custom Resource
+ * See https://hapifhir.io/hapi-fhir/docs/model/custom_structures.html#custom-resource-structure
  */
 @ResourceDef(name = "Config", profile = "http://hl7.org/fhir/profiles/custom-resource")
 public class CustomResource extends DomainResource {
