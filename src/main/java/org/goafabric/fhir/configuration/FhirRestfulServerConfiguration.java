@@ -28,7 +28,7 @@ import ca.uhn.fhir.rest.server.IResourceProvider;
 import ca.uhn.fhir.rest.server.RestfulServer;
 import org.goafabric.fhir.crossfunctional.ExceptionHandler;
 import org.goafabric.fhir.crossfunctional.TenantIdInterceptor;
-import org.goafabric.fhir.service.CustomConfiguration;
+import org.goafabric.fhir.service.resource.CustomConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
