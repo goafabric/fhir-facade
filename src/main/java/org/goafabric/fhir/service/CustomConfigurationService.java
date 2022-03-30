@@ -11,9 +11,9 @@ import org.hl7.fhir.r4.model.StringType;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomResourceService extends AbstractJaxRsResourceProvider<CustomConfiguration> {
+public class CustomConfigurationService extends AbstractJaxRsResourceProvider<CustomConfiguration> {
 
-    public CustomResourceService(FhirContext fhirContext) {
+    public CustomConfigurationService(FhirContext fhirContext) {
         super(fhirContext);
     }
 
