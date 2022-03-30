@@ -4,12 +4,13 @@ import ca.uhn.fhir.context.FhirVersionEnum;
 import ca.uhn.fhir.model.api.annotation.Child;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.util.ElementUtil;
+import lombok.Getter;
+import lombok.Setter;
 import org.hl7.fhir.r4.model.DomainResource;
 import org.hl7.fhir.r4.model.ResourceType;
 import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.Type;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +18,8 @@ import java.util.List;
  * See https://hapifhir.io/hapi-fhir/docs/model/custom_structures.html#custom-resource-structure
  */
 @ResourceDef(name = "CustomConfiguration", profile = "http://hl7.org/fhir/profiles/custom-resource")
+@Getter
+@Setter
 public class CustomConfiguration extends DomainResource {
 
     private static final long serialVersionUID = 1L;
@@ -35,26 +38,6 @@ public class CustomConfiguration extends DomainResource {
     private StringType myDogs;
 
     @Override
-    public CustomConfiguration copy() {
-        CustomConfiguration retVal = new CustomConfiguration();
-        super.copyValues(retVal);
-        retVal.myTelevision = myTelevision;
-        retVal.myDogs = myDogs;
-        return retVal;
-    }
-
-    public List<Type> getTelevision() {
-        if (myTelevision == null) {
-            myTelevision = new ArrayList<Type>();
-        }
-        return myTelevision;
-    }
-
-    public StringType getDogs() {
-        return myDogs;
-    }
-
-    @Override
     public ResourceType getResourceType() {
         return null;
     }
@@ -65,16 +48,17 @@ public class CustomConfiguration extends DomainResource {
     }
 
     @Override
+    public CustomConfiguration copy() {
+        CustomConfiguration retVal = new CustomConfiguration();
+        super.copyValues(retVal);
+        retVal.myTelevision = myTelevision;
+        retVal.myDogs = myDogs;
+        return retVal;
+    }
+
+    @Override
     public boolean isEmpty() {
         return ElementUtil.isEmpty(myTelevision, myDogs);
-    }
-
-    public void setTelevision(List<Type> theValue) {
-        this.myTelevision = theValue;
-    }
-
-    public void setDogs(StringType theDogs) {
-        myDogs = theDogs;
     }
 
 }

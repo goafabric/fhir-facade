@@ -24,7 +24,7 @@ public class CustomResourceService extends AbstractJaxRsResourceProvider<CustomC
     @Read
     public CustomConfiguration getCustomResource(@IdParam final IdType idType) {
         final CustomConfiguration cust =  new CustomConfiguration();
-        cust.setDogs(new StringType("Snoopy"));
+        cust.setMyDogs(new StringType("Snoopy"));
         return cust;
     }
 
