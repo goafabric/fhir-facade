@@ -10,20 +10,20 @@ import org.hl7.fhir.r4.model.StringType;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomResourceService extends AbstractJaxRsResourceProvider<CustomResource> {
+public class CustomResourceService extends AbstractJaxRsResourceProvider<CustomConfiguration> {
 
     public CustomResourceService(FhirContext fhirContext) {
         super(fhirContext);
     }
 
     @Override
-    public Class<CustomResource> getResourceType() {
-        return CustomResource.class;
+    public Class<CustomConfiguration> getResourceType() {
+        return CustomConfiguration.class;
     }
 
     @Read
-    public CustomResource getCustomResource(@IdParam final IdType idType) {
-        final CustomResource cust =  new CustomResource();
+    public CustomConfiguration getCustomResource(@IdParam final IdType idType) {
+        final CustomConfiguration cust =  new CustomConfiguration();
         cust.setDogs(new StringType("Snoopy"));
         return cust;
     }

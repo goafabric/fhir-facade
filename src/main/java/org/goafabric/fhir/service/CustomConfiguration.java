@@ -16,8 +16,8 @@ import java.util.List;
  * Custom Resource
  * See https://hapifhir.io/hapi-fhir/docs/model/custom_structures.html#custom-resource-structure
  */
-@ResourceDef(name = "Config", profile = "http://hl7.org/fhir/profiles/custom-resource")
-public class CustomResource extends DomainResource {
+@ResourceDef(name = "CustomConfiguration", profile = "http://hl7.org/fhir/profiles/custom-resource")
+public class CustomConfiguration extends DomainResource {
 
     private static final long serialVersionUID = 1L;
 
@@ -35,8 +35,8 @@ public class CustomResource extends DomainResource {
     private StringType myDogs;
 
     @Override
-    public CustomResource copy() {
-        CustomResource retVal = new CustomResource();
+    public CustomConfiguration copy() {
+        CustomConfiguration retVal = new CustomConfiguration();
         super.copyValues(retVal);
         retVal.myTelevision = myTelevision;
         retVal.myDogs = myDogs;
