@@ -28,6 +28,7 @@ import ca.uhn.fhir.rest.server.IResourceProvider;
 import ca.uhn.fhir.rest.server.RestfulServer;
 import org.goafabric.fhir.crossfunctional.ExceptionHandler;
 import org.goafabric.fhir.crossfunctional.TenantIdInterceptor;
+import org.goafabric.fhir.service.CustomResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
@@ -73,6 +74,8 @@ public class FhirRestfulServerConfiguration extends RestfulServer {
     protected void initialize() throws ServletException {
         super.initialize();
 
+        fhirContext.registerCustomType(CustomResource.class);
+        
         setFhirContext(fhirContext);
         setResourceProviders(this.resourceProviders);
         setServerAddressStrategy(new HardcodedServerAddressStrategy(serverPath));
