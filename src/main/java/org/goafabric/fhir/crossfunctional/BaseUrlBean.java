@@ -16,12 +16,12 @@ public class BaseUrlBean {
 
     public String getUrl() {
         return multiTenancyEnabled
-                ? baseUrl.replaceAll("%TENANT_ID%", TenantIdInterceptor.getTenantId())
+                ? baseUrl.replaceAll("%TENANT_ID%", HttpInterceptor.getTenantId())
                 : baseUrl;
     }
 
     public String getCBName() {
-        final String tenantId = multiTenancyEnabled ? TenantIdInterceptor.getTenantId() : "none";
+        final String tenantId = multiTenancyEnabled ? HttpInterceptor.getTenantId() : "none";
         return "personservice-tenant-" + tenantId;
     }
 }
