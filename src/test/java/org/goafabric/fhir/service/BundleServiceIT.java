@@ -1,12 +1,7 @@
 package org.goafabric.fhir.service;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
-import org.goafabric.fhir.adapter.Person;
-import org.goafabric.fhir.logic.mapper.PatientMapper;
-import org.goafabric.fhir.logic.mapper.PractionerMapper;
 import org.hl7.fhir.r4.model.Bundle;
-import org.hl7.fhir.r4.model.Patient;
-import org.hl7.fhir.r4.model.Practitioner;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -30,6 +25,7 @@ class BundleServiceIT {
         assertThat(Bundle).isNotNull();
     }
 
+    /*
     @Test
     void createPatientBundle() {
         final IGenericClient client = ClientFactory.createClient(port);
@@ -50,4 +46,6 @@ class BundleServiceIT {
                 .resource(bundle)
                 .execute();
     }
+    
+     */
 }

@@ -26,7 +26,7 @@ spring.sleuth.enabled: false
 spring.zipkin.enabled: false
 
 #security
-security.authentication.enabled: true
+security.authentication.enabled: false
 
 spring.security.user.name: "admin"
 spring.security.user.password: "admin"
