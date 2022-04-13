@@ -1,4 +1,8 @@
 #1.1.1
+- upgrade to Spring Boot 2.6.6
+- upgrade to Spring Native 0.11.4
+- upgrade to Lombok 1.18.22
+- HttpInterceptor for Username and TenantId
 
 #1.1.0
 - upgrade to HAP FHIR 5.6.0
