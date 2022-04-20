@@ -5,7 +5,6 @@ import ca.uhn.fhir.interceptor.api.Interceptor;
 import ca.uhn.fhir.interceptor.api.Pointcut;
 import ca.uhn.fhir.rest.api.server.RequestDetails;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 @Interceptor
 @Slf4j
@@ -21,7 +20,7 @@ public class HttpInterceptor {
     public void preHandle(RequestDetails request) {
         tenantId.set(request.getHeader("X-TenantId") != null ? request.getHeader("X-TenantId") : "0"); //TODO
         userName.set(request.getHeader("X-Auth-Request-Preferred-Username") != null ? request.getHeader("X-Auth-Request-Preferred-Username")
-                :  SecurityContextHolder.getContext().getAuthentication().getName());
+                :  ""); //SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
     @Hook(Pointcut.SERVER_PROCESSING_COMPLETED)
