@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.goafabric</groupId>
         <artifactId>spring-parent</artifactId>
-        <version>2.6.6</version>
+        <version>2.6.7</version>
         <relativePath>parent-pom/pom.xml</relativePath>
     </parent>
 
@@ -17,8 +17,6 @@
 
     <properties>
         <hapi.fihr.version>5.7.2</hapi.fihr.version>
-        <docker.baseimage.multi>ibm-semeru-runtimes:open-17.0.2_8-jre-focal@sha256:727543ea31c493f0f4405d553d4cb28068fd38200c7d3d3962d691aa91a24d55</docker.baseimage.multi>
-        <java.version>17</java.version>
     </properties>
 
     <dependencies>
