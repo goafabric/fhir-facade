@@ -1,5 +1,5 @@
 
-package org.goafabric.fhir.service.resttemplate.dto;
+package org.goafabric.fhir.pojo.r4.dto;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
@@ -14,17 +14,17 @@ import java.util.Map;
     "resourceType",
     "id",
     "meta",
-    "text",
     "identifier",
+    "active",
     "name",
     "telecom",
+    "address",
     "gender",
-    "birthDate",
-    "address"
+    "birthDate"
 })
 @Generated("jsonschema2pojo")
 @Data
-public class Patient {
+public class Practitioner {
 
     @JsonProperty("resourceType")
     public String resourceType;
@@ -34,16 +34,18 @@ public class Patient {
     public Meta meta;
     @JsonProperty("identifier")
     public List<Identifier> identifier = null;
+    @JsonProperty("active")
+    public Boolean active;
     @JsonProperty("name")
     public List<Name> name = null;
     @JsonProperty("telecom")
     public List<Telecom> telecom = null;
+    @JsonProperty("address")
+    public List<Address> address = null;
     @JsonProperty("gender")
     public String gender;
     @JsonProperty("birthDate")
     public String birthDate;
-    @JsonProperty("address")
-    public List<Address> address = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

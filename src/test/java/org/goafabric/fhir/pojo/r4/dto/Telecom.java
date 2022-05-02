@@ -1,30 +1,29 @@
 
-package org.goafabric.fhir.service.resttemplate.dto;
+package org.goafabric.fhir.pojo.r4.dto;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 
 import javax.annotation.Generated;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "use",
-    "family",
-    "given"
+    "system",
+    "value",
+    "use"
 })
 @Generated("jsonschema2pojo")
 @Data
-public class Name {
+public class Telecom {
 
+    @JsonProperty("system")
+    public String system;
+    @JsonProperty("value")
+    public String value;
     @JsonProperty("use")
     public String use;
-    @JsonProperty("family")
-    public String family;
-    @JsonProperty("given")
-    public List<String> given = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

@@ -1,5 +1,5 @@
 
-package org.goafabric.fhir.service.resttemplate.dto;
+package org.goafabric.fhir.pojo.r4.dto;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
@@ -10,20 +10,20 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "system",
-    "value",
-    "use"
+    "versionId",
+    "lastUpdated",
+    "source"
 })
 @Generated("jsonschema2pojo")
 @Data
-public class Telecom {
+public class Meta {
 
-    @JsonProperty("system")
-    public String system;
-    @JsonProperty("value")
-    public String value;
-    @JsonProperty("use")
-    public String use;
+    @JsonProperty("versionId")
+    public String versionId;
+    @JsonProperty("lastUpdated")
+    public String lastUpdated;
+    @JsonProperty("source")
+    public String source;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

@@ -1,6 +1,6 @@
-package org.goafabric.fhir.service.resttemplate.service;
+package org.goafabric.fhir.pojo.r4.service;
 
-import org.goafabric.fhir.service.resttemplate.dto.Patient;
+import org.goafabric.fhir.pojo.r4.dto.Patient;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;

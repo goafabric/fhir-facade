@@ -1,5 +1,5 @@
 
-package org.goafabric.fhir.service.resttemplate.dto;
+package org.goafabric.fhir.pojo.r4.dto;
 
 import java.util.HashMap;
 import java.util.Map;
