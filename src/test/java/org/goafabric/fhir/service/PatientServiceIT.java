@@ -23,6 +23,8 @@ class PatientServiceIT {
                         .withId("1").execute();
 
         assertThat(patient).isNotNull();
+        assertThat(patient.getName().get(0).getGiven().get(0).getValue()).isEqualTo("Homer");
+        assertThat(patient.getName().get(0).getFamily()).isEqualTo("Simpson");
     }
 
 }
