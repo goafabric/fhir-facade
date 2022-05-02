@@ -1,7 +1,10 @@
 package org.goafabric.fhir.pojo.r4.adapter;
 
+import org.goafabric.fhir.pojo.r4.dto.Organization;
 import org.goafabric.fhir.pojo.r4.dto.Patient;
 import org.goafabric.fhir.pojo.r4.dto.Practitioner;
+import org.goafabric.fhir.pojo.r4.dto.coverage.Coverage;
+import org.goafabric.fhir.pojo.r4.dto.observation.Observation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -21,11 +24,16 @@ public class FhirAdapter {
         return restTemplate.getForObject(baseUri + "Practitioner" + "/" + id, Practitioner.class);
     }
 
-    /*
     public Organization getOrganization(String id) {
         return restTemplate.getForObject(baseUri + "Organization" + "/" + id, Organization.class);
     }
-    
-     */
+
+    public Coverage getCoverage(String id) {
+        return restTemplate.getForObject(baseUri + "Coverage" + "/" + id, Coverage.class);
+    }
+
+    public Observation getObservation(String id) {
+        return restTemplate.getForObject(baseUri + "Observation" + "/" + id, Observation.class);
+    }
 
 }

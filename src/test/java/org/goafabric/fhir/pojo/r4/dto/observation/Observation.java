@@ -23,7 +23,7 @@ import java.util.Map;
 })
 @Generated("jsonschema2pojo")
 @Data
-public class Oberservation {
+public class Observation {
 
     @JsonProperty("resourceType")
     public String resourceType;
