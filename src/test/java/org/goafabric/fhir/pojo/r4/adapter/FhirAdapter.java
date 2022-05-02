@@ -17,4 +17,11 @@ public class FhirAdapter {
     public Practitioner getPractitioner(String id) {
         return restTemplate.getForObject(baseUri + "Practitioner" + "/" + id, Practitioner.class);
     }
+
+    /*
+    public Organization getOrganization(String id) {
+        return restTemplate.getForObject(baseUri + "Organization" + "/" + id, Organization.class);
+    }
+    
+     */
 }
