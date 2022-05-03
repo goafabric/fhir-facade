@@ -15,7 +15,8 @@ import java.util.Map;
     "city",
     "state",
     "postalCode",
-    "country"
+    "country",
+    "use"
 })
 @Generated("jsonschema2pojo")
 @Data
@@ -31,6 +32,9 @@ public class Address {
     public String postalCode;
     @JsonProperty("country")
     public String country;
+    @JsonProperty("use")
+    public String use;
+
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
