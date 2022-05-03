@@ -14,6 +14,6 @@ public class OrganizationLogic {
     OrganizationAdapter organizationAdapter;
 
     public Organization getOrganization(final IdType idType) {
-        return organizationAdapter.getOrganization(idType.getId());
+        return organizationAdapter.getOrganization(idType);
     }
 }

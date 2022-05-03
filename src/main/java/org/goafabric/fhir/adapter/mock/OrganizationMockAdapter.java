@@ -2,6 +2,7 @@ package org.goafabric.fhir.adapter.mock;
 
 import org.goafabric.fhir.adapter.OrganizationAdapter;
 import org.hl7.fhir.r4.model.Address;
+import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Organization;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -10,12 +11,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrganizationMockAdapter implements OrganizationAdapter {
     @Override
-    public Organization getOrganization(String id) {
+    public Organization getOrganization(IdType idType) {
         final Organization organization = new Organization()
                 .setName("Krusty Burger")
                 .addAddress(createAddress());
 
-        organization.setId(id);
+        organization.setId(idType.getId());
         return organization;
     }
 

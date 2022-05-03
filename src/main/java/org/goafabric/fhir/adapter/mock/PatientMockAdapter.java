@@ -10,13 +10,13 @@ import static java.util.Arrays.asList;
 @Profile("mock")
 @Component
 public class PatientMockAdapter implements PatientAdapter {
-    public Patient getPatient(String id) {
+    public Patient getPatient(IdType idType) {
         Patient patient = new Patient()
                 .addName(createName())
                 .addAddress(createAddress())
                 .addTelecom(createTelecom());
 
-        patient.setId(id);
+        patient.setId(idType.getId());
         return patient;
     }
 
