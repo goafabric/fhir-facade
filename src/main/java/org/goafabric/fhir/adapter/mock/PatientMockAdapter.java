@@ -42,7 +42,7 @@ public class PatientMockAdapter implements PatientAdapter {
                 .setSystem(ContactPoint.ContactPointSystem.PHONE)
                 .setUse(ContactPoint.ContactPointUse.HOME)
                 .setValue("0245-33553");
-        telecom.setId("42");
+        telecom.setId("45");
         return telecom;
     }
 }
