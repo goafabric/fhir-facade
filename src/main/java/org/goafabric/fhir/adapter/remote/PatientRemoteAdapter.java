@@ -14,8 +14,11 @@ public class PatientRemoteAdapter implements PatientAdapter {
     @Autowired
     PersonServiceClient personServiceClient;
 
+    @Autowired
+    PatientMapper patientMapper;
+
     public Patient getPatient(String id) {
-        return PatientMapper.map(
+        return patientMapper.map(
             personServiceClient.findByFirstName("Homer").get(0)
         );
     }

@@ -14,9 +14,12 @@ public class PractitionerRemoteAdapter implements PractitionerAdapter {
     @Autowired
     PersonServiceClient personServiceClient;
 
+    @Autowired
+    PractionerMapper practionerMapper;
+
     @Override
     public Practitioner getPractitioner(String id) {
-        return PractionerMapper.map(
+        return practionerMapper.map(
             personServiceClient.findByFirstName("Monty").get(0)
         );
     }
