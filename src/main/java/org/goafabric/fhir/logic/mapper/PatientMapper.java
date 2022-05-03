@@ -1,6 +1,7 @@
 package org.goafabric.fhir.logic.mapper;
 
 import org.goafabric.fhir.adapter.Person;
+import org.hl7.fhir.r4.model.Address;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.StringType;
@@ -21,6 +22,13 @@ public class PatientMapper {
                         .setGiven(Arrays.asList(new StringType(person.getFirstName())))
                         .setFamily(person.getLastName())
         ));
+
+        final Address address = new Address();
+        address.setCity("Springfield");
+        address.setPostalCode("78313");
+        //address.setLine()
+
+        patient.setAddress(Arrays.asList(address));
         return patient;
     }
 }
