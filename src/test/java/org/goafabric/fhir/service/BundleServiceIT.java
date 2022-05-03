@@ -1,9 +1,9 @@
 package org.goafabric.fhir.service;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
-import org.goafabric.fhir.adapter.Person;
-import org.goafabric.fhir.logic.mapper.PatientMapper;
-import org.goafabric.fhir.logic.mapper.PractionerMapper;
+import org.goafabric.fhir.adapter.remote.client.Person;
+import org.goafabric.fhir.adapter.remote.mapper.PatientMapper;
+import org.goafabric.fhir.adapter.remote.mapper.PractionerMapper;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Practitioner;

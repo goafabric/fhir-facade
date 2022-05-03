@@ -1,4 +1,4 @@
-package org.goafabric.fhir.adapter.remote;
+package org.goafabric.fhir.adapter.remote.client;
 
 import org.goafabric.fhir.crossfunctional.HttpInterceptor;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,4 +1,4 @@
-package org.goafabric.fhir.logic.mapper;
+package org.goafabric.fhir.adapter.mock;
 
 import org.hl7.fhir.r4.model.Address;
 import org.hl7.fhir.r4.model.ContactPoint;

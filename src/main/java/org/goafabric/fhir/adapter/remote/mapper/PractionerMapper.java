@@ -1,7 +1,7 @@
-package org.goafabric.fhir.logic.mapper;
+package org.goafabric.fhir.adapter.remote.mapper;
 
 
-import org.goafabric.fhir.adapter.Person;
+import org.goafabric.fhir.adapter.remote.client.Person;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Practitioner;
 import org.hl7.fhir.r4.model.StringType;
@@ -19,9 +19,7 @@ public class PractionerMapper {
                 .setName(asList(new HumanName()
                         .setGiven(asList(new StringType(person.getFirstName())))
                         .setFamily(person.getLastName())
-                        ))
-                .setAddress(asList(MockUtil.createAddress()))
-                .setTelecom(asList(MockUtil.createTelecom()));
+                        ));
 
         practitioner.setId(person.getId());
         return practitioner;

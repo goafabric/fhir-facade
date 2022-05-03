@@ -1,4 +1,4 @@
-package org.goafabric.fhir.adapter;
+package org.goafabric.fhir.adapter.remote.client;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
