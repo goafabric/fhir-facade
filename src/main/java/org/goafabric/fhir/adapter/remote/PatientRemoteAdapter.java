@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Profile("remote")
 @Component
 public class PatientRemoteAdapter implements PatientAdapter {
@@ -22,10 +20,4 @@ public class PatientRemoteAdapter implements PatientAdapter {
         );
     }
 
-    @Override
-    public List<Patient> findPatient(String firstName) {
-        return PatientMapper.map(
-                personServiceClient.findByFirstName("Homer")
-        );
-    }
 }

@@ -5,8 +5,6 @@ import org.hl7.fhir.r4.model.*;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 import static java.util.Arrays.asList;
 
 @Profile("mock")
@@ -24,20 +22,6 @@ public class PractitionerMockAdapter implements PractitionerAdapter {
 
         practitioner.setId(id);
         return practitioner;
-    }
-
-    @Override
-    public List<Practitioner> findPractitioner(String firstName) {
-        final Practitioner practitioner = new Practitioner()
-                .setName(asList(new HumanName()
-                        .setGiven(asList(new StringType("Homer")))
-                        .setFamily("Burns")
-                ))
-                .setAddress(asList(createAddress()))
-                .setTelecom(asList(createTelecom()));
-
-        practitioner.setId("1");
-        return asList(practitioner);
     }
 
     public static Address createAddress() {

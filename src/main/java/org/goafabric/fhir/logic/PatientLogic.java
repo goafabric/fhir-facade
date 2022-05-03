@@ -1,6 +1,5 @@
 package org.goafabric.fhir.logic;
 
-import ca.uhn.fhir.rest.param.StringParam;
 import ca.uhn.fhir.rest.server.exceptions.ResourceNotFoundException;
 import org.goafabric.fhir.adapter.PatientAdapter;
 import org.goafabric.fhir.crossfunctional.DurationLog;
@@ -8,8 +7,6 @@ import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 @DurationLog
@@ -23,11 +20,6 @@ public class PatientLogic {
         }
 
         return patientAdapter.getPatient(idType.getId());
-    }
-
-    public List<Patient> findPatient(StringParam given,
-                                     StringParam name) {
-        return patientAdapter.findPatient("Homer");
     }
 
 }
