@@ -1,18 +1,16 @@
 
 package org.goafabric.fhir.pojo.r4.dto.observation;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
-import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.Map;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "reference",
-    "display"
-})
-@Generated("jsonschema2pojo")
+@Data
 public class Subject {
 
     @JsonProperty("reference")

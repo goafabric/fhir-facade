@@ -1,27 +1,17 @@
 
 package org.goafabric.fhir.pojo.r4.dto.coverage;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.goafabric.fhir.pojo.r4.dto.Meta;
 
-import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "resourceType",
-    "id",
-    "meta",
-    "status",
-    "type",
-    "subscriberId",
-    "beneficiary",
-    "payor"
-})
-@Generated("jsonschema2pojo")
 @Data
 public class Coverage {
 

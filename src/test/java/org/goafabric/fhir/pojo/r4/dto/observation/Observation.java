@@ -1,27 +1,17 @@
 
 package org.goafabric.fhir.pojo.r4.dto.observation;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.goafabric.fhir.pojo.r4.dto.Meta;
 import org.goafabric.fhir.pojo.r4.dto.Text;
 
-import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.Map;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "resourceType",
-    "id",
-    "meta",
-    "text",
-    "status",
-    "subject",
-    "effectiveDateTime",
-    "valueSampledData"
-})
-@Generated("jsonschema2pojo")
 @Data
 public class Observation {
 

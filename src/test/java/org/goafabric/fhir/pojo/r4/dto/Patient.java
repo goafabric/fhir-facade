@@ -1,28 +1,16 @@
 
 package org.goafabric.fhir.pojo.r4.dto;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "resourceType",
-    "id",
-    "meta",
-    "text",
-    "identifier",
-    "name",
-    "telecom",
-    "gender",
-    "birthDate",
-    "address"
-})
-@Generated("jsonschema2pojo")
 @Data
 public class Patient {
 
