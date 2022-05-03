@@ -12,6 +12,7 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "line",
+    "use",
     "city",
     "state",
     "postalCode",

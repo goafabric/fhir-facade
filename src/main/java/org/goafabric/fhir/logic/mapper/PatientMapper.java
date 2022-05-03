@@ -4,40 +4,37 @@ import org.goafabric.fhir.adapter.Person;
 import org.hl7.fhir.r4.model.*;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
 import java.util.List;
+
+import static java.util.Arrays.asList;
 
 public class PatientMapper {
     public static List<Patient> map(List<Person> person) {
-        return Arrays.asList(map(person.get(0)));
+        return asList(map(person.get(0)));
     }
 
     public static Patient map(Person person) {
         Patient patient = new Patient();
         patient.setId(person.getId());
         patient.setName(
-                Arrays.asList(new HumanName()
-                        .setGiven(Arrays.asList(new StringType(person.getFirstName())))
+                asList(new HumanName()
+                        .setGiven(asList(new StringType(person.getFirstName())))
                         .setFamily(person.getLastName())
         ));
 
-        patient.setAddress(Arrays.asList(createAddress()));
-
-        ContactPoint telecom = createTelecom();
-
-        patient.setTelecom(Arrays.asList(telecom));
+        patient.setAddress(asList(createAddress()));
+        patient.setTelecom(asList(createTelecom()));
         return patient;
     }
 
     @NotNull
     private static Address createAddress() {
-        final Address address = new Address();
-        address.setCity("Springfield");
-        address.setPostalCode("78313");
-        address.setCountry("US");
-        address.setLine(Arrays.asList(new StringType("Evergreen Terrace 742")));
-        address.setUse(Address.AddressUse.HOME);
-        return address;
+        return new Address()
+                .setCity("Springfield")
+                .setPostalCode("78313")
+                .setCountry("US")
+                .setLine(asList(new StringType("Evergreen Terrace 742")))
+                .setUse(Address.AddressUse.HOME);
     }
 
     @NotNull
