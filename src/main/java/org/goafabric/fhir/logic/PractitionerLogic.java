@@ -16,7 +16,7 @@ public class PractitionerLogic {
 
     public Practitioner getPractitioner(final IdType idType) {
         if (!"1".equals(idType.getIdPart())) {
-            throw new ResourceNotFoundException("practioner not found");
+            throw new ResourceNotFoundException("practitioner not found");
         }
 
         return practitionerAdapter.getPractitioner(idType.getId());

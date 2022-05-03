@@ -19,12 +19,15 @@ public class PractionerMapper {
 
     public  Practitioner map(Person person) {
         final Practitioner practitioner = new Practitioner()
-                .setName(asList(new HumanName()
-                        .setGiven(asList(new StringType(person.getFirstName())))
-                        .setFamily(person.getLastName())
-                        ));
+                .setName(asList(createName(person)));
 
         practitioner.setId(person.getId());
         return practitioner;
+    }
+
+    private HumanName createName(Person person) {
+        return new HumanName()
+                .setGiven(asList(new StringType(person.getFirstName())))
+                .setFamily(person.getLastName());
     }
 }

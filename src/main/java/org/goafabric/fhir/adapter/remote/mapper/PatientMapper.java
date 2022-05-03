@@ -18,13 +18,15 @@ public class PatientMapper {
 
     public Patient map(Person person) {
         Patient patient = new Patient()
-            .setName(asList(new HumanName()
-                        .setGiven(asList(new StringType(person.getFirstName())))
-                        .setFamily(person.getLastName())
-                    ));
+                .setName(asList(createName(person)));
 
         patient.setId(person.getId());
         return patient;
     }
 
+    private HumanName createName(Person person) {
+        return new HumanName()
+                .setGiven(asList(new StringType(person.getFirstName())))
+                .setFamily(person.getLastName());
+    }
 }

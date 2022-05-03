@@ -13,10 +13,7 @@ public class PractitionerMockAdapter implements PractitionerAdapter {
     @Override
     public Practitioner getPractitioner(String id) {
         final Practitioner practitioner = new Practitioner()
-                .setName(asList(new HumanName()
-                        .setGiven(asList(new StringType("Monty")))
-                        .setFamily("Burns")
-                ))
+                .setName(asList(createName()))
                 .setAddress(asList(createAddress()))
                 .setTelecom(asList(createTelecom()));
 
@@ -24,7 +21,12 @@ public class PractitionerMockAdapter implements PractitionerAdapter {
         return practitioner;
     }
 
-    public static Address createAddress() {
+    private HumanName createName() {
+        return new HumanName()
+                .setGiven(asList(new StringType("Monty")))
+                .setFamily("Burns");
+    }
+    private Address createAddress() {
         final Address address = new Address()
                 .setCity("Springfield")
                 .setPostalCode("78313")

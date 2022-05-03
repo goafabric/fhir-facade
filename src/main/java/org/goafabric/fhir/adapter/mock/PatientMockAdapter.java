@@ -12,10 +12,7 @@ import static java.util.Arrays.asList;
 public class PatientMockAdapter implements PatientAdapter {
     public Patient getPatient(String id) {
         Patient patient = new Patient()
-                .setName(asList(new HumanName()
-                        .setGiven(asList(new StringType("Homer")))
-                        .setFamily("Simpson")
-                ))
+                .setName(asList(createName()))
                 .setAddress(asList(createAddress()))
                 .setTelecom(asList(createTelecom()));
 
@@ -23,7 +20,13 @@ public class PatientMockAdapter implements PatientAdapter {
         return patient;
     }
 
-    public static Address createAddress() {
+    private HumanName createName() {
+        return new HumanName()
+                .setGiven(asList(new StringType("Homer")))
+                .setFamily("Simpson");
+    }
+
+    private Address createAddress() {
         final Address address = new Address()
                 .setCity("Springfield")
                 .setPostalCode("78313")
