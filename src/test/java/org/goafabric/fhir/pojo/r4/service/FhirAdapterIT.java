@@ -2,6 +2,7 @@ package org.goafabric.fhir.pojo.r4.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.goafabric.fhir.pojo.r4.adapter.FhirAdapter;
+import org.goafabric.fhir.pojo.r4.dto.Organization;
 import org.goafabric.fhir.pojo.r4.dto.Patient;
 import org.goafabric.fhir.pojo.r4.dto.Practitioner;
 import org.junit.jupiter.api.Test;
@@ -35,7 +36,6 @@ public class FhirAdapterIT {
         assertThat(practitioner.getName().get(0).getGiven().get(0)).isEqualTo("Monty");
     }
 
-    /*
     @Test
     public void getOrganization() {
         final Organization organization = fhirAdapter.getOrganization("1");
@@ -43,6 +43,6 @@ public class FhirAdapterIT {
         assertThat(organization).isNotNull();
     }
     
-     */
+
 
 }

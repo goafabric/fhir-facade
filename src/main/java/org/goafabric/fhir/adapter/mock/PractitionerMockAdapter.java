@@ -1,11 +1,12 @@
 package org.goafabric.fhir.adapter.mock;
 
 import org.goafabric.fhir.adapter.PractitionerAdapter;
-import org.hl7.fhir.r4.model.*;
+import org.hl7.fhir.r4.model.Address;
+import org.hl7.fhir.r4.model.ContactPoint;
+import org.hl7.fhir.r4.model.HumanName;
+import org.hl7.fhir.r4.model.Practitioner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-
-import static java.util.Arrays.asList;
 
 @Profile("mock")
 @Component
@@ -13,9 +14,9 @@ public class PractitionerMockAdapter implements PractitionerAdapter {
     @Override
     public Practitioner getPractitioner(String id) {
         final Practitioner practitioner = new Practitioner()
-                .setName(asList(createName()))
-                .setAddress(asList(createAddress()))
-                .setTelecom(asList(createTelecom()));
+                .addName(createName())
+                .addAddress(createAddress())
+                .addTelecom(createTelecom());
 
         practitioner.setId(id);
         return practitioner;
@@ -23,7 +24,7 @@ public class PractitionerMockAdapter implements PractitionerAdapter {
 
     private HumanName createName() {
         return new HumanName()
-                .setGiven(asList(new StringType("Monty")))
+                .addGiven("Monty")
                 .setFamily("Burns");
     }
     private Address createAddress() {
@@ -31,7 +32,7 @@ public class PractitionerMockAdapter implements PractitionerAdapter {
                 .setCity("Springfield")
                 .setPostalCode("78313")
                 .setCountry("US")
-                .setLine(asList(new StringType("Evergreen Terrace 742")))
+                .addLine("Evergreen Terrace 742")
                 .setUse(Address.AddressUse.HOME);
         address.setId("42");
         return address;

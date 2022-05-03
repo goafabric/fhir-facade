@@ -2,6 +2,7 @@
 package org.goafabric.fhir.pojo.r4.dto;
 
 import com.fasterxml.jackson.annotation.*;
+import lombok.Data;
 
 import javax.annotation.Generated;
 import java.util.HashMap;
@@ -20,6 +21,7 @@ import java.util.Map;
     "address"
 })
 @Generated("jsonschema2pojo")
+@Data
 public class Organization {
 
     @JsonProperty("resourceType")

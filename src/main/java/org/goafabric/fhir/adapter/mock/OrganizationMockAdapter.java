@@ -3,17 +3,19 @@ package org.goafabric.fhir.adapter.mock;
 import org.goafabric.fhir.adapter.OrganizationAdapter;
 import org.hl7.fhir.r4.model.Address;
 import org.hl7.fhir.r4.model.Organization;
-import org.hl7.fhir.r4.model.StringType;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 
-import static java.util.Arrays.asList;
-
+@Profile("mock")
+@Component
 public class OrganizationMockAdapter implements OrganizationAdapter {
     @Override
     public Organization getOrganization(String id) {
         final Organization organization = new Organization()
-                .setAddress(asList(createAddress()));
-        organization.setId(id);
+                .setName("Krusty Burger")
+                .addAddress(createAddress());
 
+        organization.setId(id);
         return organization;
     }
 
@@ -22,7 +24,7 @@ public class OrganizationMockAdapter implements OrganizationAdapter {
                 .setCity("Springfield")
                 .setPostalCode("78313")
                 .setCountry("US")
-                .setLine(asList(new StringType("Evergreen Terrace 742")))
+                .addLine("Clownstreet 452")
                 .setUse(Address.AddressUse.WORK);
         address.setId("22");
         return address;

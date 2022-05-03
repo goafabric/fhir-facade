@@ -12,9 +12,9 @@ import static java.util.Arrays.asList;
 public class PatientMockAdapter implements PatientAdapter {
     public Patient getPatient(String id) {
         Patient patient = new Patient()
-                .setName(asList(createName()))
-                .setAddress(asList(createAddress()))
-                .setTelecom(asList(createTelecom()));
+                .addName(createName())
+                .addAddress(createAddress())
+                .addTelecom(createTelecom());
 
         patient.setId(id);
         return patient;
@@ -22,7 +22,7 @@ public class PatientMockAdapter implements PatientAdapter {
 
     private HumanName createName() {
         return new HumanName()
-                .setGiven(asList(new StringType("Homer")))
+                .addGiven("Homer")
                 .setFamily("Simpson");
     }
 
