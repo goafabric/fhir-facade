@@ -43,6 +43,4 @@ public class FhirAdapterIT {
         assertThat(organization).isNotNull();
     }
     
-
-
 }

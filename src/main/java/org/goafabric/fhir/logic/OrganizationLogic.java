@@ -1,9 +1,8 @@
 package org.goafabric.fhir.logic;
 
+import lombok.experimental.Delegate;
 import org.goafabric.fhir.adapter.OrganizationAdapter;
 import org.goafabric.fhir.crossfunctional.DurationLog;
-import org.hl7.fhir.r4.model.IdType;
-import org.hl7.fhir.r4.model.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,9 +10,6 @@ import org.springframework.stereotype.Component;
 @DurationLog
 public class OrganizationLogic {
     @Autowired
+    @Delegate
     OrganizationAdapter organizationAdapter;
-
-    public Organization getOrganization(final IdType idType) {
-        return organizationAdapter.getOrganization(idType);
-    }
 }

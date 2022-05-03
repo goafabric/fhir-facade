@@ -1,9 +1,8 @@
 package org.goafabric.fhir.logic;
 
+import lombok.experimental.Delegate;
 import org.goafabric.fhir.adapter.PatientAdapter;
 import org.goafabric.fhir.crossfunctional.DurationLog;
-import org.hl7.fhir.r4.model.IdType;
-import org.hl7.fhir.r4.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,10 +10,6 @@ import org.springframework.stereotype.Component;
 @DurationLog
 public class PatientLogic {
     @Autowired
+    @Delegate
     PatientAdapter patientAdapter;
-
-    public Patient getPatient(final IdType idType) {
-        return patientAdapter.getPatient(idType);
-    }
-
 }
