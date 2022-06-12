@@ -1,7 +1,7 @@
 #1.1.2
 - upgrade to Spring Boot 2.7.0
 - upgrade to JDK 17.0.3
-- upgrade to HAPI FHIR 6.0.0
+- upgrade to HAPI FHIR 6.0.1
 
 #1.1.1
 - upgrade to Spring Boot 2.6.6
