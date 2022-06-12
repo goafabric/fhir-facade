@@ -16,7 +16,7 @@
     <version>1.1.2-pojo-SNAPSHOT</version>
 
     <properties>
-        <hapi.fihr.version>5.7.2</hapi.fihr.version>
+        <hapi.fihr.version>6.0.0</hapi.fihr.version>
     </properties>
 
     <dependencies>
