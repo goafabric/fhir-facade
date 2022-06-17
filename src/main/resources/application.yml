@@ -30,6 +30,9 @@ logging.level.zipkin2: "FATAL"
 #security
 security.authentication.enabled: false
 
+spring.security.user.name: "admin"
+spring.security.user.password: "admin"
+
 #hapi
 hapi:
   fhir:

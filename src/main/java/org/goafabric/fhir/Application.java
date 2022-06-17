@@ -1,9 +1,9 @@
 package org.goafabric.fhir;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -20,14 +20,11 @@ public class Application {
     }
 
     @Configuration @EnableWebSecurity
-    static class SecurityConfiguration  {
-        @Value("${security.authentication.enabled:true}")
-        private Boolean isAuthenticationEnabled;
-
+    @ConditionalOnProperty(value = "security.authentication.enabled", matchIfMissing = true)
+    static class SecurityConfiguration {
         @Bean
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-            if (isAuthenticationEnabled) { http.authorizeRequests().anyRequest().authenticated().and().httpBasic().and().csrf().disable(); }
-            else { http.authorizeRequests().anyRequest().permitAll(); }
+            http.authorizeRequests().anyRequest().authenticated().and().httpBasic().and().csrf().disable();
             return http.build();
         }
     }
