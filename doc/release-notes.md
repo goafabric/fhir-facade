@@ -1,5 +1,6 @@
 #1.1.3
-- patient saymyname readded for calleeservice call       
+- patient saymyname readded for calleeservice call   
+- upgrade to Spring Boot 2.7.1
 
 #1.1.2
 - upgrade to Spring Boot 2.7.0
