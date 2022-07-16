@@ -27,6 +27,7 @@ public class PatientService extends AbstractJaxRsResourceProvider<Patient> {
 
     @Read
     public Patient getPatient(@IdParam final IdType idType) {
+        patientLogic.sayMyName("Homer"); //just for showcase
         return patientLogic.getPatient(idType);
     }
     

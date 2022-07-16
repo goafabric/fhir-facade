@@ -20,6 +20,10 @@ public class PatientMockAdapter implements PatientAdapter {
         return patient;
     }
 
+    @Override
+    public void sayMyName(String homer) {
+    }
+
     private HumanName createName() {
         return new HumanName()
                 .addGiven("Homer")

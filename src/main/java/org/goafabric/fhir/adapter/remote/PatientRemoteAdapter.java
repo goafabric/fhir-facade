@@ -24,4 +24,9 @@ public class PatientRemoteAdapter implements PatientAdapter {
         );
     }
 
+    @Override
+    public void sayMyName(String name) {
+        personServiceClient.sayMyName(name);
+    }
+
 }
