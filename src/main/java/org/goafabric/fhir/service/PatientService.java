@@ -36,10 +36,7 @@ public class PatientService extends AbstractJaxRsResourceProvider<Patient> {
     }
 
     @Search
-    public List<Patient> findPatientsByFamilyName(
-            @OptionalParam(name = Patient.SP_FAMILY) StringType familyName,
-            @OptionalParam(name = Patient.SP_NAME) StringType name) {
-        log.info("name: {}", name);
+    public List<Patient> findPatientsByFamilyName(@OptionalParam(name = Patient.SP_FAMILY) StringType familyName) {
         log.info("familyName: {}", familyName);
         return null;
     }
