@@ -5,7 +5,7 @@
 
     <groupId>org.goafabric</groupId>
     <artifactId>spring-parent</artifactId>
-    <version>2.7.1</version>
+    <version>2.7.2</version>
     <packaging>pom</packaging>
     <name>goa parent pom</name>
     <description>goa parent pom</description>
@@ -18,13 +18,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <docker.baseimage.multi>ibm-semeru-runtimes:open-17.0.3_7-jre-focal@sha256:e89df25f95379321ef61d5119eee68c28884ff8f8c5deaf2d474f3cdb1dbbb7e</docker.baseimage.multi>
+        <docker.baseimage>ibm-semeru-runtimes:open-17.0.3_7-jre-focal@sha256:e89df25f95379321ef61d5119eee68c28884ff8f8c5deaf2d474f3cdb1dbbb7e</docker.baseimage>
 
         <!-- Spring Boot -->
-        <spring.boot.version>2.7.1</spring.boot.version>
+        <spring.boot.version>2.7.2</spring.boot.version>
         <spring.cloud.version>2021.0.3</spring.cloud.version>
-        <spring.native.version>0.12.0</spring.native.version>
-        <spring.native.buildpack.version>gcr.io/paketo-buildpacks/java-native-image:7.19.0</spring.native.buildpack.version>
+        <spring.native.version>0.12.1</spring.native.version>
+        <spring.native.buildpack.version>gcr.io/paketo-buildpacks/java-native-image:7.23.0</spring.native.buildpack.version>
         <spring.native.check.integrity.argument></spring.native.check.integrity.argument>
 
         <!-- code generation -->
@@ -298,7 +298,7 @@
                                     </goals>
                                     <configuration>
                                         <from>
-                                            <image>${docker.baseimage.multi}</image>
+                                            <image>${docker.baseimage}</image>
                                             <platforms>
                                                 <platform>
                                                     <architecture>amd64</architecture>
@@ -348,6 +348,25 @@
                 <pluginManagement>
                     <plugins>
                         <plugin>
+                            <groupId>org.springframework.experimental</groupId>
+                            <artifactId>spring-aot-maven-plugin</artifactId>
+                            <version>${spring.native.version}</version>
+                            <executions>
+                                <execution>
+                                    <id>test-generate</id>
+                                    <goals>
+                                        <goal>test-generate</goal>
+                                    </goals>
+                                </execution>
+                                <execution>
+                                    <id>generate</id>
+                                    <goals>
+                                        <goal>generate</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+                        <plugin>
                             <groupId>org.springframework.boot</groupId>
                             <artifactId>spring-boot-maven-plugin</artifactId>
                             <version>${spring.boot.version}</version>
@@ -387,27 +406,6 @@
                                 </execution>
                             </executions>
                         </plugin>
-                        <plugin>
-                            <groupId>org.springframework.experimental</groupId>
-                            <artifactId>spring-aot-maven-plugin</artifactId>
-                            <version>${spring.native.version}</version>
-                            <executions>
-                                <execution>
-                                    <id>test-generate</id>
-                                    <goals>
-                                        <goal>test-generate</goal>
-                                    </goals>
-                                </execution>
-                                <execution>
-                                    <id>generate</id>
-                                    <goals>
-                                        <goal>generate</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                        </plugin>
-                        <!-- Spring Native documentation claims that hibernate enhance is needed, seems to work without it
-                        https://docs.jboss.org/hibernate/orm/5.4/topical/html_single/bytecode/BytecodeEnhancement.html#_build_time_enhancement -->
                         <plugin>
                             <!-- workaround for missing publish functionality, see: https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/#build-image-example-publish -->
                             <groupId>org.codehaus.mojo</groupId>

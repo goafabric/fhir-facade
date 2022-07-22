@@ -1,4 +1,5 @@
 #1.1.5
+- upgrade to Spring Boot 2.7.2
 
 #1.1.4
 - patient saymyname readded for calleeservice call   
