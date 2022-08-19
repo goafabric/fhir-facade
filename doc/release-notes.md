@@ -3,7 +3,7 @@
 # 2.0.0
 - Parity with Spring Boot Version
 
-- upgrade to Spring Boot 2.7.2
+- upgrade to Spring Boot 2.7.3
 
 # 1.1.4
 - patient saymyname readded for calleeservice call   
