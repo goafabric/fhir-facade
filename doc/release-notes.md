@@ -1,8 +1,9 @@
 # 2.0.1
+- DTOs cleansed
+- upgrade to HAPI FHIR 6.1.1
 
 # 2.0.0
 - Parity with Spring Boot Version
-
 - upgrade to Spring Boot 2.7.3
 
 # 1.1.4
