@@ -5,6 +5,7 @@ import org.goafabric.fhir.pojo.r4.adapter.FhirAdapter;
 import org.goafabric.fhir.pojo.r4.dto.Organization;
 import org.goafabric.fhir.pojo.r4.dto.Patient;
 import org.goafabric.fhir.pojo.r4.dto.Practitioner;
+import org.goafabric.fhir.pojo.r4.dto.custom.TIConfigurationPojo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -41,6 +42,15 @@ public class FhirAdapterIT {
         final Organization organization = fhirAdapter.getOrganization("1");
         log.info(organization.toString());
         assertThat(organization).isNotNull();
+    }
+
+    @Test
+    public void getTIConfiguration() {
+        final TIConfigurationPojo tiConfiguration = fhirAdapter.getTIConfiguration("1");
+        assertThat(tiConfiguration).isNotNull();
+        assertThat(tiConfiguration.getClientSystemId().getValue()).isEqualTo("Secret Client");
+        assertThat(tiConfiguration.getMandantId().getValue()).isEqualTo("42");
+        assertThat(tiConfiguration.getWorkplaceId().getValue()).isEqualTo("Special Workplace");
     }
     
 }
