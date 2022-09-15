@@ -1,6 +1,7 @@
 # 2.0.1
 - DTOs cleansed
 - upgrade to HAPI FHIR 6.1.1
+- TIConfiguration Custom Resource added
 
 # 2.0.0
 - Parity with Spring Boot Version
