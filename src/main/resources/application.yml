@@ -34,7 +34,7 @@ security.authentication.enabled: false
 hapi:
   fhir:
     server:
-      path: /fhir/*
+      path: /fhir
     rest:
       server-name: example-fhir-facade
       server-version: 1.0.0

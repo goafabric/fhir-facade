@@ -2,6 +2,7 @@
 - DTOs cleansed
 - upgrade to HAPI FHIR 6.1.1
 - TIConfiguration Custom Resource added
+- Swagger UI finally added
 
 # 2.0.0
 - Parity with Spring Boot Version
