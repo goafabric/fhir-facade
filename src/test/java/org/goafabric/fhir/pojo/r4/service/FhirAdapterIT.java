@@ -48,9 +48,9 @@ public class FhirAdapterIT {
     public void getTIConfiguration() {
         final TIConfigurationPojo tiConfiguration = fhirAdapter.getTIConfiguration("1");
         assertThat(tiConfiguration).isNotNull();
-        assertThat(tiConfiguration.getClientSystemId().getValue()).isEqualTo("Secret Client");
-        assertThat(tiConfiguration.getMandantId().getValue()).isEqualTo("42");
-        assertThat(tiConfiguration.getWorkplaceId().getValue()).isEqualTo("Special Workplace");
+        assertThat(tiConfiguration.getClientSystemId()).isEqualTo("Secret Client");
+        assertThat(tiConfiguration.getMandantId()).isEqualTo("42");
+        assertThat(tiConfiguration.getWorkplaceId()).isEqualTo("Special Workplace");
     }
     
 }
