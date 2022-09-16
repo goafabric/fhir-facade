@@ -7,6 +7,7 @@ import ca.uhn.fhir.rest.annotation.IdParam;
 import ca.uhn.fhir.rest.annotation.Read;
 import org.goafabric.fhir.service.resource.TIConfiguration;
 import org.hl7.fhir.r4.model.IdType;
+import org.hl7.fhir.r4.model.Organization;
 import org.hl7.fhir.r4.model.StringType;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +29,8 @@ public class TIConfigurationService extends AbstractJaxRsResourceProvider<TIConf
         configuration.setClientSystemId(new StringType("Secret Client"));
         configuration.setMandantId(new StringType("42"));
         configuration.setWorkplaceId(new StringType("Special Workplace"));
+
+        configuration.setOrganization(new Organization().setName("Compuglobal Hyper Mega Net"));
         return configuration;
     }
 

@@ -51,6 +51,7 @@ public class FhirAdapterIT {
         assertThat(tiConfiguration.getClientSystemId()).isEqualTo("Secret Client");
         assertThat(tiConfiguration.getMandantId()).isEqualTo("42");
         assertThat(tiConfiguration.getWorkplaceId()).isEqualTo("Special Workplace");
+        assertThat(tiConfiguration.getOrganization().getName()).isEqualTo("Compuglobal Hyper Mega Net");
     }
     
 }

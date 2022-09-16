@@ -4,7 +4,7 @@ import ca.uhn.fhir.rest.client.api.IGenericClient;
 import org.goafabric.fhir.service.resource.TIConfiguration;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -26,6 +26,7 @@ class TIConfigurationServiceIT {
         assertThat(tiConfiguration.getClientSystemId().getValue()).isEqualTo("Secret Client");
         assertThat(tiConfiguration.getMandantId().getValue()).isEqualTo("42");
         assertThat(tiConfiguration.getWorkplaceId().getValue()).isEqualTo("Special Workplace");
+        assertThat(tiConfiguration.getOrganization().getName()).isEqualTo("Compuglobal Hyper Mega Net");
     }
 
 }

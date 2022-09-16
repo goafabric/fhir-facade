@@ -6,10 +6,7 @@ import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.util.ElementUtil;
 import lombok.Getter;
 import lombok.Setter;
-import org.hl7.fhir.r4.model.DomainResource;
-import org.hl7.fhir.r4.model.ResourceType;
-import org.hl7.fhir.r4.model.StringType;
-import org.hl7.fhir.r4.model.Type;
+import org.hl7.fhir.r4.model.*;
 
 import java.util.List;
 
@@ -24,7 +21,7 @@ public class TIConfiguration extends DomainResource {
 
     private static final long serialVersionUID = 1L;
 
-
+    //Custom Fields
     @Child(name = "clientSystemId", min=0, max=1, order=1)
     private StringType clientSystemId;
 
@@ -36,6 +33,10 @@ public class TIConfiguration extends DomainResource {
 
     @Child(name="examples", min=1, max=Child.MAX_UNLIMITED, order=4)
     private List<Type> examples;
+
+    //Standard FHIR Resource Organization
+    @Child(name = "organization", type = {Organization.class}, min = 0, max = 1, order = 5)
+    private Organization organization;
 
     @Override
     public ResourceType getResourceType() {
@@ -55,6 +56,7 @@ public class TIConfiguration extends DomainResource {
         retVal.mandantId = mandantId;
         retVal.workplaceId = workplaceId;
         retVal.examples = examples;
+        retVal.organization = organization;
         return retVal;
     }
 
