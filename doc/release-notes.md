@@ -7,7 +7,7 @@
 - Swagger UI finally added
 - TIConfiguration Custom Resource added
 - added TIConfigurationService as an Example for Custom Resources
-- added test/fhir/pojo/dto to show an example to work with FHIR via standard REST
+- added test/fhir/pojo/dto to show an example to work with FHIR via standard REST (generated via https://www.jsonschema2pojo.org/)
 
 # 2.0.0
 - Parity with Spring Boot Version
