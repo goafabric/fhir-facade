@@ -1,5 +1,6 @@
 # 2.0.2
 - upgrade to Spring Boot 2.7.4
+- TIConfiguration Custom Resource updated
 
 # 2.0.1
 - DTOs cleansed
