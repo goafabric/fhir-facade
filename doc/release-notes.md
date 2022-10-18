@@ -5,8 +5,10 @@
 # 2.0.1
 - DTOs cleansed
 - upgrade to HAPI FHIR 6.1.1
-- TIConfiguration Custom Resource added
 - Swagger UI finally added
+- TIConfiguration Custom Resource added
+- added TIConfigurationService as an Example for Custom Resources
+- added test/fhir/pojo/dto to show an example to work with FHIR via standard REST (generated via https://www.jsonschema2pojo.org/)
 
 # 2.0.0
 - Parity with Spring Boot Version
