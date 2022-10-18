@@ -61,7 +61,7 @@ public class TIConfiguration extends DomainResource {
 
     @Override
     public boolean isEmpty() {
-        return ElementUtil.isEmpty(clientSystemId, mandantId, workplaceId);
+        return ElementUtil.isEmpty(clientSystemId, mandantId, workplaceId, organization);
     }
 
 }
