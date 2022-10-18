@@ -33,7 +33,6 @@ public class TIConfiguration extends DomainResource {
     @Child(name = "workplaceId")
     private StringType workplaceId;
 
-
     //Standard FHIR Resource Organization
     @Child(name = "organization", type = {Organization.class})
     private Organization organization;
