@@ -3,7 +3,6 @@ package org.goafabric.fhir.service.resource;
 import ca.uhn.fhir.context.FhirVersionEnum;
 import ca.uhn.fhir.model.api.annotation.Child;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
-import ca.uhn.fhir.util.ElementUtil;
 import lombok.*;
 import org.hl7.fhir.r4.model.DomainResource;
 import org.hl7.fhir.r4.model.Organization;
@@ -51,17 +50,16 @@ public class TIConfiguration extends DomainResource {
 
     @Override
     public TIConfiguration copy() {
-        return TIConfiguration.builder()
-                .clientSystemId(this.clientSystemId)
-                .mandantId(this.mandantId)
-                .workplaceId(this.workplaceId)
-                .organization(this.organization)
-                .build();
+        TIConfiguration dst = new TIConfiguration();
+        super.copyValues(dst);
+        return dst;
     }
 
+    /*
     @Override
     public boolean isEmpty() {
         return ElementUtil.isEmpty(clientSystemId, mandantId, workplaceId, organization);
     }
+     */
 
 }
