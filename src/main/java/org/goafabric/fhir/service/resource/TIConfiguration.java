@@ -25,18 +25,18 @@ public class TIConfiguration extends DomainResource {
     private static final long serialVersionUID = 1L;
 
     //Custom Fields
-    @Child(name = "clientSystemId", min=0, max=1, order=1)
+    @Child(name = "clientSystemId", order=1)
     private StringType clientSystemId;
 
-    @Child(name = "mandantId", min=0, max=1, order=2)
+    @Child(name = "mandantId", order=2)
     private StringType mandantId;
 
-    @Child(name = "workplaceId", min=0, max=1, order=3)
+    @Child(name = "workplaceId", order=3)
     private StringType workplaceId;
 
 
     //Standard FHIR Resource Organization
-    @Child(name = "organization", type = {Organization.class}, min = 0, max = 1, order = 5)
+    @Child(name = "organization", type = {Organization.class}, order = 4)
     private Organization organization;
 
     @Override
