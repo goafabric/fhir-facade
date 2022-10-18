@@ -25,13 +25,12 @@ public class TIConfigurationService extends AbstractJaxRsResourceProvider<TIConf
 
     @Read
     public TIConfiguration getTIConfiguration(@IdParam final IdType idType) {
-        final TIConfiguration configuration =  new TIConfiguration();
-        configuration.setClientSystemId(new StringType("Secret Client"));
-        configuration.setMandantId(new StringType("42"));
-        configuration.setWorkplaceId(new StringType("Special Workplace"));
-
-        configuration.setOrganization(new Organization().setName("Compuglobal Hyper Mega Net"));
-        return configuration;
+        return TIConfiguration.builder()
+                .clientSystemId(new StringType("Secret Client"))
+                .mandantId(new StringType("42"))
+                .workplaceId(new StringType("Special Workplace"))
+                .organization(new Organization().setName("Compuglobal Hyper Mega Net"))
+                .build();
     }
 
 }
