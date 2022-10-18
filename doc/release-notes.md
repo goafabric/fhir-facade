@@ -1,5 +1,3 @@
-# 2.0.3
-
 # 2.0.2
 - upgrade to Spring Boot 2.7.4
 - upgrade to HAPI FHIR 6.1.2
