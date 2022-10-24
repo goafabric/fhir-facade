@@ -1,4 +1,4 @@
-package org.goafabric.fhir.pojo.r4.service;
+package org.goafabric.fhir.pojo.r4.adapter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.goafabric.fhir.pojo.r4.adapter.FhirAdapter;
