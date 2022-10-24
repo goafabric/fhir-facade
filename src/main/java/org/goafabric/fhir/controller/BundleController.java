@@ -1,4 +1,4 @@
-package org.goafabric.fhir.service;
+package org.goafabric.fhir.controller;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.jaxrs.server.AbstractJaxRsResourceProvider;
@@ -14,11 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BundleService extends AbstractJaxRsResourceProvider<Bundle> {
+public class BundleController extends AbstractJaxRsResourceProvider<Bundle> {
     @Autowired
     private BundleLogic bundleLogic;
 
-    public BundleService(FhirContext fhirContext) {
+    public BundleController(FhirContext fhirContext) {
         super(fhirContext);
     }
 

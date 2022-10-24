@@ -1,7 +1,7 @@
-package org.goafabric.fhir.service;
+package org.goafabric.fhir.controller;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
-import org.goafabric.fhir.service.resource.TIConfiguration;
+import org.goafabric.fhir.controller.resource.TIConfiguration;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;

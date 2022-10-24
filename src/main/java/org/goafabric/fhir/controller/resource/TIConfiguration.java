@@ -1,4 +1,4 @@
-package org.goafabric.fhir.service.resource;
+package org.goafabric.fhir.controller.resource;
 
 import ca.uhn.fhir.context.FhirVersionEnum;
 import ca.uhn.fhir.model.api.annotation.Child;

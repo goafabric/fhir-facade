@@ -1,4 +1,4 @@
-package org.goafabric.fhir.service;
+package org.goafabric.fhir.controller;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
 import org.hl7.fhir.r4.model.Patient;
@@ -9,7 +9,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class PatientServiceIT {
+class PatientControllerIT {
     @LocalServerPort
     private String port;
 

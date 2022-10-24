@@ -1,20 +1,20 @@
-package org.goafabric.fhir.service;
+package org.goafabric.fhir.controller;
 
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.jaxrs.server.AbstractJaxRsResourceProvider;
 import ca.uhn.fhir.rest.annotation.IdParam;
 import ca.uhn.fhir.rest.annotation.Read;
-import org.goafabric.fhir.service.resource.TIConfiguration;
+import org.goafabric.fhir.controller.resource.TIConfiguration;
 import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Organization;
 import org.hl7.fhir.r4.model.StringType;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TIConfigurationService extends AbstractJaxRsResourceProvider<TIConfiguration> {
+public class TIConfigurationController extends AbstractJaxRsResourceProvider<TIConfiguration> {
 
-    public TIConfigurationService(FhirContext fhirContext) {
+    public TIConfigurationController(FhirContext fhirContext) {
         super(fhirContext);
     }
 

@@ -1,4 +1,4 @@
-package org.goafabric.fhir.service;
+package org.goafabric.fhir.controller;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.jaxrs.server.AbstractJaxRsResourceProvider;
@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OrganizationService extends AbstractJaxRsResourceProvider<Organization> {
+public class OrganizationController extends AbstractJaxRsResourceProvider<Organization> {
     @Autowired
     private OrganizationLogic organizationLogic;
 
-    public OrganizationService(FhirContext fhirContext) {
+    public OrganizationController(FhirContext fhirContext) {
         super(fhirContext);
     }
     

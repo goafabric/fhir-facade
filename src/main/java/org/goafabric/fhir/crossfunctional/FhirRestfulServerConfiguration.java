@@ -1,4 +1,4 @@
-package org.goafabric.fhir.configuration;
+package org.goafabric.fhir.crossfunctional;
 
 /*-
  * #%L
