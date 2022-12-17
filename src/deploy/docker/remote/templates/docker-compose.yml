@@ -24,13 +24,14 @@ services:
       - management.endpoint.health.show-details=always
       - management.endpoints.web.exposure.include=health,prometheus,heapdump
       #adapter
+      - adapter.personservice.user=YWRtaW4=
+      - adapter.personservice.password=YWRtaW4=
+      - adapter.timeout=10000
+      #multi tenancy
       - spring.profiles.active=remote
       - multi.tenancy.enabled=true
       - adapter.personservice.url=http://person-service-application-example-tenant-%TENANT_ID%:50800
 
-      - adapter.personservice.user=YWRtaW4=
-      - adapter.personservice.password=YWRtaW4=
-      - adapter.timeout=10000
 
   person-service-application-example-tenant-0:
     container_name: person-service-application-example-tenant-0
