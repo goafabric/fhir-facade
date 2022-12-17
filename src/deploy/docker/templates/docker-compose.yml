@@ -23,6 +23,11 @@ services:
       #monitoring
       - management.endpoint.health.show-details=always
       - management.endpoints.web.exposure.include=health,prometheus,heapdump
+      #zipkin/jaeger
+      - spring.zipkin.baseUrl=http://host.docker.internal:9411
+      - spring.zipkin.service.name=fhir-facade-application
+      - spring.sleuth.enabled=true
+      - spring.zipkin.enabled=true
       #adapter
       - adapter.personservice.user=YWRtaW4=
       - adapter.personservice.password=YWRtaW4=
@@ -62,7 +67,7 @@ services:
       - management.endpoints.web.exposure.include=health,prometheus,heapdump
       #zipkin / jaeger
       - management.zipkin.tracing.endpoint=http://host.docker.internal:9411/api/v2/spans
-      - spring.application.name=person-service
+      - spring.application.name=person-service-application-tenant-0
       #persistence
       - database.provisioning.goals=-import-demo-data
       #adapter
@@ -97,7 +102,7 @@ services:
       - management.endpoints.web.exposure.include=health,prometheus,heapdump
       #zipkin / jaeger
       - management.zipkin.tracing.endpoint=http://host.docker.internal:9411/api/v2/spans
-      - spring.application.name=person-service
+      - spring.application.name=person-service-application-tenant-5a2f
       #persistence
       - database.provisioning.goals=-import-demo-data
       #adapter
