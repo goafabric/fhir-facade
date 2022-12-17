@@ -71,7 +71,7 @@ services:
       #persistence
       - database.provisioning.goals=-import-demo-data
       #adapter
-      - adapter.calleeservice.url=http://host.docker.internal:50900
+      - adapter.calleeservice.url=http://callee-service-application:50900
       - adapter.calleeservice.user=YWRtaW4=
       - adapter.calleeservice.password=YWRtaW4=
       - adapter.timeout=10000
@@ -106,10 +106,19 @@ services:
       #persistence
       - database.provisioning.goals=-import-demo-data
       #adapter
-      - adapter.calleeservice.url=http://host.docker.internal:50900
+      - adapter.calleeservice.url=http://callee-service-application:50900
       - adapter.calleeservice.user=YWRtaW4=
       - adapter.calleeservice.password=YWRtaW4=
       - adapter.timeout=10000
+
+  callee-service-application:
+    container_name: callee-service-application
+    image: goafabric/callee-service-go:1.0.0
+    restart: 'no'
+    ports:
+      - "50900"
+    networks:
+      - ${_Values_root_name}-net
 
   nginx:
     container_name: ${_Values_root_name}-nginx
