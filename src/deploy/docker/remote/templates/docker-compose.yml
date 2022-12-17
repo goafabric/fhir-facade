@@ -25,7 +25,9 @@ services:
       - management.endpoints.web.exposure.include=health,prometheus,heapdump
       #adapter
       - spring.profiles.active=remote
-      - adapter.personservice.url=http://person-service-application-example-tenant-0:50800
+      - multi.tenancy.enabled=true
+      - adapter.personservice.url=http://person-service-application-example-tenant-%TENANT_ID%:50800
+
       - adapter.personservice.user=YWRtaW4=
       - adapter.personservice.password=YWRtaW4=
       - adapter.timeout=10000
@@ -106,8 +108,4 @@ volumes:
 
 networks:
   fhir-facade-net:
-    driver: bridge
-  example-tenant-0:
-    driver: bridge
-  example-tenant-5a2f:
     driver: bridge
