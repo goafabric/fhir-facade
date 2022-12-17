@@ -31,6 +31,9 @@ services:
       - spring.profiles.active=remote
       - multi.tenancy.enabled=true
       - adapter.personservice.url=http://person-service-application-example-tenant-%TENANT_ID%:50800
+    depends_on:
+      - person-service-application-example-tenant-0
+      - person-service-application-example-tenant-5a2f
 
 
   person-service-application-example-tenant-0:
