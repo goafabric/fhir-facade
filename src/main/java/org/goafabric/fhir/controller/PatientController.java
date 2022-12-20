@@ -1,4 +1,4 @@
-package org.goafabric.fhir.service;
+package org.goafabric.fhir.controller;
 
 
 import ca.uhn.fhir.context.FhirContext;
@@ -16,11 +16,11 @@ import java.util.List;
 
 @Component
 @Slf4j
-public class PatientService extends AbstractJaxRsResourceProvider<Patient> {
+public class PatientController extends AbstractJaxRsResourceProvider<Patient> {
     @Autowired
     private PatientLogic patientLogic;
 
-    public PatientService(FhirContext fhirContext) {
+    public PatientController(FhirContext fhirContext) {
         super(fhirContext);
     }
 

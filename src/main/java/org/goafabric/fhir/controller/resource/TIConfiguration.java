@@ -1,9 +1,8 @@
-package org.goafabric.fhir.service.resource;
+package org.goafabric.fhir.controller.resource;
 
 import ca.uhn.fhir.context.FhirVersionEnum;
 import ca.uhn.fhir.model.api.annotation.Child;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
-import ca.uhn.fhir.util.ElementUtil;
 import lombok.*;
 import org.hl7.fhir.r4.model.DomainResource;
 import org.hl7.fhir.r4.model.Organization;
@@ -25,18 +24,17 @@ public class TIConfiguration extends DomainResource {
     private static final long serialVersionUID = 1L;
 
     //Custom Fields
-    @Child(name = "clientSystemId", min=0, max=1, order=1)
+    @Child(name = "clientSystemId")
     private StringType clientSystemId;
 
-    @Child(name = "mandantId", min=0, max=1, order=2)
+    @Child(name = "mandantId")
     private StringType mandantId;
 
-    @Child(name = "workplaceId", min=0, max=1, order=3)
+    @Child(name = "workplaceId")
     private StringType workplaceId;
 
-
     //Standard FHIR Resource Organization
-    @Child(name = "organization", type = {Organization.class}, min = 0, max = 1, order = 5)
+    @Child(name = "organization", type = {Organization.class})
     private Organization organization;
 
     @Override
@@ -51,17 +49,16 @@ public class TIConfiguration extends DomainResource {
 
     @Override
     public TIConfiguration copy() {
-        return TIConfiguration.builder()
-                .clientSystemId(this.clientSystemId)
-                .mandantId(this.mandantId)
-                .workplaceId(this.workplaceId)
-                .organization(this.organization)
-                .build();
+        TIConfiguration dst = new TIConfiguration();
+        super.copyValues(dst);
+        return dst;
     }
 
+    /*
     @Override
     public boolean isEmpty() {
-        return ElementUtil.isEmpty(clientSystemId, mandantId, workplaceId);
+        return ElementUtil.isEmpty(clientSystemId, mandantId, workplaceId, organization);
     }
+     */
 
 }

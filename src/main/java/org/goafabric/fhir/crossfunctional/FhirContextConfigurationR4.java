@@ -1,4 +1,4 @@
-package org.goafabric.fhir.configuration;
+package org.goafabric.fhir.crossfunctional;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.FhirVersionEnum;

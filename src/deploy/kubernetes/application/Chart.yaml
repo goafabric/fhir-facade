@@ -1,0 +1,9 @@
+apiVersion: v2
+name: fhir-facade-application
+description: fhir-facade-application
+
+type: application
+
+version: 1.0.6
+
+appVersion: "2.0.2"

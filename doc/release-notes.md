@@ -1,3 +1,7 @@
+# 2.0.3
+- docker compose file with multi tenancy
+- service layer renamed to controller
+
 # 2.0.2
 - upgrade to Spring Boot 2.7.4
 - upgrade to HAPI FHIR 6.1.2
@@ -7,6 +11,7 @@
 - DTOs cleansed
 - upgrade to HAPI FHIR 6.1.1
 - Swagger UI finally added
+- TIConfiguration Custom Resource added
 - added TIConfigurationService as an Example for Custom Resources
 - added test/fhir/pojo/dto to show an example to work with FHIR via standard REST (generated via https://www.jsonschema2pojo.org/)
 
