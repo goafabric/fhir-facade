@@ -1,3 +1,5 @@
+# 2.0.4
+
 # 2.0.3
 - docker compose file with multi tenancy
 - service layer renamed to controller
