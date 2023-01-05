@@ -107,23 +107,11 @@ services:
       #persistence
       - database.provisioning.goals=-import-demo-data
       #adapter
-      - adapter.calleeservice.url=http://callee-service-application:50900
+      - adapter.calleeservice.url=http://nginx:80
+#      - adapter.calleeservice.url=http://callee-service-application:50900
       - adapter.calleeservice.user=YWRtaW4=
       - adapter.calleeservice.password=YWRtaW4=
       - adapter.timeout=10000
-
-#  callee-service-application:
-#    container_name: callee-service-application
-#    #image: goafabric/callee-service-native${_Values_server_arch}:3.0.0
-#    image: goafabric/callee-service-go:1.0.0
-#    restart: 'no'
-#    ports:
-#      - "50900"
-#    networks:
-#      - ${_Values_root_name}-net
-#    environment:
-#      - management.zipkin.tracing.endpoint=http://host.docker.internal:9411/api/v2/spans
-#      - quarkus.jaeger.endpoint=http://host.docker.internal:14268/api/traces
 
   nginx:
     container_name: ${_Values_root_name}-nginx
