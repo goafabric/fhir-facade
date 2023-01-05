@@ -6,6 +6,8 @@ export _Values_image_native=$2
 [[ "$(uname -m)" == "arm64" || "$(uname -m)" == "aarch64" ]] && _Values_server_arch="-arm64v8"
 [[ "${_Values_image_native}" = "-native" ]] && _Values_image_native+=${_Values_server_arch}
 
+export _Values_server_arch # needed for person-service-native inside docker-compose
+
 function func_compose {
     echo Going $1 ...
     docker-compose -p ${_Values_root_name} -f ./templates/docker-compose.yml --env-file .values $1 $2 $3 $4 $5
