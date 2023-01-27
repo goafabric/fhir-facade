@@ -16,28 +16,35 @@ services:
       - ${_Values_root_name}-net
     environment:
       #application
-      - TZ=Europe/Berlin
-      - server.port=${_Values_service_port}
-      - tomcat.max-threads=20
-      - security.authentication.enabled=false
-      #forwarding sub url
-#      - server.forward-headers-strategy=FRAMEWORK
+      TZ: Europe/Berlin
+      server.port: "${_Values_service_port}"
+      server.tomcat.threads.max: "20"
+
+      #security
+      security.authentication.enabled: "false"
+
       #monitoring
-      - management.endpoint.health.show-details=always
-      - management.endpoints.web.exposure.include=health,prometheus,heapdump
+      management.endpoint.health.show-details: always
+      management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
+
       #zipkin/jaeger
-      - spring.zipkin.baseUrl=http://host.docker.internal:9411
-      - spring.zipkin.service.name=fhir-facade-application
-      - spring.sleuth.enabled=true
-      - spring.zipkin.enabled=true
+      spring.zipkin.baseUrl: "http://host.docker.internal:9411"
+      spring.zipkin.service.name: "fhir-facade-application"
+      spring.sleuth.enabled: "true"
+      spring.zipkin.enabled: "true"
+
       #adapter
-      - adapter.personservice.user=YWRtaW4=
-      - adapter.personservice.password=YWRtaW4=
-      - adapter.timeout=10000
+      adapter.timeout: "10000"
+
       #multi tenancy
-      - spring.profiles.active=remote
-      - multi.tenancy.enabled=true
-      - adapter.personservice.url=http://person-service-application-example-tenant-%TENANT_ID%:50800
+      spring.profiles.active: "remote"
+      multi.tenancy.enabled: "true"
+      adapter.personservice.url: "http://person-service-application-example-tenant-%TENANT_ID%:50800"
+
+      #secrets
+      adapter.personservice.user: "YWRtaW4="
+      adapter.personservice.password: "YWRtaW4="
+
     depends_on:
       - person-service-application-example-tenant-0
       - person-service-application-example-tenant-5a2f
@@ -45,7 +52,7 @@ services:
 
   person-service-application-example-tenant-0:
     container_name: person-service-application-example-tenant-0
-    image:  goafabric/person-service-native${_Values_server_arch}:3.0.0
+    image:  goafabric/person-service-native${_Values_server_arch}:3.0.2
     restart: 'no'
     ports:
       - "50800"
@@ -55,33 +62,38 @@ services:
       - tmp:/tmp
       - applogs:/usr/share/logs
     networks:
-      - ${_Values_root_name}-net #example-tenant-0
+      - ${_Values_root_name}-net
     environment:
       #application
-      - TZ=Europe/Berlin
-      - server.port=50800
-      - server.tomcat.threads.max=20
-      - security.authentication.enabled=false
-      #forwarding sub url
-      - server.forward-headers-strategy=FRAMEWORK
+      TZ: Europe/Berlin
+      server.port: "50800"
+      server.tomcat.threads.max: "20"
+      server.forward-headers-strategy: FRAMEWORK
+
+      #security
+      security.authentication.enabled: "false"
+
       #monitoring
-      - management.endpoint.health.show-details=always
-      - management.endpoints.web.exposure.include=health,prometheus,heapdump
-      #zipkin / jaeger
-      - management.zipkin.tracing.endpoint=http://host.docker.internal:9411/api/v2/spans
-      - spring.application.name=person-service-application-tenant-0
+      management.endpoint.health.show-details: always
+      management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
+
+      #zipkin/jaeger
+      spring.application.name: "person-service-application-example-tenant-0"
+      management.zipkin.tracing.endpoint: "http://${_Values_host_docker_internal}:9411/api/v2/spans"
+      management.tracing.sampling.probability: "1.0"
+      management.tracing.enabled: "true"
+
       #persistence
-      - database.provisioning.goals=-import-demo-data
+      database.provisioning.goals: "-import-demo-data"
+
       #adapter
-      - adapter.calleeservice.url=http://nginx:80
-#      - adapter.calleeservice.url=http://callee-service-application:50900
-      - adapter.calleeservice.user=YWRtaW4=
-      - adapter.calleeservice.password=YWRtaW4=
-      - adapter.timeout=10000
+      adapter.calleeservice.url: "http://nginx:80"
+      adapter.calleeservice.timeout: "10000"
+
 
   person-service-application-example-tenant-5a2f:
     container_name: person-service-application-example-tenant-5a2f
-    image: goafabric/person-service-native${_Values_server_arch}:3.0.0
+    image: goafabric/person-service-native${_Values_server_arch}:3.0.2
     restart: 'no'
     ports:
       - "50800"
@@ -91,29 +103,33 @@ services:
       - tmp:/tmp
       - applogs:/usr/share/logs
     networks:
-      - ${_Values_root_name}-net #example-tenant-0
+      - ${_Values_root_name}-net
     environment:
       #application
-      - TZ=Europe/Berlin
-      - server.port=50800
-      - server.tomcat.threads.max=20
-      - security.authentication.enabled=false
-      #forwarding sub url
-      - server.forward-headers-strategy=FRAMEWORK
+      TZ: Europe/Berlin
+      server.port: "50800"
+      server.tomcat.threads.max: "20"
+      server.forward-headers-strategy: FRAMEWORK
+
+      #security
+      security.authentication.enabled: "false"
+
       #monitoring
-      - management.endpoint.health.show-details=always
-      - management.endpoints.web.exposure.include=health,prometheus,heapdump
-      #zipkin / jaeger
-      - management.zipkin.tracing.endpoint=http://host.docker.internal:9411/api/v2/spans
-      - spring.application.name=person-service-application-tenant-5a2f
+      management.endpoint.health.show-details: always
+      management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
+
+      #zipkin/jaeger
+      spring.application.name: "person-service-application-example-tenant-5a2f"
+      management.zipkin.tracing.endpoint: "http://${_Values_host_docker_internal}:9411/api/v2/spans"
+      management.tracing.sampling.probability: "1.0"
+      management.tracing.enabled: "true"
+
       #persistence
-      - database.provisioning.goals=-import-demo-data
+      database.provisioning.goals: "-import-demo-data"
+
       #adapter
-      - adapter.calleeservice.url=http://nginx:80
-#      - adapter.calleeservice.url=http://callee-service-application:50900
-      - adapter.calleeservice.user=YWRtaW4=
-      - adapter.calleeservice.password=YWRtaW4=
-      - adapter.timeout=10000
+      adapter.calleeservice.url: "http://nginx:80"
+      adapter.calleeservice.timeout: "10000"
 
   nginx:
     container_name: ${_Values_root_name}-nginx
@@ -126,7 +142,8 @@ services:
     volumes:
       - ./nginx/:/etc/nginx/
     depends_on:
-      - fhir-facade
+      fhir-facade:
+        condition: service_started
 
 volumes:
     tmp:
