@@ -45,6 +45,11 @@ services:
       adapter.personservice.user: "YWRtaW4="
       adapter.personservice.password: "YWRtaW4="
 
+      #log levels
+      logging.level.root: "WARN"
+      logging.level.org.goafabric: "INFO"
+      logging.level.org.springframework: "INFO"
+
     depends_on:
       - person-service-application-example-tenant-0
       - person-service-application-example-tenant-5a2f
