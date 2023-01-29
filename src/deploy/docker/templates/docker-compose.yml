@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  fhir-facade:
+  application:
     container_name: ${_Values_root_name}-application
     image:  ${_Values_image_repository}${_Values_image_native}:${_Values_image_tag}
     restart: 'no'
@@ -28,7 +28,7 @@ services:
       management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
 
       #zipkin/jaeger
-      spring.zipkin.baseUrl: "http://host.docker.internal:9411"
+      spring.zipkin.baseUrl: "http://${_Values_host_docker_internal}:9411"
       spring.zipkin.service.name: "fhir-facade-application"
       spring.sleuth.enabled: "true"
       spring.zipkin.enabled: "true"
@@ -54,6 +54,14 @@ services:
       - person-service-application-example-tenant-0
       - person-service-application-example-tenant-5a2f
 
+  callee-service-application:
+    container_name: callee-service-application
+    image: goafabric/callee-service-go:1.0.0
+    restart: 'no'
+    ports:
+      - "50900"
+    networks:
+      - ${_Values_root_name}-net
 
   person-service-application-example-tenant-0:
     container_name: person-service-application-example-tenant-0
@@ -92,9 +100,8 @@ services:
       database.provisioning.goals: "-import-demo-data"
 
       #adapter
-      adapter.calleeservice.url: "http://nginx:80"
+      adapter.calleeservice.url: "http://callee-service-application:50900"
       adapter.calleeservice.timeout: "10000"
-
 
   person-service-application-example-tenant-5a2f:
     container_name: person-service-application-example-tenant-5a2f
@@ -133,7 +140,7 @@ services:
       database.provisioning.goals: "-import-demo-data"
 
       #adapter
-      adapter.calleeservice.url: "http://nginx:80"
+      adapter.calleeservice.url: "http://callee-service-application:50900"
       adapter.calleeservice.timeout: "10000"
 
   nginx:
@@ -142,12 +149,14 @@ services:
     restart: 'no'
     ports:
       - 8080:80
+#      - 444:443
     networks:
       - ${_Values_root_name}-net
     volumes:
-      - ./nginx/:/etc/nginx/
+      - ./nginx/nginx${_Values_nginx_oauth2}.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/ssl/
     depends_on:
-      fhir-facade:
+      application:
         condition: service_started
 
 volumes:
