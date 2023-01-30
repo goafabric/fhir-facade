@@ -16,7 +16,7 @@
     <version>2.0.4-SNAPSHOT</version>
 
     <properties>
-        <hapi.fihr.version>6.2.1</hapi.fihr.version>
+        <hapi.fihr.version>6.2.5</hapi.fihr.version>
     </properties>
 
     <dependencies>
