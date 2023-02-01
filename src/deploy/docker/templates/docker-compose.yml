@@ -32,6 +32,7 @@ services:
       spring.zipkin.service.name: "fhir-facade-application"
       spring.sleuth.enabled: "true"
       spring.zipkin.enabled: "true"
+      logging.level.zipkin2: "FATAL"
 
       #adapter
       adapter.timeout: "10000"
@@ -95,6 +96,7 @@ services:
       management.zipkin.tracing.endpoint: "http://${_Values_host_docker_internal}:9411/api/v2/spans"
       management.tracing.sampling.probability: "1.0"
       management.tracing.enabled: "true"
+      logging.level.zipkin2.reporter: "ERROR"
 
       #persistence
       database.provisioning.goals: "-import-demo-data"
@@ -135,7 +137,7 @@ services:
       management.zipkin.tracing.endpoint: "http://${_Values_host_docker_internal}:9411/api/v2/spans"
       management.tracing.sampling.probability: "1.0"
       management.tracing.enabled: "true"
-      logging.level.zipkin2: "FATAL"
+      logging.level.zipkin2.reporter: "ERROR"
 
       #persistence
       database.provisioning.goals: "-import-demo-data"
