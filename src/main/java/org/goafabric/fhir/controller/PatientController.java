@@ -12,6 +12,7 @@ import org.hl7.fhir.r4.model.StringType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -38,7 +39,9 @@ public class PatientController extends AbstractJaxRsResourceProvider<Patient> {
     @Search
     public List<Patient> findPatientsByFamilyName(@OptionalParam(name = Patient.SP_FAMILY) StringType familyName) {
         log.info("familyName: {}", familyName);
-        return null;
+        IdType idType = new IdType();
+        idType.setId("1");
+        return Arrays.asList(patientLogic.getPatient(idType));
     }
 
 
