@@ -25,7 +25,7 @@ public class OrganizationController extends AbstractJaxRsResourceProvider<Organi
     }
 
     @Read
-    public Organization getPatient(@IdParam final IdType idType) {
+    public Organization getOrganization(@IdParam final IdType idType) {
         return organizationLogic.getOrganization(idType);
     }
 }
