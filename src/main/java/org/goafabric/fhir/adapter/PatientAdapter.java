@@ -1,11 +1,14 @@
 package org.goafabric.fhir.adapter;
 
+import org.goafabric.fhir.pojo.r4.Bundle;
+import org.goafabric.fhir.pojo.r4.Patient;
+
 public interface PatientAdapter {
-    org.goafabric.fhir.pojo.r4.Patient getPatient(String id);
+    Patient getPatient(String id);
 
-    org.goafabric.fhir.pojo.r4.Patient findyFirstName(String firstName);
+    Bundle findyFirstName(String firstName);
 
-    org.goafabric.fhir.pojo.r4.Patient findyByLastName(String lastName);
+    Bundle findyByLastName(String lastName);
 
     void sayMyName(String homer);
 }

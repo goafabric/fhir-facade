@@ -1,7 +1,9 @@
 package org.goafabric.fhir.adapter.mock;
 
 import org.goafabric.fhir.adapter.PatientAdapter;
+import org.goafabric.fhir.pojo.r4.Bundle;
 import org.goafabric.fhir.pojo.r4.HumanName;
+import org.goafabric.fhir.pojo.r4.Patient;
 import org.goafabric.fhir.pojo.r4.Telecom;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -13,26 +15,30 @@ import static java.util.Arrays.asList;
 @Profile("mock")
 @Component
 public class PatientMockAdapter implements PatientAdapter {
-    public org.goafabric.fhir.pojo.r4.Patient getPatient(String id) {
+    public Patient getPatient(String id) {
         return createPatient(id);
     }
 
     @Override
-    public org.goafabric.fhir.pojo.r4.Patient findyFirstName(String firstName) {
-        return createPatient("1");
+    public Bundle findyFirstName(String firstName) {
+        Bundle bundle = new Bundle();
+        bundle.addEntry(createBundleEntry(createPatient("1"), "1"));
+        return bundle;
     }
 
     @Override
-    public org.goafabric.fhir.pojo.r4.Patient findyByLastName(String lastName) {
-        return createPatient("1");
+    public Bundle findyByLastName(String lastName) {
+        Bundle bundle = new Bundle();
+        bundle.addEntry(createBundleEntry(createPatient("1"), "1"));
+        return bundle;
     }
 
     @Override
     public void sayMyName(String homer) {
     }
 
-    private org.goafabric.fhir.pojo.r4.Patient createPatient(String id) {
-        return org.goafabric.fhir.pojo.r4.Patient.builder()
+    private Patient createPatient(String id) {
+        return Patient.builder()
                 .id(id)
                 .name(Arrays.asList(createName()))
                 .address(Arrays.asList(createAddress()))
@@ -69,4 +75,12 @@ public class PatientMockAdapter implements PatientAdapter {
                 .value("0245-33553")
                 .build();
     }
+
+    private Bundle.BundleEntryComponent createBundleEntry(Object resource, String id) {
+        final Bundle.BundleEntryComponent bundleEntry = new Bundle.BundleEntryComponent();
+        bundleEntry.setResource(resource);
+        bundleEntry.setFullUrl(resource.getClass().getSimpleName() + "/" + id);
+        return bundleEntry;
+    }
+
 }

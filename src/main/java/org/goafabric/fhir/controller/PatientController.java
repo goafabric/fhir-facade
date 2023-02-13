@@ -1,17 +1,17 @@
 package org.goafabric.fhir.controller;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.goafabric.fhir.logic.PatientLogic;
+import org.goafabric.fhir.pojo.r4.Bundle;
 import org.goafabric.fhir.pojo.r4.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "fhir/Patient", produces = {MediaType.APPLICATION_JSON_VALUE, "application/fhir+json"})
+@Slf4j
 public class PatientController {
     @Autowired
     private PatientLogic patientLogic;
@@ -23,17 +23,13 @@ public class PatientController {
         return patientLogic.getPatient(id);
     }
 
-    /*
-    @Search
-    public List<Patient> findPatientsByFamilyName(@OptionalParam(name = Patient.SP_FAMILY) StringType familyName,
-                                                  @OptionalParam(name = Patient.SP_NAME) StringType name) {
+    @GetMapping
+    public Bundle findPatientsByFamilyName(@RequestParam(value = "family", required = false) String familyName,
+                                                  @RequestParam(value = "name", required = false) String name) {
         log.info("name: {}, familyName: {}", name, familyName);
-        IdType idType = new IdType();
-        idType.setId("1");
-        return Arrays.asList(patientLogic.findyByLastName(familyName.getValue()));
-    }
 
-     */
+        return patientLogic.findyByLastName(familyName);
+    }
 
 
 }
