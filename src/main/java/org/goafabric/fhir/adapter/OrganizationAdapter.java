@@ -1,8 +1,7 @@
 package org.goafabric.fhir.adapter;
 
-import org.hl7.fhir.r4.model.IdType;
-import org.hl7.fhir.r4.model.Organization;
+import org.goafabric.fhir.pojo.r4.Organization;
 
 public interface OrganizationAdapter {
-    Organization getOrganization(IdType idType);
+    Organization getOrganization(String id);
 }

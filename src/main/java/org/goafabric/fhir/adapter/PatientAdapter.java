@@ -1,14 +1,11 @@
 package org.goafabric.fhir.adapter;
 
-import org.hl7.fhir.r4.model.IdType;
-import org.hl7.fhir.r4.model.Patient;
-
 public interface PatientAdapter {
-    Patient getPatient(IdType idType);
+    org.goafabric.fhir.pojo.r4.Patient getPatient(String id);
 
-    Patient findyFirstName(String firstName);
+    org.goafabric.fhir.pojo.r4.Patient findyFirstName(String firstName);
 
-    Patient findyByLastName(String lastName);
+    org.goafabric.fhir.pojo.r4.Patient findyByLastName(String lastName);
 
     void sayMyName(String homer);
 }

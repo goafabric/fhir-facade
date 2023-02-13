@@ -1,33 +1,35 @@
 package org.goafabric.fhir.adapter.mock;
 
 import org.goafabric.fhir.adapter.OrganizationAdapter;
-import org.hl7.fhir.r4.model.Address;
-import org.hl7.fhir.r4.model.IdType;
-import org.hl7.fhir.r4.model.Organization;
+import org.goafabric.fhir.pojo.r4.Organization;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
+
+import static java.util.Arrays.asList;
 
 @Profile("mock")
 @Component
 public class OrganizationMockAdapter implements OrganizationAdapter {
-    @Override
-    public Organization getOrganization(IdType idType) {
-        final Organization organization = new Organization()
-                .setName("Krusty Burger")
-                .addAddress(createAddress());
-
-        organization.setId(idType.getId());
-        return organization;
+    public Organization getOrganization(String id) {
+        return org.goafabric.fhir.pojo.r4.Organization.builder()
+                .id(id)
+                .name("Krust Burger")
+                .address(Arrays.asList(createAddress()))
+                .build();
     }
 
-    private Address createAddress() {
-        final Address address = new Address()
-                .setCity("Springfield")
-                .setPostalCode("78313")
-                .setCountry("US")
-                .addLine("Clownstreet 452")
-                .setUse(Address.AddressUse.WORK);
-        address.setId("22");
-        return address;
+
+    private org.goafabric.fhir.pojo.r4.Address createAddress() {
+        return org.goafabric.fhir.pojo.r4.Address.builder()
+                .id("22")
+                .city("Springfield")
+                .postalCode("78313")
+                .country("US")
+                .line(asList("Clownstreet 452"))
+                .use("HOME")
+                .build();
     }
+
 }

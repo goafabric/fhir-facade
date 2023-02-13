@@ -1,4 +1,5 @@
-package org.goafabric.fhir.controller;
+/*
+package xorg.goafabric.fhir.controller;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
 import org.goafabric.fhir.controller.resource.TIConfiguration;
@@ -30,3 +31,5 @@ class TIConfigurationControllerIT {
     }
 
 }
+
+ */

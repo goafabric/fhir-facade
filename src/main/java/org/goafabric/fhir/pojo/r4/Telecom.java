@@ -4,13 +4,16 @@ package org.goafabric.fhir.pojo.r4;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
+@Builder
 public class Telecom {
+    public String id;
 
     public String system;
     public String value;

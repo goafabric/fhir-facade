@@ -3,6 +3,7 @@ package org.goafabric.fhir.pojo.r4;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Data
+@Builder
 public class Organization {
 
 
