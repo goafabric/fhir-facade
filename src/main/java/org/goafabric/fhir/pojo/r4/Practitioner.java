@@ -17,7 +17,7 @@ public class Practitioner {
 
     public String id;
     public Meta meta;
-    public String resourceType;
+    private final String resourceType = "Practitioner";
 
     public Boolean active;
     public String gender;

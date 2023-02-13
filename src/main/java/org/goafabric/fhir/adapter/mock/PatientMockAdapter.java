@@ -57,15 +57,15 @@ public class PatientMockAdapter implements PatientAdapter {
                 .postalCode("78313")
                 .country("US")
                 .line(asList("Evergreen Terrace 742"))
-                .use("HOME")
+                .use("home")
                 .build();
     }
 
     public static Telecom createTelecom() {
         return org.goafabric.fhir.pojo.r4.Telecom.builder()
                 .id("45")
-                .system("PHONE")
-                .use("HOME")
+                .system("phone")
+                .use("home")
                 .value("0245-33553")
                 .build();
     }

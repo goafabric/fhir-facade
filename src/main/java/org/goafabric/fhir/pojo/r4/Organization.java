@@ -17,7 +17,7 @@ public class Organization {
 
     public String id;
     public Meta meta;
-    public String resourceType;
+    private final String resourceType = "Organization";
 
     public Boolean active;
     public String name;

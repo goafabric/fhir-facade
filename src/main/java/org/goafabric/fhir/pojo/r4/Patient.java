@@ -16,7 +16,7 @@ import java.util.Map;
 public class Patient {
     public String id;
     public Meta meta;
-    public String resourceType;
+    private final String resourceType = "Patient";
 
     public String gender;
     public String birthDate;
