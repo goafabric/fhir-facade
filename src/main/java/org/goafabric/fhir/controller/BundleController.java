@@ -5,6 +5,7 @@ import org.goafabric.fhir.pojo.r4.Bundle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,10 +20,9 @@ public class BundleController {
         return bundleLogic.getBundle(id);
     }
 
-    /*
-    public MethodOutcome createBundle(@ResourceParam Bundle bundle) {
-        return bundleLogic.createBundle(bundle);
+    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, "application/fhir+json"})
+    public void createBundle(Bundle bundle) {
+        bundleLogic.createBundle(bundle);
     }
 
-     */
 }

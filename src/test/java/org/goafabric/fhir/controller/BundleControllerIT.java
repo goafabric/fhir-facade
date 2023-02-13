@@ -3,6 +3,8 @@ package org.goafabric.fhir.controller;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
 import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.Patient;
+import org.hl7.fhir.r4.model.Practitioner;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -28,27 +30,17 @@ class BundleControllerIT {
         //assertThat(bundle).isNotNull();
     }
 
-    /*
     @Test
     void createPatientBundle() {
         final IGenericClient client = ClientFactory.createClient(port);
 
-        final Patient patient = patientMapper.map(
-                Person.builder().id("1")
-                        .firstName("Homer").lastName("Simpson").build());
-
-        final Practitioner practioner = practionerMapper.map(
-                Person.builder().id("1")
-                        .firstName("Homer").lastName("Simpson").build());
-
         final Bundle bundle = new Bundle();
-        bundle.addEntry(new Bundle.BundleEntryComponent().setResource(patient));
-        bundle.addEntry(new Bundle.BundleEntryComponent().setResource(practioner));
+        bundle.addEntry(new Bundle.BundleEntryComponent().setResource(new Patient().setId("Homer Simpson")));
+        bundle.addEntry(new Bundle.BundleEntryComponent().setResource(new Practitioner().setId("Monty Burns")));
 
         client.create()
                 .resource(bundle)
                 .execute();
     }
 
-     */
 }

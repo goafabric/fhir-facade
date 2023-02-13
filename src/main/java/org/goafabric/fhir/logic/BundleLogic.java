@@ -35,4 +35,7 @@ public class BundleLogic {
     }
 
 
+    public void createBundle(Bundle bundle) {
+        log.info("create bundle : {}", bundle.toString() );
+    }
 }
