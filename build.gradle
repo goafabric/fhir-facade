@@ -44,10 +44,7 @@ dependencies {
 	//monitoring
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'io.micrometer:micrometer-registry-prometheus'
-
-	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-	implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
-
+	
 	//crosscuting
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
@@ -66,7 +63,7 @@ dependencies {
 	//test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation "ca.uhn.hapi.fhir:hapi-fhir-client-okhttp:6.2.5"
-	testImplementation "ca.uhn.hapi.fhir:hapi-fhir-jaxrsserver-base:6.2.1"
+	testImplementation "ca.uhn.hapi.fhir:hapi-fhir-structures-r4:6.2.1"
 
 }
 
