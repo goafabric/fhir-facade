@@ -1,10 +1,13 @@
 package org.goafabric.fhir.adapter.mock;
 
 import org.goafabric.fhir.adapter.PatientAdapter;
+import org.goafabric.fhir.pojo.r4.HumanName;
 import org.hl7.fhir.r4.model.*;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 import static java.util.Arrays.asList;
 
@@ -14,6 +17,10 @@ public class PatientMockAdapter implements PatientAdapter {
     public Patient getPatient(IdType idType) {
         Patient patient = createPatient(idType);
         return patient;
+    }
+
+    private void pat() {
+        org.goafabric.fhir.pojo.r4.Address.builder().city()
     }
 
     @Override
@@ -47,24 +54,23 @@ public class PatientMockAdapter implements PatientAdapter {
 
 
     private HumanName createName() {
-        final HumanName humanName = new HumanName()
-                .addGiven("Homer")
-                .setFamily("Simpson");
+        var humanName = org.goafabric.fhir.pojo.r4.HumanName.builder()
+                .given(Arrays.asList("Homer"))
+                .family("Simpson")
+                .build();
 
-        humanName.getFamilyElement()
-                .addExtension(new Extension("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2", new StringType("The 3rd")));
         return humanName;
     }
 
-    private Address createAddress() {
-        final Address address = new Address()
-                .setCity("Springfield")
-                .setPostalCode("78313")
-                .setCountry("US")
-                .setLine(asList(new StringType("Evergreen Terrace 742")))
-                .setUse(Address.AddressUse.HOME);
-        address.setId("42");
-        return address;
+    private org.goafabric.fhir.pojo.r4.Address createAddress() {
+        return org.goafabric.fhir.pojo.r4.Address.builder()
+                .id("42")
+                .city("Springfield")
+                .postalCode("78313")
+                .country("US")
+                .line(asList("Evergreen Terrace 742"))
+                .use(Address.AddressUse.HOME.name())
+                .build();
     }
 
     public static ContactPoint createTelecom() {
