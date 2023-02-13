@@ -11,6 +11,7 @@ import org.hl7.fhir.r4.model.Organization;
 import org.hl7.fhir.r4.model.StringType;
 import org.springframework.stereotype.Component;
 
+//Controller for a proprietary non standard FHIR Resource
 @Component
 public class TIConfigurationController extends AbstractJaxRsResourceProvider<TIConfiguration> {
 
