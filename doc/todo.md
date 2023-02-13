@@ -1,3 +1,3 @@
 - metadata endpoint (Clientfactory has disabled this)
-- BundleController
 - Extension
+- XML Mimetype
