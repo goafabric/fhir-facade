@@ -30,23 +30,6 @@ logging.level.zipkin2: "FATAL"
 #security
 security.authentication.enabled: false
 
-#hapi
-hapi:
-  fhir:
-    server:
-      path: /fhir
-    rest:
-      server-name: example-fhir-facade
-      server-version: 1.0.0
-      implementation-description: example-fhir-facade
-      default-response-encoding: xml
-      e-tag-support: enabled
-      default-pretty-print: true
-    validation:
-      enabled: true
-      request-only: true
-
-
 #adapter
 adapter:
   timeout: 10000

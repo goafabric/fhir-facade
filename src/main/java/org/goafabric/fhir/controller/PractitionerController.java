@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "fhir/Practitioner", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "fhir/Practitioner", produces = {MediaType.APPLICATION_JSON_VALUE, "application/fhir+json"})
 public class PractitionerController {
 	@Autowired
 	private PractitionerLogic practitionerLogic;

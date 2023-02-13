@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "fhir/Patient", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "fhir/Patient", produces = {MediaType.APPLICATION_JSON_VALUE, "application/fhir+json"})
 public class PatientController {
     @Autowired
     private PatientLogic patientLogic;

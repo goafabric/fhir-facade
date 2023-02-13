@@ -1,10 +1,7 @@
 package org.goafabric.fhir.controller;
 
 import ca.uhn.fhir.context.FhirContext;
-import ca.uhn.fhir.rest.client.api.IClientInterceptor;
-import ca.uhn.fhir.rest.client.api.IGenericClient;
-import ca.uhn.fhir.rest.client.api.IHttpRequest;
-import ca.uhn.fhir.rest.client.api.IHttpResponse;
+import ca.uhn.fhir.rest.client.api.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -16,7 +13,10 @@ public class ClientFactory {
     }
 
     public static IGenericClient createClient(String port) {
-        final IGenericClient client = FhirContext.forR4().newRestfulGenericClient(
+        IRestfulClientFactory factory = FhirContext.forR4().getRestfulClientFactory();
+        factory.setServerValidationMode(ServerValidationModeEnum.NEVER); //we have to disable the Metadata Check
+
+        final IGenericClient client = factory.newGenericClient(
                 "http://localhost:" + port + "/fhir");
 
         client.registerInterceptor(new IClientInterceptor() {
