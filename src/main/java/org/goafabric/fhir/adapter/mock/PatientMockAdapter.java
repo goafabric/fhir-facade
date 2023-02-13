@@ -47,9 +47,13 @@ public class PatientMockAdapter implements PatientAdapter {
 
 
     private HumanName createName() {
-        return new HumanName()
+        final HumanName humanName = new HumanName()
                 .addGiven("Homer")
                 .setFamily("Simpson");
+
+        humanName.getFamilyElement()
+                .addExtension(new Extension("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2", new StringType("The 3rd")));
+        return humanName;
     }
 
     private Address createAddress() {
