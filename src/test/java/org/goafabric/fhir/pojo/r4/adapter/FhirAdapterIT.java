@@ -1,11 +1,10 @@
 package org.goafabric.fhir.pojo.r4.adapter;
 
 import lombok.extern.slf4j.Slf4j;
-import org.goafabric.fhir.pojo.r4.adapter.FhirAdapter;
-import org.goafabric.fhir.pojo.r4.dto.Organization;
-import org.goafabric.fhir.pojo.r4.dto.Patient;
-import org.goafabric.fhir.pojo.r4.dto.Practitioner;
-import org.goafabric.fhir.pojo.r4.dto.custom.TIConfigurationPojo;
+import org.goafabric.fhir.pojo.r4.Organization;
+import org.goafabric.fhir.pojo.r4.Patient;
+import org.goafabric.fhir.pojo.r4.Practitioner;
+import org.goafabric.fhir.pojo.r4.custom.TIConfigurationPojo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
