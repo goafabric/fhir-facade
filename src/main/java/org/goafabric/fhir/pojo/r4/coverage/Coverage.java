@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import org.goafabric.fhir.pojo.r4.dto.Meta;
+import org.goafabric.fhir.pojo.r4.Meta;
 
 import java.util.HashMap;
 import java.util.List;

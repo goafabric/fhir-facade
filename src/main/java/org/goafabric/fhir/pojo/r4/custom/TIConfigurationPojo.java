@@ -1,7 +1,7 @@
 package org.goafabric.fhir.pojo.r4.custom;
 
 import lombok.Data;
-import org.goafabric.fhir.pojo.r4.dto.Organization;
+import org.goafabric.fhir.pojo.r4.Organization;
 
 @Data
 public class TIConfigurationPojo {
