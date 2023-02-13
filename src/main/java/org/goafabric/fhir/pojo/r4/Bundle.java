@@ -1,25 +1,32 @@
 package org.goafabric.fhir.pojo.r4;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-@Builder
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Bundle {
     public String id;
     private final String resourceType = "Bundle";
 
-    public List<Entry> entry;
+    public List<BundleEntryComponent> entry = new ArrayList<>();
 
+    public void addEntry(BundleEntryComponent bundleEntry) {
+        entry.add(bundleEntry);
+    }
 
-    static class Entry {
+    @Data
+    public static class BundleEntryComponent {
         private String fullUrl;
-        //private Resource resource;
-        private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
+        private Object resource;
+        //private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
     }
 
 }
