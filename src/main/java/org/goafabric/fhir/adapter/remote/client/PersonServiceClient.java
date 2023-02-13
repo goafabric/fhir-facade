@@ -36,6 +36,12 @@ public class PersonServiceClient {
                 .getBody();
     }
 
+    public List<Person> findByLastName(String lastName) {
+        return restTemplate.exchange(getServiceUrl() + "/findByLastName?lastName={lastName}",
+                        HttpMethod.GET, null, new ParameterizedTypeReference<List<Person>>(){}, lastName)
+                .getBody();
+    }
+
     public Person sayMyName(String name) {
         return restTemplate.getForObject(getServiceUrl() + "/sayMyName?name={name}", Person.class, name);
     }

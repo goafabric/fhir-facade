@@ -42,7 +42,7 @@ public class PatientController extends AbstractJaxRsResourceProvider<Patient> {
         log.info("name: {}, familyName: {}", name, familyName);
         IdType idType = new IdType();
         idType.setId("1");
-        return Arrays.asList(patientLogic.getPatient(idType));
+        return Arrays.asList(patientLogic.findyByLastName(familyName.getValue()));
     }
 
 
