@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.5'
+	id 'org.springframework.boot' version '3.0.2'
 	id 'io.spring.dependency-management' version '1.1.0'
 	id 'org.graalvm.buildtools.native' version '0.9.18'
 	id 'com.google.cloud.tools.jib' version '3.3.1'
@@ -20,9 +20,6 @@ dependencies {
 		annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
 	}
 
-	dependencyManagement.imports {
-		mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2021.0.4'
-	}
 }
 
 group = 'org.goafabric'
@@ -46,10 +43,8 @@ dependencies {
 	implementation 'io.micrometer:micrometer-registry-prometheus'
 	
 	//crosscuting
-	implementation 'org.springframework.boot:spring-boot-starter-security'
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
-	implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
-	
 
 	//code generation
 	compileOnly 'org.projectlombok:lombok'
