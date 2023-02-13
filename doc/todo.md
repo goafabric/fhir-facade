@@ -1,3 +1,4 @@
-- metadata endpoint
+- metadata endpoint (Clientfactory has disabled this)
 - BundleController
 - Patient Search
+- Extension
