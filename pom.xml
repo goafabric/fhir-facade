@@ -13,7 +13,7 @@
 
     <groupId>org.goafabric</groupId>
     <artifactId>fhir-facade</artifactId>
-    <version>2.0.4-SNAPSHOT</version>
+    <version>3.0.0-MVC-SNAPSHOT</version>
 
     <properties>
         <hapi.fihr.version>6.2.5</hapi.fihr.version>
