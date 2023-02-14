@@ -44,7 +44,7 @@ dependencies {
 	implementation 'io.micrometer:micrometer-registry-prometheus'
 	
 	//crosscuting
-	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
 
 	//code generation
