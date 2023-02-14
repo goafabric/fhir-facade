@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "fhir/Bundle", produces = {MediaType.APPLICATION_JSON_VALUE, "application/fhir+json"})
+@RequestMapping(value = "fhir/Bundle", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, "application/fhir+json"})
 public class BundleController {
     @Autowired
     private BundleLogic bundleLogic;

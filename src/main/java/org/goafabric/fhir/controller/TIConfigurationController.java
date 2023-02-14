@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 //Controller for a proprietary non standard FHIR Resource
 @Component
 @RestController
-@RequestMapping(value = "fhir/TIConfiguration", produces = {MediaType.APPLICATION_JSON_VALUE, "application/fhir+json"})
+@RequestMapping(value = "fhir/TIConfiguration", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, "application/fhir+json"})
 
 public class TIConfigurationController {
 
