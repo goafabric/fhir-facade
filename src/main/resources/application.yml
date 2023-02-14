@@ -21,6 +21,8 @@ management:
     circuitbreakers:
       enabled: true
 
+spring.jackson.default-property-inclusion: non_null #to be in line with HAPI FHIR
+
 #jaeger / zipkin
 spring.zipkin.service.name: "fhir-facade"
 spring.zipkin.enabled: true
