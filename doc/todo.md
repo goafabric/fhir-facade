@@ -1,3 +1,4 @@
 - metadata endpoint (Clientfactory has disabled this)
 - Extension
 - XML Mimetype
+- Remote Adapter
