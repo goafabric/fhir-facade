@@ -12,15 +12,10 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Address {
-    public String id;
+public class HumanName {
 
-    public String city;
-    public String state;
-    public String postalCode;
-    public String country;
     public String use;
-
-    public List<String> line;
+    public String family;
+    public List<String> given;
 
 }
