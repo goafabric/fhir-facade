@@ -24,8 +24,8 @@ public class PatientController {
     }
 
     @GetMapping
-    public Bundle findPatientsByFamilyName(@RequestParam(value = "family", required = false) String familyName,
-                                                  @RequestParam(value = "name", required = false) String name) {
+    public Bundle findPatients(@RequestParam(value = "family", required = false) String familyName,
+                               @RequestParam(value = "name", required = false) String name) {
         log.info("name: {}, familyName: {}", name, familyName);
 
         return patientLogic.findyByLastName(familyName);
