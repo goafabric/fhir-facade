@@ -23,6 +23,9 @@ public class Bundle {
     }
 
     @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class BundleEntryComponent {
         private String fullUrl;
         private Object resource;

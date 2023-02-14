@@ -78,10 +78,8 @@ public class PatientMockAdapter implements PatientAdapter {
     }
 
     private Bundle.BundleEntryComponent createBundleEntry(Object resource, String id) {
-        final Bundle.BundleEntryComponent bundleEntry = new Bundle.BundleEntryComponent();
-        bundleEntry.setResource(resource);
-        bundleEntry.setFullUrl(resource.getClass().getSimpleName() + "/" + id);
-        return bundleEntry;
+        return Bundle.BundleEntryComponent.builder().resource(resource)
+                .fullUrl(resource.getClass().getSimpleName() + "/" + id).build();
     }
 
 }
