@@ -1,5 +1,5 @@
 
-package org.goafabric.fhir.pojo.r4.observation;
+package org.goafabric.fhir.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -9,16 +9,12 @@ import lombok.Data;
 import java.util.HashMap;
 import java.util.Map;
 
-@Data
-public class ValueSampledData {
 
-    public Origin origin;
-    public Integer period;
-    public Double factor;
-    public Integer lowerLimit;
-    public Integer upperLimit;
-    public Integer dimensions;
-    public String data;
+@Data
+public class Text {
+
+    public String status;
+    public String div;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

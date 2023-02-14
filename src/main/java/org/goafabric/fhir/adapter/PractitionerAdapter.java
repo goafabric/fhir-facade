@@ -1,6 +1,8 @@
 package org.goafabric.fhir.adapter;
 
+import org.goafabric.fhir.controller.dto.Practitioner;
+
 public interface PractitionerAdapter {
-    org.goafabric.fhir.pojo.r4.Practitioner getPractitioner(String id);
+    Practitioner getPractitioner(String id);
 
 }

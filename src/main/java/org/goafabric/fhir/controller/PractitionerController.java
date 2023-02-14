@@ -1,5 +1,6 @@
 package org.goafabric.fhir.controller;
 
+import org.goafabric.fhir.controller.dto.Practitioner;
 import org.goafabric.fhir.logic.PractitionerLogic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -15,7 +16,7 @@ public class PractitionerController {
 	private PractitionerLogic practitionerLogic;
 
 	@GetMapping("/{id}")
-	public org.goafabric.fhir.pojo.r4.Practitioner getPractitioner(@PathVariable String id) {
+	public Practitioner getPractitioner(@PathVariable String id) {
 		return practitionerLogic.getPractitioner(id);
 	}
 

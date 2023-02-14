@@ -3,8 +3,8 @@ package org.goafabric.fhir.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.goafabric.fhir.logic.PatientLogic;
-import org.goafabric.fhir.pojo.r4.Bundle;
-import org.goafabric.fhir.pojo.r4.Patient;
+import org.goafabric.fhir.controller.dto.Bundle;
+import org.goafabric.fhir.controller.dto.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

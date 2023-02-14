@@ -1,5 +1,5 @@
 
-package org.goafabric.fhir.pojo.r4;
+package org.goafabric.fhir.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

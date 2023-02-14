@@ -1,7 +1,7 @@
 package org.goafabric.fhir.adapter;
 
-import org.goafabric.fhir.pojo.r4.Bundle;
-import org.goafabric.fhir.pojo.r4.Patient;
+import org.goafabric.fhir.controller.dto.Bundle;
+import org.goafabric.fhir.controller.dto.Patient;
 
 public interface PatientAdapter {
     Patient getPatient(String id);

@@ -1,6 +1,6 @@
 package org.goafabric.fhir.controller;
 
-import org.goafabric.fhir.pojo.r4.Meta;
+import org.goafabric.fhir.controller.dto.Meta;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

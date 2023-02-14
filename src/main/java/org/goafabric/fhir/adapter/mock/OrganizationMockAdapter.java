@@ -1,7 +1,8 @@
 package org.goafabric.fhir.adapter.mock;
 
 import org.goafabric.fhir.adapter.OrganizationAdapter;
-import org.goafabric.fhir.pojo.r4.Organization;
+import org.goafabric.fhir.controller.dto.Address;
+import org.goafabric.fhir.controller.dto.Organization;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,7 @@ import static java.util.Arrays.asList;
 @Component
 public class OrganizationMockAdapter implements OrganizationAdapter {
     public Organization getOrganization(String id) {
-        return org.goafabric.fhir.pojo.r4.Organization.builder()
+        return Organization.builder()
                 .id(id)
                 .name("Krust Burger")
                 .address(Arrays.asList(createAddress()))
@@ -21,8 +22,8 @@ public class OrganizationMockAdapter implements OrganizationAdapter {
     }
 
 
-    private org.goafabric.fhir.pojo.r4.Address createAddress() {
-        return org.goafabric.fhir.pojo.r4.Address.builder()
+    private Address createAddress() {
+        return Address.builder()
                 .id("22")
                 .city("Springfield")
                 .postalCode("78313")

@@ -1,7 +1,7 @@
 package org.goafabric.fhir.adapter.mock;
 
 import org.goafabric.fhir.adapter.PractitionerAdapter;
-import org.goafabric.fhir.pojo.r4.Telecom;
+import org.goafabric.fhir.controller.dto.*;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +13,8 @@ import static java.util.Arrays.asList;
 @Component
 public class PractitionerMockAdapter implements PractitionerAdapter {
     @Override
-    public org.goafabric.fhir.pojo.r4.Practitioner getPractitioner(String id) {
-        return org.goafabric.fhir.pojo.r4.Practitioner.builder()
+    public Practitioner getPractitioner(String id) {
+        return Practitioner.builder()
                 .id(id)
                 .name(Arrays.asList(createName()))
                 .address(Arrays.asList(createAddress()))
@@ -22,8 +22,8 @@ public class PractitionerMockAdapter implements PractitionerAdapter {
                 .build();
     }
 
-    private org.goafabric.fhir.pojo.r4.Patient createPatient(String id) {
-        return org.goafabric.fhir.pojo.r4.Patient.builder()
+    private Patient createPatient(String id) {
+        return Patient.builder()
                 .id(id)
                 .name(Arrays.asList(createName()))
                 .address(Arrays.asList(createAddress()))
@@ -32,8 +32,8 @@ public class PractitionerMockAdapter implements PractitionerAdapter {
     }
 
 
-    private org.goafabric.fhir.pojo.r4.HumanName createName() {
-        var humanName = org.goafabric.fhir.pojo.r4.HumanName.builder()
+    private HumanName createName() {
+        var humanName = HumanName.builder()
                 .given(Arrays.asList("Monty"))
                 .family("Burns")
                 .build();
@@ -41,8 +41,8 @@ public class PractitionerMockAdapter implements PractitionerAdapter {
         return humanName;
     }
 
-    private org.goafabric.fhir.pojo.r4.Address createAddress() {
-        return org.goafabric.fhir.pojo.r4.Address.builder()
+    private Address createAddress() {
+        return Address.builder()
                 .id("42")
                 .city("Springfield")
                 .postalCode("78313")
@@ -53,7 +53,7 @@ public class PractitionerMockAdapter implements PractitionerAdapter {
     }
 
     public static Telecom createTelecom() {
-        return org.goafabric.fhir.pojo.r4.Telecom.builder()
+        return Telecom.builder()
                 .id("45")
                 .system("phone")
                 .use("home")

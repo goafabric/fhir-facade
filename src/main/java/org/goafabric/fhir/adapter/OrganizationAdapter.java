@@ -1,6 +1,6 @@
 package org.goafabric.fhir.adapter;
 
-import org.goafabric.fhir.pojo.r4.Organization;
+import org.goafabric.fhir.controller.dto.Organization;
 
 public interface OrganizationAdapter {
     Organization getOrganization(String id);

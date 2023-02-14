@@ -1,21 +1,20 @@
 
-package org.goafabric.fhir.pojo.r4;
+package org.goafabric.fhir.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HumanName {
+public class Telecom {
+    public String id;
 
+    public String system;
+    public String value;
     public String use;
-    public String family;
-    public List<String> given;
 
 }

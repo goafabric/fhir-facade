@@ -2,7 +2,7 @@ package org.goafabric.fhir.logic;
 
 import lombok.extern.slf4j.Slf4j;
 import org.goafabric.fhir.crossfunctional.DurationLog;
-import org.goafabric.fhir.pojo.r4.Bundle;
+import org.goafabric.fhir.controller.dto.Bundle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

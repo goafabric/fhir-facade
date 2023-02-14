@@ -1,8 +1,8 @@
 package org.goafabric.fhir.controller;
 
 
-import org.goafabric.fhir.pojo.r4.Organization;
-import org.goafabric.fhir.pojo.r4.custom.TIConfigurationPojo;
+import org.goafabric.fhir.controller.dto.Organization;
+import org.goafabric.fhir.controller.dto.custom.TIConfigurationPojo;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;

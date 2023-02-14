@@ -1,11 +1,11 @@
 package org.goafabric.fhir.pojo.r4.adapter;
 
-import org.goafabric.fhir.pojo.r4.Organization;
-import org.goafabric.fhir.pojo.r4.Patient;
-import org.goafabric.fhir.pojo.r4.Practitioner;
-import org.goafabric.fhir.pojo.r4.coverage.Coverage;
-import org.goafabric.fhir.pojo.r4.custom.TIConfigurationPojo;
-import org.goafabric.fhir.pojo.r4.observation.Observation;
+import org.goafabric.fhir.controller.dto.Organization;
+import org.goafabric.fhir.controller.dto.Patient;
+import org.goafabric.fhir.controller.dto.Practitioner;
+import org.goafabric.fhir.controller.dto.coverage.Coverage;
+import org.goafabric.fhir.controller.dto.custom.TIConfigurationPojo;
+import org.goafabric.fhir.controller.dto.observation.Observation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;

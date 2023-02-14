@@ -1,4 +1,4 @@
-package org.goafabric.fhir.pojo.r4;
+package org.goafabric.fhir.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +16,7 @@ public class Bundle {
     public String id;
     private final String resourceType = "Bundle";
 
-    public List<BundleEntryComponent> entry = new ArrayList<>();
+    private final List<BundleEntryComponent> entry = new ArrayList<>();
 
     public void addEntry(BundleEntryComponent bundleEntry) {
         entry.add(bundleEntry);

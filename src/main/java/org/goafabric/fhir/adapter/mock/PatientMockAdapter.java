@@ -1,10 +1,11 @@
 package org.goafabric.fhir.adapter.mock;
 
 import org.goafabric.fhir.adapter.PatientAdapter;
-import org.goafabric.fhir.pojo.r4.Bundle;
-import org.goafabric.fhir.pojo.r4.HumanName;
-import org.goafabric.fhir.pojo.r4.Patient;
-import org.goafabric.fhir.pojo.r4.Telecom;
+import org.goafabric.fhir.controller.dto.Address;
+import org.goafabric.fhir.controller.dto.Bundle;
+import org.goafabric.fhir.controller.dto.HumanName;
+import org.goafabric.fhir.controller.dto.Patient;
+import org.goafabric.fhir.controller.dto.Telecom;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -48,7 +49,7 @@ public class PatientMockAdapter implements PatientAdapter {
 
 
     private HumanName createName() {
-        var humanName = org.goafabric.fhir.pojo.r4.HumanName.builder()
+        var humanName = HumanName.builder()
                 .given(Arrays.asList("Homer"))
                 .family("Simpson")
                 .build();
@@ -56,8 +57,8 @@ public class PatientMockAdapter implements PatientAdapter {
         return humanName;
     }
 
-    private org.goafabric.fhir.pojo.r4.Address createAddress() {
-        return org.goafabric.fhir.pojo.r4.Address.builder()
+    private Address createAddress() {
+        return Address.builder()
                 .id("42")
                 .city("Springfield")
                 .postalCode("78313")
@@ -68,7 +69,7 @@ public class PatientMockAdapter implements PatientAdapter {
     }
 
     public static Telecom createTelecom() {
-        return org.goafabric.fhir.pojo.r4.Telecom.builder()
+        return Telecom.builder()
                 .id("45")
                 .system("phone")
                 .use("home")

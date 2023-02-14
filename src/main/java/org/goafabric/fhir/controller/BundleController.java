@@ -1,7 +1,7 @@
 package org.goafabric.fhir.controller;
 
 import org.goafabric.fhir.logic.BundleLogic;
-import org.goafabric.fhir.pojo.r4.Bundle;
+import org.goafabric.fhir.controller.dto.Bundle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
