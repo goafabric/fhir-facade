@@ -24,7 +24,7 @@ public class Coverage {
     public String subscriberId;
     public Beneficiary beneficiary;
 
-    public List<Payor> payor = null;
+    public List<Payor> payor;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

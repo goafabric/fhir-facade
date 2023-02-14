@@ -26,7 +26,7 @@ public class Address {
     public String country;
     public String use;
 
-    public List<String> line = null;
+    public List<String> line;
 
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
