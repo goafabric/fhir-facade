@@ -85,7 +85,6 @@ jib {
 	container.jvmFlags = ['-Xms256m', '-Xmx256m']
 }
 
-/*
 def archSuffix = (System.properties['os.arch'] == 'aarch64') ? "-arm64v8" : ""
 tasks.named('bootBuildImage') {
 	builder = 'dashaun/java-native-builder-multiarch:7.41.0'
@@ -98,5 +97,3 @@ task dockerImageNativeRun(type:Exec) { dependsOn('bootBuildImage')
 task dockerImageNative(type:Exec) { dependsOn(dockerImageNativeRun)
 	commandLine 'docker', 'push', "${dockerRegistry}/${project.name}-native${archSuffix}:${project.version}"
 }
-
-*/
