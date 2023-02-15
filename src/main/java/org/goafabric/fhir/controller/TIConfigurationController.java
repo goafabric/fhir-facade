@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Component
 @RestController
 @RequestMapping(value = "fhir/TIConfiguration", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, "application/fhir+json"})
-
 public class TIConfigurationController {
 
     @GetMapping("/{id}")

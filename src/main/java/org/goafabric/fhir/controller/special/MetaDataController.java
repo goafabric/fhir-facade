@@ -1,4 +1,4 @@
-package org.goafabric.fhir.controller;
+package org.goafabric.fhir.controller.special;
 
 import org.goafabric.fhir.controller.dto.metadata.MetaData;
 import org.springframework.http.MediaType;
