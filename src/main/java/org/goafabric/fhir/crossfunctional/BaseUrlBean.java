@@ -16,12 +16,12 @@ public class BaseUrlBean {
 
     public String getUrl() {
         return multiTenancyEnabled
-                ? baseUrl.replaceAll("%TENANT_ID%", org.goafabric.calleeservice.crossfunctional.HttpInterceptor.getTenantId())
+                ? baseUrl.replaceAll("%TENANT_ID%", HttpInterceptor.getTenantId())
                 : baseUrl;
     }
 
     public String getCBName() {
-        final String tenantId = multiTenancyEnabled ? org.goafabric.calleeservice.crossfunctional.HttpInterceptor.getTenantId() : "none";
+        final String tenantId = multiTenancyEnabled ? HttpInterceptor.getTenantId() : "none";
         return "personservice-tenant-" + tenantId;
     }
 }
