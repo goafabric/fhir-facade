@@ -1,0 +1,3 @@
+#!/bin/bash
+./gradlew clean nativeCompile
+./build/native/nativeCompile/fhir-facade -Xmx32m
