@@ -13,10 +13,7 @@ public class ClientFactory {
     }
 
     public static IGenericClient createClient(String port) {
-        IRestfulClientFactory factory = FhirContext.forR4().getRestfulClientFactory();
-        //factory.setServerValidationMode(ServerValidationModeEnum.NEVER); //we have to disable the Metadata Check
-
-        final IGenericClient client = factory.newGenericClient(
+        final IGenericClient client = FhirContext.forR4().newRestfulGenericClient(
                 "http://localhost:" + port + "/fhir");
 
         client.registerInterceptor(new IClientInterceptor() {
