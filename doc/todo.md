@@ -1,8 +1,9 @@
+Todos
 - XML Mimetype
-- Extension
-            
+- Extension 
 
-Changes to HAPI Fhir
+Differences to HAPI Fhir
+- Need to generate pojos / dtos on your own with Data from HAPI FHIR Facade, e.g with https://www.jsonschema2pojo.org/
 - Search Methods need to return manually Bundle
 - Produces needs xml, json, fhir+xml, fhir+json
 - Metadata Endpoint needs to be implemented for Client to work
