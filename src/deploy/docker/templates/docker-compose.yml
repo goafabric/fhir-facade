@@ -28,11 +28,11 @@ services:
       management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
 
       #zipkin/jaeger
-      spring.zipkin.baseUrl: "http://${_Values_host_docker_internal}:9411"
-      spring.zipkin.service.name: "fhir-facade-application"
-      spring.sleuth.enabled: "true"
-      spring.zipkin.enabled: "true"
-      logging.level.zipkin2: "FATAL"
+      spring.application.name: "fhir-facade"
+      management.zipkin.tracing.endpoint: "http://${_Values_host_docker_internal}:9411/api/v2/spans"
+      management.tracing.sampling.probability: "1.0"
+      management.tracing.enabled: "true"
+      logging.level.zipkin2.reporter: "ERROR"
 
       #adapter
       adapter.timeout: "10000"
