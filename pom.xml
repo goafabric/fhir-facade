@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.goafabric</groupId>
         <artifactId>spring-parent</artifactId>
-        <version>2.7.5</version>
+        <version>3.0.2</version>
         <relativePath>parent-pom/pom.xml</relativePath>
     </parent>
 
@@ -17,7 +17,6 @@
 
     <properties>
         <hapi.fihr.version>6.2.5</hapi.fihr.version>
-        <spring.boot.version>3.0.2</spring.boot.version>
     </properties>
 
     <dependencies>
@@ -50,6 +49,11 @@
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
 
+        <!-- Adapter -->
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-spring-boot3</artifactId>
+        </dependency>
 
         <!-- 3rd party -->
         <dependency>
