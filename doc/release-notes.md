@@ -1,4 +1,5 @@
 # 2.0.4
+- upgrade to HAPI FHIR 6.4.0
 
 # 2.0.3
 - docker compose file with multi tenancy
