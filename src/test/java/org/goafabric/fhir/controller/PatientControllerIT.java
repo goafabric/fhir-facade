@@ -40,6 +40,12 @@ class PatientControllerIT {
 
         assertThat(address.getLine()).hasSize(1);
         assertThat(address.getLine().get(0).toString()).isEqualTo("Evergreen Terrace 742");
+
+        assertThat(patient.getTelecom()).hasSize(1);
+        var contactPoint = patient.getTelecom().get(0);
+        assertThat(contactPoint.getValue()).isEqualTo("0245-33553");
+        assertThat(contactPoint.getUse().toCode()).isEqualTo("home");
+        assertThat(contactPoint.getSystem().toCode()).isEqualTo("phone");
     }
 
     @Test
@@ -70,6 +76,12 @@ class PatientControllerIT {
 
         assertThat(address.getLine()).hasSize(1);
         assertThat(address.getLine().get(0).toString()).isEqualTo("Evergreen Terrace 742");
+
+        assertThat(patient.getTelecom()).hasSize(1);
+        var contactPoint = patient.getTelecom().get(0);
+        assertThat(contactPoint.getValue()).isEqualTo("0245-33553");
+        assertThat(contactPoint.getUse().toCode()).isEqualTo("home");
+        assertThat(contactPoint.getSystem().toCode()).isEqualTo("phone");
     }
 
 }

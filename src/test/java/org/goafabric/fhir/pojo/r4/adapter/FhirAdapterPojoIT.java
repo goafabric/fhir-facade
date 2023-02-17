@@ -39,6 +39,12 @@ public class FhirAdapterPojoIT {
 
         Assertions.assertThat(address.getLine()).hasSize(1);
         Assertions.assertThat(address.getLine().get(0).toString()).isEqualTo("Evergreen Terrace 742");
+
+        Assertions.assertThat(patient.getTelecom()).hasSize(1);
+        var contactPoint = patient.getTelecom().get(0);
+        Assertions.assertThat(contactPoint.getValue()).isEqualTo("0245-33553");
+        Assertions.assertThat(contactPoint.getUse()).isEqualTo("home");
+        Assertions.assertThat(contactPoint.getSystem()).isEqualTo("phone");
     }
 
     @Test
