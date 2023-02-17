@@ -9,12 +9,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @Slf4j
-public class FhirAdapterIT {
+public class FhirAdapterPojoIT {
     @Autowired
     private FhirAdapter fhirAdapter;
 
@@ -23,8 +23,27 @@ public class FhirAdapterIT {
         final Patient patient = fhirAdapter.getPatient("1");
         log.info(patient.toString());
         assertThat(patient).isNotNull();
+
+        assertThat(patient.getName()).hasSize(1);
         assertThat(patient.getName().get(0).getFamily()).isEqualTo("Simpson");
-        assertThat(patient.getName().get(0).getGiven().get(0)).isEqualTo("Homer");
+        assertThat(patient.getName().get(0).getGiven().get(0).toString()).isEqualTo("Homer");
+
+        assertThat(patient.getAddress()).hasSize(1);
+        var address = patient.getAddress().get(0);
+        assertThat(address.getCity()).isEqualTo("Springfield");
+        assertThat(address.getPostalCode()).isEqualTo("78313");
+        assertThat(address.getCountry()).isEqualTo("US");
+
+        assertThat(address.getUse().toString()).isEqualTo("home");
+
+        assertThat(address.getLine()).hasSize(1);
+        assertThat(address.getLine().get(0).toString()).isEqualTo("Evergreen Terrace 742");
+
+        assertThat(patient.getTelecom()).hasSize(1);
+        var contactPoint = patient.getTelecom().get(0);
+        assertThat(contactPoint.getValue()).isEqualTo("0245-33553");
+        assertThat(contactPoint.getUse()).isEqualTo("home");
+        assertThat(contactPoint.getSystem()).isEqualTo("phone");
     }
 
     @Test
