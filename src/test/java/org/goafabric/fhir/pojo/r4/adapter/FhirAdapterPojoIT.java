@@ -1,7 +1,6 @@
 package org.goafabric.fhir.pojo.r4.adapter;
 
 import lombok.extern.slf4j.Slf4j;
-import org.goafabric.fhir.pojo.r4.adapter.FhirAdapter;
 import org.goafabric.fhir.pojo.r4.dto.Organization;
 import org.goafabric.fhir.pojo.r4.dto.Patient;
 import org.goafabric.fhir.pojo.r4.dto.Practitioner;
@@ -15,7 +14,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @Slf4j
-public class FhirAdapterIT {
+public class FhirAdapterPojoIT {
     @Autowired
     private FhirAdapter fhirAdapter;
 
