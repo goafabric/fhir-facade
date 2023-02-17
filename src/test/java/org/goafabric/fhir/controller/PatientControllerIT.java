@@ -46,6 +46,12 @@ class PatientControllerIT {
         assertThat(contactPoint.getValue()).isEqualTo("0245-33553");
         assertThat(contactPoint.getUse().toCode()).isEqualTo("home");
         assertThat(contactPoint.getSystem().toCode()).isEqualTo("phone");
+
+        //extension bullshit
+        var familyExtension = patient.getName().get(0).getFamilyElement().getExtension();
+        assertThat(familyExtension).hasSize(1);
+        assertThat(familyExtension.get(0).getValue().toString()).isEqualTo("The 3rd");
+        assertThat(familyExtension.get(0).getUrl()).isEqualTo("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2");
     }
 
     @Test
@@ -82,6 +88,12 @@ class PatientControllerIT {
         assertThat(contactPoint.getValue()).isEqualTo("0245-33553");
         assertThat(contactPoint.getUse().toCode()).isEqualTo("home");
         assertThat(contactPoint.getSystem().toCode()).isEqualTo("phone");
+
+        //extension bullshit
+        var familyExtension = patient.getName().get(0).getFamilyElement().getExtension();
+        assertThat(familyExtension).hasSize(1);
+        assertThat(familyExtension.get(0).getValue().toString()).isEqualTo("The 3rd");
+        assertThat(familyExtension.get(0).getUrl()).isEqualTo("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2");
     }
 
 }
