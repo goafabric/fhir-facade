@@ -29,7 +29,6 @@ public class Bundle {
     public static class BundleEntryComponent {
         private String fullUrl;
         private Object resource;
-        //private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
     }
 
 }
