@@ -33,6 +33,8 @@ public class PractitionerMockAdapter implements PractitionerAdapter {
 
 
     private HumanName createName() {
+        //StringType family = new StringType("Burns").addExtension(Extension.builder().url("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2").valueString("the 3rd").build());
+
         var humanName = HumanName.builder()
                 .given(Arrays.asList("Monty"))
                 .family("Burns")

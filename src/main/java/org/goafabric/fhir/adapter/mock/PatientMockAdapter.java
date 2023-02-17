@@ -49,6 +49,8 @@ public class PatientMockAdapter implements PatientAdapter {
 
 
     private HumanName createName() {
+        //StringType family = new StringType("Simpson");//addExtension(Extension.builder().url("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2").valueString("the 3rd").build());
+
         var humanName = HumanName.builder()
                 .given(Arrays.asList("Homer"))
                 .family("Simpson")
