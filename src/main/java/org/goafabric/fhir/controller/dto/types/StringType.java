@@ -2,16 +2,12 @@ package org.goafabric.fhir.controller.dto.types;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Getter;
-import org.goafabric.fhir.controller.dto.Extension;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 public class StringType {
 
     public StringType(String value) {
-        this.value = value;
+        this.value = value.toCharArray();
     }
 
     public StringType() {
@@ -19,8 +15,9 @@ public class StringType {
 
 
     @JacksonXmlProperty(isAttribute = true)
-    private String value;
+    private char[] value;
 
+    /*
     private List<Extension> extensions = null;
 
     public StringType addExtension(Extension extension) {
@@ -30,5 +27,7 @@ public class StringType {
         extensions.add(extension);
         return this;
     }
+
+     */
 
 }
