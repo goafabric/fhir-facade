@@ -1,0 +1,27 @@
+{
+  "resourceType": "Patient",
+  "name": [ {
+    "family": "Simpson",
+    "_family": {
+      "extension": [ {
+        "url": "http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2",
+        "valueString": "The 3rd"
+      } ]
+    },
+    "given": [ "Homer" ]
+  } ],
+  "telecom": [ {
+    "id": "45",
+    "system": "phone",
+    "value": "0245-33553",
+    "use": "home"
+  } ],
+  "address": [ {
+    "id": "42",
+    "use": "home",
+    "line": [ "Evergreen Terrace 742" ],
+    "city": "Springfield",
+    "postalCode": "78313",
+    "country": "US"
+  } ]
+}

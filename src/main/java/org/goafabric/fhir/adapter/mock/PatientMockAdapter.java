@@ -51,7 +51,7 @@ public class PatientMockAdapter implements PatientAdapter {
                 .addGiven("Homer")
                 .setFamily("Simpson");
 
-        //humanName.getFamilyElement().addExtension(new Extension("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2", new StringType("The 3rd")));
+        humanName.getFamilyElement().addExtension(new Extension("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2", new StringType("The 3rd")));
         return humanName;
     }
 

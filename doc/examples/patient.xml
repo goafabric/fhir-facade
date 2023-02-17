@@ -1,0 +1,22 @@
+<Patient xmlns="http://hl7.org/fhir">
+   <name>
+      <family value="Simpson">
+         <extension url="http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2">
+            <valueString value="The 3rd"></valueString>
+         </extension>
+      </family>
+      <given value="Homer"></given>
+   </name>
+   <telecom id="45">
+      <system value="phone"></system>
+      <value value="0245-33553"></value>
+      <use value="home"></use>
+   </telecom>
+   <address id="42">
+      <use value="home"></use>
+      <line value="Evergreen Terrace 742"></line>
+      <city value="Springfield"></city>
+      <postalCode value="78313"></postalCode>
+      <country value="US"></country>
+   </address>
+</Patient>
