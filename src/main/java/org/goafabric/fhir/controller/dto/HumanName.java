@@ -19,6 +19,4 @@ public class HumanName {
     //@JsonSerialize(converter = StringConverter.class)
     public String family;
     public List<String> given;
-
-    //private final ExtensionWrapper _family = new ExtensionWrapper().addExtension("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2", "the 3rd");
 }
