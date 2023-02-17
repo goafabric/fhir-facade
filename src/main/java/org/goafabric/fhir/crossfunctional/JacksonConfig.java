@@ -17,7 +17,8 @@ public class JacksonConfig {
 
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jsonCustomizer() {
-        return builder -> builder.defaultUseWrapper(false) // unwrap xml lists
+        return builder -> builder
+                .defaultUseWrapper(false) // unwrap xml lists
                 .serializationInclusion(JsonInclude.Include.NON_NULL)
                 .serializerByType(String.class, new JsonSerializer<String>() {
                     @Override
