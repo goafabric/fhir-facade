@@ -5,17 +5,12 @@ import lombok.Getter;
 
 @Getter
 public class StringType {
+    @JacksonXmlProperty(isAttribute = true)
+    private char[] value; //need char here otherwise infinite recursion
 
     public StringType(String value) {
         this.value = value.toCharArray();
     }
-
-    public StringType() {
-    }
-
-
-    @JacksonXmlProperty(isAttribute = true)
-    private char[] value;
 
     /*
     private List<Extension> extensions = null;
@@ -27,7 +22,7 @@ public class StringType {
         extensions.add(extension);
         return this;
     }
-
      */
 
 }
+

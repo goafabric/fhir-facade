@@ -12,19 +12,17 @@ import org.springframework.context.annotation.Configuration;
 import java.io.IOException;
 
 //JacksonConfig that tries to align XML Output with what (HAPI) FHIR Client expects the XML to look like
-//Additionally Strings need to have a Value Field, this can be achieved with thr converter below but than breaks JSON
 @Configuration
 public class JacksonConfig {
 
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jsonCustomizer() {
-        //additionally all Strings need to be annotated with @JsonSerialize(converter = StringConverter.class) public String family;
         return builder -> builder.defaultUseWrapper(false) // unwrap xml lists
                 .serializationInclusion(JsonInclude.Include.NON_NULL)
                 .serializerByType(String.class, new JsonSerializer<String>() {
                     @Override
                     public void serialize(String value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-                        if ("ToXmlGenerator".equals(gen.getClass().getSimpleName())) {
+                        if ("ToXmlGenerator".equals(gen.getClass().getSimpleName())) { //only hack if xml and not json
                             gen.writeObject(new StringType(value));
                         } else {
                             gen.writeString(value);
@@ -32,4 +30,5 @@ public class JacksonConfig {
                     }
                 });
     }
+
 }

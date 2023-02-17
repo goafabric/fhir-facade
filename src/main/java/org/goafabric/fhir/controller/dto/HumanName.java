@@ -16,7 +16,6 @@ public class HumanName {
 
     public String use;
 
-    //@JsonSerialize(converter = StringConverter.class)
     public String family;
     public List<String> given;
 }
