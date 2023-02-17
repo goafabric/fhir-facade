@@ -1,0 +1,40 @@
+<Bundle xmlns="http://hl7.org/fhir">
+   <id value="7b0e7c8d-e9ce-4719-b24f-d2276126d88b"></id>
+   <meta>
+      <lastUpdated value="2023-02-17T15:47:08.407+01:00"></lastUpdated>
+   </meta>
+   <type value="searchset"></type>
+   <total value="1"></total>
+   <link>
+      <relation value="self"></relation>
+      <url value="/fhir/Patient?family=Simpson"></url>
+   </link>
+   <entry>
+      <fullUrl value="/fhir/Patient/1"></fullUrl>
+      <resource>
+         <Patient xmlns="http://hl7.org/fhir">
+            <id value="1"></id>
+            <name>
+               <family value="Simpson">
+                  <extension url="http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2">
+                     <valueString value="The 3rd"></valueString>
+                  </extension>
+               </family>
+               <given value="Homer"></given>
+            </name>
+            <telecom id="45">
+               <system value="phone"></system>
+               <value value="0245-33553"></value>
+               <use value="home"></use>
+            </telecom>
+            <address id="42">
+               <use value="home"></use>
+               <line value="Evergreen Terrace 742"></line>
+               <city value="Springfield"></city>
+               <postalCode value="78313"></postalCode>
+               <country value="US"></country>
+            </address>
+         </Patient>
+      </resource>
+   </entry>
+</Bundle>
