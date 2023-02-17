@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.*;
+
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PatientControllerIT {
@@ -24,8 +25,22 @@ class PatientControllerIT {
                         .withId("1").execute();
 
         assertThat(patient).isNotNull();
-        assertThat(patient.getName().get(0).getGiven().get(0).getValue()).isEqualTo("Homer");
+
+        assertThat(patient.getName()).hasSize(1);
         assertThat(patient.getName().get(0).getFamily()).isEqualTo("Simpson");
+        assertThat(patient.getName().get(0).getGiven().get(0).getValue()).isEqualTo("Homer");
+
+        assertThat(patient.getAddress()).hasSize(1);
+        var address = patient.getAddress().get(0);
+        assertThat(address.getCity()).isEqualTo("Springfield");
+        assertThat(address.getPostalCode()).isEqualTo("78313");
+        assertThat(address.getCountry()).isEqualTo("US");
+
+        assertThat(address.getUse().toString()).isEqualTo("HOME");
+
+        assertThat(address.getLine()).hasSize(1);
+        assertThat(address.getLine().get(0).toString()).isEqualTo("Evergreen Terrace 742");
+
     }
 
     @Test
