@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Extension {
     private String url;
-    private String valueString;
+    private String valueString; //also seems to be StringType with value field
 }
