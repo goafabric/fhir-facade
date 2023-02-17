@@ -1,6 +1,7 @@
 package org.goafabric.fhir.controller;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
+import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Patient;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -47,7 +48,6 @@ class PatientControllerIT {
         assertThat(contactPoint.getSystem().toCode()).isEqualTo("phone");
     }
 
-    /*
     @Test
     void findPatient() {
         final IGenericClient client = ClientFactory.createClient(port);
@@ -83,7 +83,5 @@ class PatientControllerIT {
         assertThat(contactPoint.getUse().toCode()).isEqualTo("home");
         assertThat(contactPoint.getSystem().toCode()).isEqualTo("phone");
     }
-
-     */
 
 }
