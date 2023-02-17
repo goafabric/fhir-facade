@@ -1,6 +1,7 @@
 package org.goafabric.fhir.pojo.r4.adapter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 import org.goafabric.fhir.pojo.r4.dto.Organization;
 import org.goafabric.fhir.pojo.r4.dto.Patient;
 import org.goafabric.fhir.pojo.r4.dto.Practitioner;
@@ -23,8 +24,21 @@ public class FhirAdapterPojoIT {
         final Patient patient = fhirAdapter.getPatient("1");
         log.info(patient.toString());
         assertThat(patient).isNotNull();
-        assertThat(patient.getName().get(0).getFamily()).isEqualTo("Simpson");
-        assertThat(patient.getName().get(0).getGiven().get(0)).isEqualTo("Homer");
+
+        Assertions.assertThat(patient.getName()).hasSize(1);
+        Assertions.assertThat(patient.getName().get(0).getFamily()).isEqualTo("Simpson");
+        Assertions.assertThat(patient.getName().get(0).getGiven().get(0).toString()).isEqualTo("Homer");
+
+        Assertions.assertThat(patient.getAddress()).hasSize(1);
+        var address = patient.getAddress().get(0);
+        Assertions.assertThat(address.getCity()).isEqualTo("Springfield");
+        Assertions.assertThat(address.getPostalCode()).isEqualTo("78313");
+        Assertions.assertThat(address.getCountry()).isEqualTo("US");
+
+        Assertions.assertThat(address.getUse().toString()).isEqualTo("home");
+
+        Assertions.assertThat(address.getLine()).hasSize(1);
+        Assertions.assertThat(address.getLine().get(0).toString()).isEqualTo("Evergreen Terrace 742");
     }
 
     @Test

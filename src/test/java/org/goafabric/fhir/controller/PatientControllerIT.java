@@ -28,7 +28,7 @@ class PatientControllerIT {
 
         assertThat(patient.getName()).hasSize(1);
         assertThat(patient.getName().get(0).getFamily()).isEqualTo("Simpson");
-        assertThat(patient.getName().get(0).getGiven().get(0).getValue()).isEqualTo("Homer");
+        assertThat(patient.getName().get(0).getGiven().get(0).toString()).isEqualTo("Homer");
 
         assertThat(patient.getAddress()).hasSize(1);
         var address = patient.getAddress().get(0);
@@ -36,7 +36,7 @@ class PatientControllerIT {
         assertThat(address.getPostalCode()).isEqualTo("78313");
         assertThat(address.getCountry()).isEqualTo("US");
 
-        assertThat(address.getUse().toString()).isEqualTo("HOME");
+        assertThat(address.getUse().toCode()).isEqualTo("home");
 
         assertThat(address.getLine()).hasSize(1);
         assertThat(address.getLine().get(0).toString()).isEqualTo("Evergreen Terrace 742");
@@ -58,7 +58,7 @@ class PatientControllerIT {
 
         assertThat(patient.getName()).hasSize(1);
         assertThat(patient.getName().get(0).getFamily()).isEqualTo("Simpson");
-        assertThat(patient.getName().get(0).getGiven().get(0).getValue()).isEqualTo("Homer");
+        assertThat(patient.getName().get(0).getGiven().get(0).toString()).isEqualTo("Homer");
 
         assertThat(patient.getAddress()).hasSize(1);
         var address = patient.getAddress().get(0);
@@ -66,11 +66,10 @@ class PatientControllerIT {
         assertThat(address.getPostalCode()).isEqualTo("78313");
         assertThat(address.getCountry()).isEqualTo("US");
 
-        assertThat(address.getUse().toString()).isEqualTo("HOME");
+        assertThat(address.getUse().toCode()).isEqualTo("home");
 
         assertThat(address.getLine()).hasSize(1);
         assertThat(address.getLine().get(0).toString()).isEqualTo("Evergreen Terrace 742");
-
     }
 
 }
