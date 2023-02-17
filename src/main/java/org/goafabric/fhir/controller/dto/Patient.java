@@ -13,6 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Patient {
+
+    //@JacksonXmlProperty(isAttribute = true) private final String xmlns = "http://hl7.org/fhir";
+
     public String id;
     public Meta meta;
     private final String resourceType = "Patient";
