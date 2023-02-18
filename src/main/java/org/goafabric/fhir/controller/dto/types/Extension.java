@@ -1,4 +1,4 @@
-package org.goafabric.fhir.controller.dto;
+package org.goafabric.fhir.controller.dto.types;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

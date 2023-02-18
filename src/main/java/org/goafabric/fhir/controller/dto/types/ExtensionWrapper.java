@@ -1,7 +1,6 @@
 package org.goafabric.fhir.controller.dto.types;
 
 import lombok.Data;
-import org.goafabric.fhir.controller.dto.Extension;
 
 import java.util.ArrayList;
 import java.util.List;
