@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -45,6 +45,17 @@ public class FhirAdapterPojoIT {
         Assertions.assertThat(contactPoint.getValue()).isEqualTo("0245-33553");
         Assertions.assertThat(contactPoint.getUse()).isEqualTo("home");
         Assertions.assertThat(contactPoint.getSystem()).isEqualTo("phone");
+    }
+
+    @Test
+    public void findPatient() {
+        var bundle = fhirAdapter.findPatient("Simpson");
+        //log.info(bundle.toString());
+        assertThat(bundle).isNotNull();
+
+        assertThat(bundle.getEntry()).hasSize(1);
+        Object patient = bundle.getEntry().get(0).getResource();
+        log.info(patient.toString()); //this is unfortunately a linkedlist
     }
 
     @Test
