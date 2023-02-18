@@ -4,4 +4,4 @@
 
 # What does not work 
 - Extensions
-- Bundles / Search, as BundleEntry does not contain a List of Objects, but LinkedList, Content is stil there though
+- Bundles / Search, as BundleEntry does not contain a List of Objects, but LinkedHashMap, Content is stil there though
