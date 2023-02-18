@@ -31,7 +31,9 @@ public class XMLTests {
     private static String getXml() throws JsonProcessingException {
         var xmlMapper = XmlMapper.builder()
                 //has to be in line with JacksonConfig Configuration
-                .defaultUseWrapper(false).serializationInclusion(JsonInclude.Include.NON_NULL).build();
+                .defaultUseWrapper(false)
+                .serializationInclusion(JsonInclude.Include.NON_NULL)
+                .build();
 
         xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
         String xml = xmlMapper.writeValueAsString(new PatientMockAdapter().getPatient("1"));
