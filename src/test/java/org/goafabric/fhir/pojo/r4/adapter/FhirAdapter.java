@@ -1,5 +1,6 @@
 package org.goafabric.fhir.pojo.r4.adapter;
 
+import org.goafabric.fhir.controller.dto.Bundle;
 import org.goafabric.fhir.controller.dto.Organization;
 import org.goafabric.fhir.controller.dto.Patient;
 import org.goafabric.fhir.controller.dto.Practitioner;
@@ -19,6 +20,10 @@ public class FhirAdapter {
 
     public Patient getPatient(String id) {
         return restTemplate.getForObject(baseUri + "Patient" + "/" + id, Patient.class);
+    }
+
+    public Bundle findPatient(String familyName) {
+        return restTemplate.getForObject(baseUri + "Patient" + "?family=" + familyName, Bundle.class);
     }
 
     public Practitioner getPractitioner(String id) {

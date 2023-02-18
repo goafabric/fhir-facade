@@ -47,6 +47,17 @@ public class FhirAdapterPojoIT {
     }
 
     @Test
+    public void findPatient() {
+        var bundle = fhirAdapter.findPatient("Simpson");
+        //log.info(bundle.toString());
+        assertThat(bundle).isNotNull();
+
+        assertThat(bundle.getEntry()).hasSize(1);
+        Object patient = bundle.getEntry().get(0).getResource();
+        log.info(patient.toString()); //this is unfortunately a linkedlist
+    }
+
+    @Test
     public void getPractitioner() {
         final Practitioner practitioner = fhirAdapter.getPractitioner("1");
         log.info(practitioner.toString());
