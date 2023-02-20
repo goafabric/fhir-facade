@@ -98,12 +98,12 @@ public class FhirAdapterPojoIT {
 
     @Test
     public void getBundle() {
-        final Bundle bundle = fhirAdapter.getBundle("1");
+        final Bundle<Object> bundle = fhirAdapter.getBundle("1");
         log.info(bundle.toString());
         assertThat(bundle).isNotNull();
 
         assertThat(bundle.getEntry()).hasSize(2);
-        Object resource = ((Bundle.BundleEntryComponent) bundle.getEntry().get(0)).getResource();
+        Object resource =  bundle.getEntry().get(0).getResource();
 
         assertThat(resource).isNotNull();
         int x = 5;

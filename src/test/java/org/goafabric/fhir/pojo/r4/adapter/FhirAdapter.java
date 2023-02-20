@@ -48,7 +48,8 @@ public class FhirAdapter {
         return restTemplate.getForObject(baseUri + "TIConfiguration" + "/" + id, TIConfigurationPojo.class);
     }
 
-    public Bundle getBundle(String id) {
-        return restTemplate.getForObject(baseUri + "Bundle" + "/" + id, Bundle.class);
+    public Bundle<Object> getBundle(String id) {
+        return restTemplate.exchange(baseUri + "Bundle" + "/" + id, HttpMethod.GET, null, new ParameterizedTypeReference<Bundle<Object>>(){}).getBody();
+
     }
 }
