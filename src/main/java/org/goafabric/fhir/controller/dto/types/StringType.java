@@ -13,15 +13,16 @@ public class StringType {
     }
 
     /*
-    private List<Extension> extensions = null;
+    private List<Extension> extension = null;
 
     public StringType addExtension(Extension extension) {
-        if (extensions == null) {
-            extensions = new ArrayList<>();
+        if (this.extension == null) {
+            this.extension = new ArrayList<>();
         }
-        extensions.add(extension);
+        this.extension.add(extension);
         return this;
     }
+
      */
 
 }

@@ -9,13 +9,13 @@ import java.util.List;
 //private final ExtensionWrapper _family = new ExtensionWrapper().addExtension("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2", "the 3rd");
 public class ExtensionWrapper {
 
-    private List<Extension> extensions;
+    private List<Extension> extension;
 
     public ExtensionWrapper addExtension(String url, String valueString) {
-        if (extensions == null) {
-            extensions = new ArrayList<>();
+        if (extension == null) {
+            extension = new ArrayList<>();
         }
-        extensions.add(new Extension(url, valueString));
+        extension.add(new Extension(url, valueString));
         return this;
 
     }
