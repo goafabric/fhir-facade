@@ -1,10 +1,10 @@
 
-package org.goafabric.fhir.pojo.r4.dto.observation;
+package org.goafabric.fhir.controller.dto.coverage;
 
 import lombok.Data;
 
 @Data
-public class Subject {
+public class Payor {
 
     public String reference;
     public String display;

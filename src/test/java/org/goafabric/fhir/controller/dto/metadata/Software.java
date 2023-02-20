@@ -1,5 +1,5 @@
 
-package org.goafabric.fhir.pojo.r4.dto.metadata;
+package org.goafabric.fhir.controller.dto.metadata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

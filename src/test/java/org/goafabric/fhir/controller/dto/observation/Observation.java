@@ -1,9 +1,9 @@
 
-package org.goafabric.fhir.pojo.r4.dto.observation;
+package org.goafabric.fhir.controller.dto.observation;
 
 import lombok.Data;
-import org.goafabric.fhir.pojo.r4.dto.Meta;
-import org.goafabric.fhir.pojo.r4.dto.Text;
+import org.goafabric.fhir.controller.dto.Meta;
+import org.goafabric.fhir.controller.dto.Text;
 
 @Data
 public class Observation {

@@ -1,5 +1,5 @@
 
-package org.goafabric.fhir.pojo.r4.dto;
+package org.goafabric.fhir.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;

@@ -1,8 +1,8 @@
 
-package org.goafabric.fhir.pojo.r4.dto.coverage;
+package org.goafabric.fhir.controller.dto.coverage;
 
 import lombok.Data;
-import org.goafabric.fhir.pojo.r4.dto.Meta;
+import org.goafabric.fhir.controller.dto.Meta;
 
 import java.util.List;
 

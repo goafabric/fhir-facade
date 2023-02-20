@@ -1,5 +1,5 @@
 
-package org.goafabric.fhir.pojo.r4.dto.coverage;
+package org.goafabric.fhir.controller.dto.coverage;
 
 import lombok.Data;
 
