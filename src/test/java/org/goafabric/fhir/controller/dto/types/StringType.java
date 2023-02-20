@@ -6,14 +6,14 @@ import lombok.Getter;
 public class StringType {
     private char[] value; //need char here otherwise infinite recursion
 
-    public StringType(String value) {
+    private StringType(String value) {
         this.value = value.toCharArray();
     }
 
     /*
     private List<Extension> extension = null;
 
-    public StringType addExtension(Extension extension) {
+    private StringType addExtension(Extension extension) {
         if (this.extension == null) {
             this.extension = new ArrayList<>();
         }

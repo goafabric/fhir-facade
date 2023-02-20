@@ -15,11 +15,12 @@ import java.util.List;
 @AllArgsConstructor
 public class HumanName {
 
-    public String use;
-    public String family;
-    public List<String> given;
+    private String use;
+    private String family;
+    private List<String> given;
 
-    public ExtensionWrapper _family;
+    //extensions have to be defined like this, look at a json example and you will see why
+    private ExtensionWrapper _family;
     public ExtensionWrapper getFamilyExtension() {return _family; }
 
 }

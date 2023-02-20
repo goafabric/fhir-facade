@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Software {
 
     @JsonProperty("name")
-    public String name;
+    private String name;
     @JsonProperty("version")
-    public String version;
+    private String version;
 
 }

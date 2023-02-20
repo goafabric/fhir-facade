@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Implementation {
 
     @JsonProperty("description")
-    public String description;
+    private String description;
     @JsonProperty("url")
-    public String url;
+    private String url;
 
 }

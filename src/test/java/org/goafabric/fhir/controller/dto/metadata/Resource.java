@@ -8,14 +8,14 @@ import java.util.List;
 public class Resource {
 
     @JsonProperty("type")
-    public String type;
+    private String type;
     @JsonProperty("profile")
-    public String profile;
+    private String profile;
     @JsonProperty("interaction")
-    public List<Interaction> interaction;
+    private List<Interaction> interaction;
     @JsonProperty("searchInclude")
-    public List<String> searchInclude;
+    private List<String> searchInclude;
     @JsonProperty("searchParam")
-    public List<SearchParam> searchParam;
+    private List<SearchParam> searchParam;
 
 }

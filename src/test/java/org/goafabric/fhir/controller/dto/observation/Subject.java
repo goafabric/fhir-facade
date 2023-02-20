@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class Subject {
 
-    public String reference;
-    public String display;
+    private String reference;
+    private String display;
 
 }

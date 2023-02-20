@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 public class Beneficiary {
 
-    public String display;
+    private String display;
 
 }

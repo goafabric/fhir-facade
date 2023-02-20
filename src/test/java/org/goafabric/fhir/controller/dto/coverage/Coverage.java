@@ -10,15 +10,15 @@ import java.util.List;
 public class Coverage {
 
 
-    public String id;
+    private String id;
     public Meta meta;
-    public String resourceType;
+    private String resourceType;
 
-    public String status;
+    private String status;
     public Type type;
-    public String subscriberId;
+    private String subscriberId;
     public Beneficiary beneficiary;
 
-    public List<Payor> payor;
+    private List<Payor> payor;
 
 }

@@ -15,15 +15,15 @@ import java.util.List;
 public class Organization {
 
 
-    public String id;
+    private String id;
     public Meta meta;
     private final String resourceType = "Organization";
 
     public Boolean active;
-    public String name;
+    private String name;
 
-    public List<Identifier> identifier;
-    public List<Telecom> telecom;
-    public List<Address> address;
+    private List<Identifier> identifier;
+    private List<Telecom> telecom;
+    private List<Address> address;
 
 }

@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 public class Meta {
 
-    public String versionId;
-    public String lastUpdated;
-    public String source;
+    private String versionId;
+    private String lastUpdated;
+    private String source;
 
 }

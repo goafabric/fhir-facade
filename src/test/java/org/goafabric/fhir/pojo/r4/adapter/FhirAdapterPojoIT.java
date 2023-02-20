@@ -55,7 +55,6 @@ public class FhirAdapterPojoIT {
         assertThat(familyExtension).hasSize(1);
         assertThat(familyExtension.get(0).getValueString()).isEqualTo("The 3rd");
         assertThat(familyExtension.get(0).getUrl()).isEqualTo("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2");
-
     }
 
     @Test
