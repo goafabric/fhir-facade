@@ -4,5 +4,4 @@
 - Search Operations
 - Extensions have to defined as an extra "_" field, see a json example and class HumanName why 
 
-# What does not work
-- Generic Bundles, will be returned as LinkedHashmap as we are unable to predict the Type upfront 
+- Generic Bundles, will be returned as LinkedHashmap, @see FhirAdapterPojoIT.getBundle for an example 

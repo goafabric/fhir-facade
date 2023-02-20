@@ -117,15 +117,15 @@ public class FhirAdapterPojoIT {
         assertThat(bundle).isNotNull();
 
         assertThat(bundle.getEntry()).hasSize(2);
-        List<Bundle.BundleEntryComponent<Object>> entries  = bundle.getEntry();
-        for (Bundle.BundleEntryComponent<Object> entry : entries) {
-            LinkedHashMap resource = (LinkedHashMap) entry.getResource();
-            if (resource.get("resourceType").equals(Patient.class.getSimpleName())) {
-                Patient patient = mapper.convertValue(resource, Patient.class);
+
+        for (Bundle.BundleEntryComponent<Object> entry : bundle.getEntry()) {
+            final String resourceType = ((LinkedHashMap<String, String>) entry.getResource()).get("resourceType");
+            if (Patient.class.getSimpleName().equals(resourceType)) {
+                Patient patient = mapper.convertValue(entry.getResource(), Patient.class);
                 log.info(patient.toString());
             }
-            if (resource.get("resourceType").equals(Patient.class.getSimpleName())) {
-                Practitioner practitioner = mapper.convertValue(resource, Practitioner.class);
+            if (Practitioner.class.getSimpleName().equals(resourceType)) {
+                Practitioner practitioner = mapper.convertValue(entry.getResource(), Practitioner.class);
                 log.info(practitioner.toString());
             }
 
