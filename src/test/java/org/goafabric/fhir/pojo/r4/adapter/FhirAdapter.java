@@ -8,6 +8,8 @@ import org.goafabric.fhir.controller.dto.coverage.Coverage;
 import org.goafabric.fhir.controller.dto.custom.TIConfigurationPojo;
 import org.goafabric.fhir.controller.dto.observation.Observation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,8 +24,8 @@ public class FhirAdapter {
         return restTemplate.getForObject(baseUri + "Patient" + "/" + id, Patient.class);
     }
 
-    public Bundle findPatient(String familyName) {
-        return restTemplate.getForObject(baseUri + "Patient" + "?family=" + familyName, Bundle.class);
+    public Bundle<Patient> findPatient(String familyName) {
+        return restTemplate.exchange(baseUri + "Patient" + "?family=" + familyName, HttpMethod.GET, null, new ParameterizedTypeReference<Bundle<Patient>>(){}).getBody();
     }
 
     public Practitioner getPractitioner(String id) {
