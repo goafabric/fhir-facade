@@ -1,6 +1,7 @@
 
 package org.goafabric.fhir.controller.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,11 +17,9 @@ import java.util.List;
 public class HumanName {
 
     private String use;
-
     private String family;
     private List<String> given;
-
-    private ExtensionWrapper _family;
-    public ExtensionWrapper getFamilyExtension() {return _family; }
+    @JsonProperty("_family") //extensions have to be defined like this, look at a json example and you will see why
+    private ExtensionWrapper familyExtension;
 
 }
