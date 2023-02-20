@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import org.goafabric.fhir.adapter.mock.PatientMockAdapter;
-import org.goafabric.fhir.controller.dto.types.StringType;
+import org.goafabric.fhir.controller.dto.extension.StringType;
 import org.hl7.fhir.r4.model.Patient;
 import org.junit.jupiter.api.Test;
 

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -44,6 +44,14 @@ public class FhirAdapterPojoIT {
         assertThat(contactPoint.getValue()).isEqualTo("0245-33553");
         assertThat(contactPoint.getUse()).isEqualTo("home");
         assertThat(contactPoint.getSystem()).isEqualTo("phone");
+
+        /*
+        List<Extension> familyExtension = patient.getName().get(0).getFamilyExtension().getExtension();
+
+        assertThat(familyExtension).hasSize(1);
+        assertThat(familyExtension.get(0).getValueString()).isEqualTo("The 3rd");
+        assertThat(familyExtension.get(0).getUrl()).isEqualTo("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2");
+        */
     }
 
     @Test
