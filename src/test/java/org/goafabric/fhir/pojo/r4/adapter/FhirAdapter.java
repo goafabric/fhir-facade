@@ -1,12 +1,12 @@
 package org.goafabric.fhir.pojo.r4.adapter;
 
-import org.goafabric.fhir.controller.dto.Bundle;
-import org.goafabric.fhir.controller.dto.Organization;
-import org.goafabric.fhir.controller.dto.Patient;
-import org.goafabric.fhir.controller.dto.Practitioner;
-import org.goafabric.fhir.controller.dto.coverage.Coverage;
-import org.goafabric.fhir.controller.dto.custom.TIConfigurationPojo;
-import org.goafabric.fhir.controller.dto.observation.Observation;
+import org.goafabric.fhir.pojo.r4.dto.Bundle;
+import org.goafabric.fhir.pojo.r4.dto.Organization;
+import org.goafabric.fhir.pojo.r4.dto.Patient;
+import org.goafabric.fhir.pojo.r4.dto.Practitioner;
+import org.goafabric.fhir.pojo.r4.dto.coverage.Coverage;
+import org.goafabric.fhir.pojo.r4.dto.custom.TIConfigurationPojo;
+import org.goafabric.fhir.pojo.r4.dto.observation.Observation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
