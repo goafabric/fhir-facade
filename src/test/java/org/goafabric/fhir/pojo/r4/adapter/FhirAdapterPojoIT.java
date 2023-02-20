@@ -110,6 +110,8 @@ public class FhirAdapterPojoIT {
 
     @Test
     public void getBundle() throws JsonProcessingException {
+        final ObjectMapper mapper = new ObjectMapper();
+
         final Bundle<Object> bundle = fhirAdapter.getBundle("1");
         log.info(bundle.toString());
         assertThat(bundle).isNotNull();
@@ -119,11 +121,11 @@ public class FhirAdapterPojoIT {
         for (Bundle.BundleEntryComponent<Object> entry : entries) {
             LinkedHashMap resource = (LinkedHashMap) entry.getResource();
             if (resource.get("resourceType").equals(Patient.class.getSimpleName())) {
-                Patient patient = deSerialize(resource, Patient.class);
+                Patient patient = mapper.convertValue(resource, Patient.class);
                 log.info(patient.toString());
             }
             if (resource.get("resourceType").equals(Patient.class.getSimpleName())) {
-                Practitioner practitioner = deSerialize(resource, Practitioner.class);
+                Practitioner practitioner = mapper.convertValue(resource, Practitioner.class);
                 log.info(practitioner.toString());
             }
 
@@ -131,9 +133,5 @@ public class FhirAdapterPojoIT {
 
     }
 
-    private static <T> T deSerialize(Object resource, Class clazz) throws JsonProcessingException {
-        final ObjectMapper mapper = new ObjectMapper();
-        return (T) mapper.readValue(mapper.writeValueAsString(resource), clazz);
-    }
 
 }
