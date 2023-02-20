@@ -7,10 +7,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SearchParam {
 
     @JsonProperty("name")
-    public String name;
+    private String name;
     @JsonProperty("type")
-    public String type;
+    private String type;
     @JsonProperty("documentation")
-    public String documentation;
+    private String documentation;
 
 }

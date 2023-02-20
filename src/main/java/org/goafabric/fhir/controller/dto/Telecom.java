@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Telecom {
-    public String id;
+    private String id;
 
-    public String system;
-    public String value;
-    public String use;
+    private String system;
+    private String value;
+    private String use;
 
 }

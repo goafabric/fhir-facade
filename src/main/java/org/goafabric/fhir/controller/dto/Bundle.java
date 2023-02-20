@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Bundle<T> {
-    public String id;
+    private String id;
     private final String resourceType = "Bundle";
 
     private final List<BundleEntryComponent<T>> entry = new ArrayList<>();

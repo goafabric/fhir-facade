@@ -14,17 +14,17 @@ import java.util.List;
 @AllArgsConstructor
 public class Practitioner {
 
-    public String id;
+    private String id;
     public Meta meta;
     private final String resourceType = "Practitioner";
 
     public Boolean active;
-    public String gender;
-    public String birthDate;
+    private String gender;
+    private String birthDate;
 
-    public List<HumanName> name;
-    public List<Identifier> identifier;
-    public List<Telecom> telecom;
-    public List<Address> address;
+    private List<HumanName> name;
+    private List<Identifier> identifier;
+    private List<Telecom> telecom;
+    private List<Address> address;
 
 }

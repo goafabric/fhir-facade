@@ -7,6 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Interaction {
 
     @JsonProperty("code")
-    public String code;
+    private String code;
 
 }

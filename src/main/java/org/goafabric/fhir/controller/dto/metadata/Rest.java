@@ -9,8 +9,8 @@ import java.util.List;
 public class Rest {
 
     @JsonProperty("mode")
-    public String mode;
+    private String mode;
     @JsonProperty("resource")
-    public List<Resource> resource;
+    private List<Resource> resource;
 
 }

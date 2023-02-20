@@ -13,14 +13,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Address {
-    public String id;
+    private String id;
 
-    public String city;
-    public String state;
-    public String postalCode;
-    public String country;
-    public String use;
+    private String city;
+    private String state;
+    private String postalCode;
+    private String country;
+    private String use;
 
-    public List<String> line;
+    private List<String> line;
 
 }

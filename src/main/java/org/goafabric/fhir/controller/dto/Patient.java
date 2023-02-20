@@ -16,16 +16,16 @@ public class Patient {
 
     //@JacksonXmlProperty(isAttribute = true) private final String xmlns = "http://hl7.org/fhir";
 
-    public String id;
+    private String id;
     public Meta meta;
     private final String resourceType = "Patient";
 
-    public String gender;
-    public String birthDate;
+    private String gender;
+    private String birthDate;
 
-    public List<Identifier> identifier;
-    public List<HumanName> name;
-    public List<Telecom> telecom;
-    public List<Address> address;
+    private List<Identifier> identifier;
+    private List<HumanName> name;
+    private List<Telecom> telecom;
+    private List<Address> address;
 
 }

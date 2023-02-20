@@ -16,28 +16,28 @@ import java.util.List;
 public class MetaData {
 
     @JsonProperty("resourceType")
-    public String resourceType;
+    private String resourceType;
     @JsonProperty("id")
-    public String id;
+    private String id;
     @JsonProperty("name")
-    public String name;
+    private String name;
     @JsonProperty("status")
-    public String status;
+    private String status;
     @JsonProperty("date")
-    public String date;
+    private String date;
     @JsonProperty("publisher")
-    public String publisher;
+    private String publisher;
     @JsonProperty("kind")
-    public String kind;
+    private String kind;
     @JsonProperty("software")
     public Software software;
     @JsonProperty("implementation")
     public Implementation implementation;
     @JsonProperty("fhirVersion")
-    public String fhirVersion;
+    private String fhirVersion;
     @JsonProperty("format")
-    public List<String> format;
+    private List<String> format;
     @JsonProperty("rest")
-    public List<Rest> rest;
+    private List<Rest> rest;
 
 }

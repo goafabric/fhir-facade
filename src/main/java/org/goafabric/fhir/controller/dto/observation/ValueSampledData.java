@@ -12,5 +12,5 @@ public class ValueSampledData {
     public Integer lowerLimit;
     public Integer upperLimit;
     public Integer dimensions;
-    public String data;
+    private String data;
 }

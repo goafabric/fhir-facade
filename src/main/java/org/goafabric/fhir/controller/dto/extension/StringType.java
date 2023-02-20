@@ -15,7 +15,7 @@ public class StringType {
     /*
     private List<Extension> extension = null;
 
-    public StringType addExtension(Extension extension) {
+    private StringType addExtension(Extension extension) {
         if (this.extension == null) {
             this.extension = new ArrayList<>();
         }

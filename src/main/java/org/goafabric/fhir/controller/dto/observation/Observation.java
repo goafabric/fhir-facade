@@ -8,14 +8,14 @@ import org.goafabric.fhir.controller.dto.Text;
 @Data
 public class Observation {
 
-    public String id;
+    private String id;
     public Meta meta;
-    public String resourceType;
+    private String resourceType;
 
     public Text text;
-    public String status;
+    private String status;
     public Subject subject;
-    public String effectiveDateTime;
+    private String effectiveDateTime;
     public ValueSampledData valueSampledData;
 
 }

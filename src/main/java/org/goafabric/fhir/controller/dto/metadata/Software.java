@@ -11,8 +11,8 @@ import lombok.*;
 public class Software {
 
     @JsonProperty("name")
-    public String name;
+    private String name;
     @JsonProperty("version")
-    public String version;
+    private String version;
 
 }
