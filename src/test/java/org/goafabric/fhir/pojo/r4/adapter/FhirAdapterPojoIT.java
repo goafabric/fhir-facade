@@ -2,6 +2,7 @@ package org.goafabric.fhir.pojo.r4.adapter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
+import org.goafabric.fhir.controller.dto.Bundle;
 import org.goafabric.fhir.controller.dto.Organization;
 import org.goafabric.fhir.controller.dto.Patient;
 import org.goafabric.fhir.controller.dto.Practitioner;
@@ -94,5 +95,19 @@ public class FhirAdapterPojoIT {
         assertThat(tiConfiguration.getWorkplaceId()).isEqualTo("Special Workplace");
         assertThat(tiConfiguration.getOrganization().getName()).isEqualTo("Compuglobal Hyper Mega Net");
     }
-    
+
+    @Test
+    public void getBundle() {
+        final Bundle bundle = fhirAdapter.getBundle("1");
+        log.info(bundle.toString());
+        assertThat(bundle).isNotNull();
+
+        assertThat(bundle.getEntry()).hasSize(2);
+        Object resource = ((Bundle.BundleEntryComponent) bundle.getEntry().get(0)).getResource();
+
+        assertThat(resource).isNotNull();
+        int x = 5;
+
+    }
+
 }
