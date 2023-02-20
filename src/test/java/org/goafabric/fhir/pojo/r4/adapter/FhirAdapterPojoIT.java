@@ -7,7 +7,7 @@ import org.goafabric.fhir.controller.dto.Organization;
 import org.goafabric.fhir.controller.dto.Patient;
 import org.goafabric.fhir.controller.dto.Practitioner;
 import org.goafabric.fhir.controller.dto.custom.TIConfigurationPojo;
-import org.goafabric.fhir.controller.dto.types.Extension;
+import org.goafabric.fhir.controller.dto.extension.Extension;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.goafabric.fhir.controller.dto.types.ExtensionWrapper;
+import org.goafabric.fhir.controller.dto.extension.ExtensionWrapper;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package org.goafabric.fhir.controller.dto.types;
+package org.goafabric.fhir.controller.dto.extension;
 
 import lombok.Data;
 
