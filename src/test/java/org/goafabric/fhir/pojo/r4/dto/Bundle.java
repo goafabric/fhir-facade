@@ -12,11 +12,11 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Bundle {
+public class Bundle<T> {
     public String id;
     private final String resourceType = "Bundle";
 
-    private final List<BundleEntryComponent> entry = new ArrayList<>();
+    private final List<BundleEntryComponent<T>> entry = new ArrayList<>();
 
     public void addEntry(BundleEntryComponent bundleEntry) {
         entry.add(bundleEntry);
@@ -26,9 +26,9 @@ public class Bundle {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class BundleEntryComponent {
+    public static class BundleEntryComponent<T> {
         private String fullUrl;
-        private Object resource;
+        private T resource;
     }
 
 }

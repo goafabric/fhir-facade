@@ -54,8 +54,19 @@ public class FhirAdapterPojoIT {
         assertThat(bundle).isNotNull();
 
         assertThat(bundle.getEntry()).hasSize(1);
-        Object patient = bundle.getEntry().get(0).getResource();
-        log.info(patient.toString()); //this is unfortunately a linkedlist
+        Patient patient = bundle.getEntry().get(0).getResource();
+
+        assertThat(patient).isNotNull();
+
+        Assertions.assertThat(patient.getName()).hasSize(1);
+        Assertions.assertThat(patient.getName().get(0).getFamily()).isEqualTo("Simpson");
+        Assertions.assertThat(patient.getName().get(0).getGiven().get(0).toString()).isEqualTo("Homer");
+
+        Assertions.assertThat(patient.getAddress()).hasSize(1);
+        var address = patient.getAddress().get(0);
+        Assertions.assertThat(address.getCity()).isEqualTo("Springfield");
+        Assertions.assertThat(address.getPostalCode()).isEqualTo("78313");
+        Assertions.assertThat(address.getCountry()).isEqualTo("US");
     }
 
     @Test
