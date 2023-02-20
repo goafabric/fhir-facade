@@ -1,5 +1,7 @@
 package org.goafabric.fhir.pojo.r4.adapter;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.goafabric.fhir.controller.dto.Bundle;
@@ -12,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -106,15 +109,29 @@ public class FhirAdapterPojoIT {
     }
 
     @Test
-    public void getBundle() {
+    public void getBundle() throws JsonProcessingException {
         final Bundle<Object> bundle = fhirAdapter.getBundle("1");
         log.info(bundle.toString());
         assertThat(bundle).isNotNull();
 
         assertThat(bundle.getEntry()).hasSize(2);
-        Object resource =  bundle.getEntry().get(0).getResource();
+        List<Bundle.BundleEntryComponent<Object>> entries  = bundle.getEntry();
+        for (Bundle.BundleEntryComponent<Object> entry : entries) {
+            LinkedHashMap resource = (LinkedHashMap) entry.getResource();
+            if (resource.get("resourceType").equals(Patient.class.getSimpleName())) {
+                Patient patient = deSerialize(resource);
+                log.info(patient.toString());
+            }
 
-        assertThat(resource).isNotNull();
+        }
+
+    }
+
+    private Patient deSerialize(Object resource) throws JsonProcessingException {
+        final ObjectMapper mapper = new ObjectMapper();
+        Patient patient = mapper.readValue(mapper.writeValueAsString(resource), Patient.class);
+        return patient;
+
     }
 
 }
