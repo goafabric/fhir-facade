@@ -1,11 +1,7 @@
 package org.goafabric.fhir.adapter.mock;
 
 import org.goafabric.fhir.adapter.PatientAdapter;
-import org.goafabric.fhir.controller.dto.Address;
-import org.goafabric.fhir.controller.dto.Bundle;
-import org.goafabric.fhir.controller.dto.HumanName;
-import org.goafabric.fhir.controller.dto.Patient;
-import org.goafabric.fhir.controller.dto.Telecom;
+import org.goafabric.fhir.controller.dto.*;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -49,11 +45,12 @@ public class PatientMockAdapter implements PatientAdapter {
 
 
     private HumanName createName() {
-        //StringType family = new StringType("Simpson");//addExtension(Extension.builder().url("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2").valueString("the 3rd").build());
+        //StringType family = new StringType("Simpson");//addExtension(Extension.builder().url("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2").valueString("The 3rd").build());
 
         var humanName = HumanName.builder()
                 .given(Arrays.asList("Homer"))
                 .family("Simpson")
+                //.familyExtension(new ExtensionWrapper().addExtension("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2", "The 3rd"))
                 .build();
 
         return humanName;
