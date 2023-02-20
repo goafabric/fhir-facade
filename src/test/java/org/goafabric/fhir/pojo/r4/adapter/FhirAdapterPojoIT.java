@@ -106,8 +106,6 @@ public class FhirAdapterPojoIT {
         Object resource =  bundle.getEntry().get(0).getResource();
 
         assertThat(resource).isNotNull();
-        int x = 5;
-
     }
 
 }
