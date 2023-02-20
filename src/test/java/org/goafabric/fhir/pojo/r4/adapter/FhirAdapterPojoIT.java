@@ -119,19 +119,21 @@ public class FhirAdapterPojoIT {
         for (Bundle.BundleEntryComponent<Object> entry : entries) {
             LinkedHashMap resource = (LinkedHashMap) entry.getResource();
             if (resource.get("resourceType").equals(Patient.class.getSimpleName())) {
-                Patient patient = deSerialize(resource);
+                Patient patient = deSerialize(resource, Patient.class);
                 log.info(patient.toString());
+            }
+            if (resource.get("resourceType").equals(Patient.class.getSimpleName())) {
+                Practitioner practitioner = deSerialize(resource, Practitioner.class);
+                log.info(practitioner.toString());
             }
 
         }
 
     }
 
-    private Patient deSerialize(Object resource) throws JsonProcessingException {
+    private static <T> T deSerialize(Object resource, Class clazz) throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
-        Patient patient = mapper.readValue(mapper.writeValueAsString(resource), Patient.class);
-        return patient;
-
+        return (T) mapper.readValue(mapper.writeValueAsString(resource), clazz);
     }
 
 }
