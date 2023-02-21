@@ -1,12 +1,18 @@
 package org.goafabric.fhir.pojo.r4.adapter;
 
-import org.goafabric.fhir.controller.dto.Bundle;
-import org.goafabric.fhir.controller.dto.Organization;
-import org.goafabric.fhir.controller.dto.Patient;
-import org.goafabric.fhir.controller.dto.Practitioner;
+import org.goafabric.fhir.controller.dto.*;
+import org.goafabric.fhir.controller.dto.coverage.Beneficiary;
 import org.goafabric.fhir.controller.dto.coverage.Coverage;
+import org.goafabric.fhir.controller.dto.coverage.Payor;
+import org.goafabric.fhir.controller.dto.coverage.Type;
 import org.goafabric.fhir.controller.dto.custom.TIConfigurationPojo;
+import org.goafabric.fhir.controller.dto.extension.Extension;
+import org.goafabric.fhir.controller.dto.extension.ExtensionWrapper;
 import org.goafabric.fhir.controller.dto.observation.Observation;
+import org.goafabric.fhir.controller.dto.observation.Origin;
+import org.goafabric.fhir.controller.dto.observation.Subject;
+import org.goafabric.fhir.controller.dto.observation.ValueSampledData;
+import org.springframework.aot.hint.annotation.RegisterReflectionForBinding;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -14,6 +20,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component
+@RegisterReflectionForBinding(
+        {Patient.class, Practitioner.class, Organization.class, TIConfigurationPojo.class,
+         Coverage.class, Beneficiary.class, Payor.class, Type.class,
+         Observation.class, Origin.class, Subject.class, ValueSampledData.class,
+         Address.class, Bundle.class, HumanName.class, Identifier.class, Meta.class, Telecom.class, Text.class,
+         Extension.class, ExtensionWrapper.class})
 public class FhirAdapter {
     @Autowired
     private RestTemplate restTemplate;
