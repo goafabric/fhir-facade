@@ -18,7 +18,6 @@ import java.util.stream.Stream;
 //                Observation.class, Origin.class, Subject.class, ValueSampledData.class,
 //                Address.class, Bundle.class, HumanName.class, Identifier.class, Meta.class, Telecom.class, Text.class,
 //                Extension.class, ExtensionWrapper.class})
-                
 public class ReflectionConfiguration {
     static class ApplicationRuntimeHints implements RuntimeHintsRegistrar {
         @Override
