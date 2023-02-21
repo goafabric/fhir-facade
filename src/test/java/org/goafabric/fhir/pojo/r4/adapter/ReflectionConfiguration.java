@@ -12,15 +12,13 @@ import java.util.stream.Stream;
 
 @Configuration
 @ImportRuntimeHints(ReflectionConfiguration.ApplicationRuntimeHints.class)
-/*
-@RegisterReflectionForBinding(
-        {Patient.class, Practitioner.class, Organization.class, TIConfigurationPojo.class,
-                Coverage.class, Beneficiary.class, Payor.class, Type.class,
-                Observation.class, Origin.class, Subject.class, ValueSampledData.class,
-                Address.class, Bundle.class, HumanName.class, Identifier.class, Meta.class, Telecom.class, Text.class,
-                Extension.class, ExtensionWrapper.class})
+//@RegisterReflectionForBinding(
+//        {Patient.class, Practitioner.class, Organization.class, TIConfigurationPojo.class,
+//                Coverage.class, Beneficiary.class, Payor.class, Type.class,
+//                Observation.class, Origin.class, Subject.class, ValueSampledData.class,
+//                Address.class, Bundle.class, HumanName.class, Identifier.class, Meta.class, Telecom.class, Text.class,
+//                Extension.class, ExtensionWrapper.class})
                 
- */
 public class ReflectionConfiguration {
     static class ApplicationRuntimeHints implements RuntimeHintsRegistrar {
         @Override
@@ -59,3 +57,4 @@ public class ReflectionConfiguration {
 
     }
 }
+
