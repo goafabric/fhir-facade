@@ -45,9 +45,9 @@ public class ReflectionConfiguration {
 
         private Stream<Class<?>> findClasses(String packageName) {
             return new BufferedReader(new InputStreamReader(ClassLoader.getSystemClassLoader().getResourceAsStream(packageName.replaceAll("[.]", "/")))).lines()
-                    .filter(line -> line.endsWith(".class") && !line.contains("$")).map(clazz -> {
+                    .filter(line -> line.endsWith(".class")).map(clazz -> {
                         try {
-                            System.err.println(Class.forName(packageName + "." + clazz.substring(0, clazz.lastIndexOf('.'))));
+                            //System.err.println(Class.forName(packageName + "." + clazz.substring(0, clazz.lastIndexOf('.'))));
                             return Class.forName(packageName + "." + clazz.substring(0, clazz.lastIndexOf('.')));
                         } catch (ClassNotFoundException e) {
                             throw new IllegalStateException(e);
