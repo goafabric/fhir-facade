@@ -7,7 +7,7 @@ services:
     restart: 'no'
     ports:
       - "${_Values_service_port}:${_Values_service_port}"
-    command: ["-Xmx${_Values_resources_requests_memory}"]
+    command: ["-Xmx${_Values_resources_native_memory}"]
 
     healthcheck:
       test: "curl -f http://localhost:${_Values_service_port}/actuator/health || exit 1"
@@ -35,7 +35,7 @@ services:
       management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
 
       #zipkin/jaeger
-      spring.zipkin.baseUrl: "http://${_Values_host_docker_internal}:9411"
+      spring.zipkin.baseUrl: "http://host.docker.internal:9411"
       spring.zipkin.service.name: "fhir-facade-application"
       spring.sleuth.enabled: "true"
       spring.zipkin.enabled: "true"
@@ -100,7 +100,7 @@ services:
 
       #zipkin/jaeger
       spring.application.name: "person-service-application-example-tenant-0"
-      management.zipkin.tracing.endpoint: "http://${_Values_host_docker_internal}:9411/api/v2/spans"
+      management.zipkin.tracing.endpoint: "http://host.docker.internal:9411/api/v2/spans"
       management.tracing.sampling.probability: "1.0"
       management.tracing.enabled: "true"
       logging.level.zipkin2.reporter: "ERROR"
@@ -141,7 +141,7 @@ services:
 
       #zipkin/jaeger
       spring.application.name: "person-service-application-example-tenant-5a2f"
-      management.zipkin.tracing.endpoint: "http://${_Values_host_docker_internal}:9411/api/v2/spans"
+      management.zipkin.tracing.endpoint: "http://host.docker.internal:9411/api/v2/spans"
       management.tracing.sampling.probability: "1.0"
       management.tracing.enabled: "true"
       logging.level.zipkin2.reporter: "ERROR"
