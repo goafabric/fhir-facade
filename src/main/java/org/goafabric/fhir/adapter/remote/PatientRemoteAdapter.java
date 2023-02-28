@@ -25,6 +25,21 @@ public class PatientRemoteAdapter implements PatientAdapter {
     }
 
     @Override
+    public Patient findyFirstName(String firstName) {
+        return patientMapper.map(
+                personServiceClient.findByFirstName(firstName).get(0)
+        );
+    }
+
+    @Override
+    public Patient findyByLastName(String lastName) {
+        return patientMapper.map(
+                personServiceClient.findByLastName(lastName).get(0)
+        );
+    }
+
+
+    @Override
     public void sayMyName(String name) {
         personServiceClient.sayMyName(name);
     }

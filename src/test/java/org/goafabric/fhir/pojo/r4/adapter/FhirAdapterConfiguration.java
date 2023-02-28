@@ -17,6 +17,7 @@ public class FhirAdapterConfiguration {
         restTemplate.setMessageConverters(Collections.singletonList(new MappingJackson2HttpMessageConverter()));
         restTemplate.getInterceptors().add((request, body, execution) -> {
             request.getHeaders().set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+            request.getHeaders().set(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
             return execution.execute(request, body);
         });
         return restTemplate;

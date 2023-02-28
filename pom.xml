@@ -7,16 +7,16 @@
     <parent>
         <groupId>org.goafabric</groupId>
         <artifactId>spring-parent</artifactId>
-        <version>3.0.0</version>
+        <version>2.7.9</version>
         <relativePath>parent-pom/pom.xml</relativePath>
     </parent>
 
     <groupId>org.goafabric</groupId>
     <artifactId>fhir-facade</artifactId>
-    <version>2.0.3</version>
+    <version>2.0.4-SNAPSHOT</version>
 
     <properties>
-        <hapi.fihr.version>6.2.1</hapi.fihr.version>
+        <hapi.fihr.version>6.4.1</hapi.fihr.version>
     </properties>
 
     <dependencies>

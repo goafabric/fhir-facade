@@ -1,3 +1,7 @@
+# 2.0.4
+- upgrade to HAPI FHIR 6.4.1
+- upgrade to Spring Boot 2.7.9
+
 # 2.0.3
 - docker compose file with multi tenancy
 - service layer renamed to controller
