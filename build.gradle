@@ -1,7 +1,7 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.5'
+	id 'org.springframework.boot' version '2.7.9'
 	id 'io.spring.dependency-management' version '1.1.0'
-	id 'org.graalvm.buildtools.native' version '0.9.18'
+	id 'org.graalvm.buildtools.native' version '0.9.20'
 	id 'com.google.cloud.tools.jib' version '3.3.1'
 	id 'jacoco'
 	id 'java'
@@ -10,7 +10,7 @@ plugins {
 ext {
 	set('dockerRegistry', "goafabric")
 	set('baseImage', "ibm-semeru-runtimes:open-17.0.4.1_1-jre-focal@sha256:29d74ccd3e20aff9cca04df418ba6dca38cf86ea1dba42635c8d8ba89f2d25a5")
-	set('hapi.fhir.version', '6.2.5')
+	set('hapi.fhir.version', '6.4.1')
 }
 
 dependencies {
