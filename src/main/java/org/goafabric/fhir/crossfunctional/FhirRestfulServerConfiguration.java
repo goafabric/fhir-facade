@@ -27,7 +27,6 @@ import ca.uhn.fhir.rest.openapi.OpenApiInterceptor;
 import ca.uhn.fhir.rest.server.HardcodedServerAddressStrategy;
 import ca.uhn.fhir.rest.server.IResourceProvider;
 import ca.uhn.fhir.rest.server.RestfulServer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -52,14 +51,17 @@ import java.util.List;
 @ConfigurationProperties("hapi.fhir.rest")
 @AutoConfigureAfter({DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class FhirRestfulServerConfiguration extends RestfulServer {
-    @Autowired
-    private List<IResourceProvider> resourceProviders;
+    private final List<IResourceProvider> resourceProviders;
 
-    @Autowired
-    private FhirContext fhirContext;
+    private final FhirContext fhirContext;
 
-    @Value("${hapi.fhir.server.path}")
-    private String serverPath;
+    private final String serverPath;
+
+    public FhirRestfulServerConfiguration(List<IResourceProvider> resourceProviders, FhirContext fhirContext, @Value("${hapi.fhir.server.path}") String serverPath) {
+        this.resourceProviders = resourceProviders;
+        this.fhirContext = fhirContext;
+        this.serverPath = serverPath;
+    }
 
     @Bean
     public ServletRegistrationBean fhirServerRegistrationBean() {

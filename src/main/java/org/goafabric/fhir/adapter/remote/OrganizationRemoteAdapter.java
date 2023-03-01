@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Profile("remote")
 @Component
 public class OrganizationRemoteAdapter implements OrganizationAdapter {
-    private OrganizationMockAdapter organizationMockAdapter = new OrganizationMockAdapter();
+    private final OrganizationMockAdapter organizationMockAdapter = new OrganizationMockAdapter();
 
     @Override
     public Organization getOrganization(IdType idType) {

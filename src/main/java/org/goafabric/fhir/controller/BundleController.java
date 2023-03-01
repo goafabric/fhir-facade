@@ -10,16 +10,15 @@ import ca.uhn.fhir.rest.api.MethodOutcome;
 import org.goafabric.fhir.logic.BundleLogic;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.IdType;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class BundleController extends AbstractJaxRsResourceProvider<Bundle> {
-    @Autowired
-    private BundleLogic bundleLogic;
+    private final BundleLogic bundleLogic;
 
-    public BundleController(FhirContext fhirContext) {
+    public BundleController(FhirContext fhirContext, BundleLogic bundleLogic) {
         super(fhirContext);
+        this.bundleLogic = bundleLogic;
     }
 
     @Override

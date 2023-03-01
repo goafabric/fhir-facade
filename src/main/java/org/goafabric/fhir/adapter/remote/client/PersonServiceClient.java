@@ -3,7 +3,6 @@ package org.goafabric.fhir.adapter.remote.client;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.extern.slf4j.Slf4j;
 import org.goafabric.fhir.crossfunctional.BaseUrlBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -18,12 +17,14 @@ import java.util.List;
 @CircuitBreaker(name = "#{@baseUrlBean.getCBName()}")
 public class PersonServiceClient {
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
-    @Autowired
-    private BaseUrlBean baseUrlBean;
+    private final BaseUrlBean baseUrlBean;
 
+    public PersonServiceClient(RestTemplate restTemplate, BaseUrlBean baseUrlBean) {
+        this.restTemplate = restTemplate;
+        this.baseUrlBean = baseUrlBean;
+    }
 
     public Person getById(String id) {
         return restTemplate.getForObject(getServiceUrl() + "/getById/?id={id}",

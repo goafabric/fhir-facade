@@ -7,16 +7,15 @@ import ca.uhn.fhir.rest.annotation.Read;
 import org.goafabric.fhir.logic.OrganizationLogic;
 import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Organization;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class OrganizationController extends AbstractJaxRsResourceProvider<Organization> {
-    @Autowired
-    private OrganizationLogic organizationLogic;
+    private final OrganizationLogic organizationLogic;
 
-    public OrganizationController(FhirContext fhirContext) {
+    public OrganizationController(FhirContext fhirContext, OrganizationLogic organizationLogic) {
         super(fhirContext);
+        this.organizationLogic = organizationLogic;
     }
     
     @Override
