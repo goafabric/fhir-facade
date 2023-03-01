@@ -7,7 +7,6 @@ import ca.uhn.fhir.rest.annotation.IdParam;
 import ca.uhn.fhir.rest.annotation.OptionalParam;
 import ca.uhn.fhir.rest.annotation.Read;
 import ca.uhn.fhir.rest.annotation.Search;
-import lombok.extern.slf4j.Slf4j;
 import org.goafabric.fhir.logic.PatientLogic;
 import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Patient;
@@ -18,7 +17,6 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-@Slf4j
 public class PatientController extends AbstractJaxRsResourceProvider<Patient> {
     private final PatientLogic patientLogic;
 
@@ -41,11 +39,9 @@ public class PatientController extends AbstractJaxRsResourceProvider<Patient> {
     @Search
     public List<Patient> findPatientsByFamilyName(@OptionalParam(name = Patient.SP_FAMILY) StringType familyName,
                                                   @OptionalParam(name = Patient.SP_NAME) StringType name) {
-        log.info("name: {}, familyName: {}", name, familyName);
         IdType idType = new IdType();
         idType.setId("1");
         return Arrays.asList(patientLogic.findyByLastName(familyName.getValue()));
     }
-
 
 }

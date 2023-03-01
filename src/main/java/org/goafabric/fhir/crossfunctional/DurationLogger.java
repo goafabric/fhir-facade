@@ -1,10 +1,11 @@
 package org.goafabric.fhir.crossfunctional;
 
-import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
@@ -16,8 +17,8 @@ import java.util.stream.Collectors;
  */
 @Component
 @Aspect
-@Slf4j
 public class DurationLogger {
+    private static Logger log = LoggerFactory.getLogger(DurationLogger.class);
 
     @Around("execution(public * *(..)) && within(@org.goafabric.fhir.crossfunctional.DurationLog *)")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {

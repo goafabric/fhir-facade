@@ -1,7 +1,6 @@
 package org.goafabric.fhir.adapter.remote.client;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-import lombok.extern.slf4j.Slf4j;
 import org.goafabric.fhir.crossfunctional.BaseUrlBean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.ParameterizedTypeReference;
@@ -11,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-@Slf4j
 @Component
 @Profile("remote")
 @CircuitBreaker(name = "#{@baseUrlBean.getCBName()}")
