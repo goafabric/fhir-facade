@@ -1,4 +1,5 @@
 # 2.0.5
+- maven build (re) moved to doc/maven
 
 # 2.0.4
 - upgrade to HAPI FHIR 6.4.1
