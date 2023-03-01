@@ -4,6 +4,7 @@ import org.hl7.fhir.r4.model.IdType;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class OrganizationMockAdapterTest {
     OrganizationMockAdapter adapter = new OrganizationMockAdapter();
@@ -13,6 +14,11 @@ class OrganizationMockAdapterTest {
         var organization = adapter.getOrganization(new IdType());
         assertThat(organization).isNotNull();
         assertThat(organization.getName()).isEqualTo("Krusty Burger");
+    }
+
+    @Test
+    void getOrganizationNull() {
+        assertThatThrownBy(() -> adapter.getOrganization(null)).isInstanceOf(Exception.class);
     }
 
     @Test
