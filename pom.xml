@@ -16,7 +16,7 @@
     <version>2.0.5-SNAPSHOT</version>
 
     <properties>
-        <hapi.fihr.version>6.4.1</hapi.fihr.version>
+        <hapi.fhir.version>6.4.1</hapi.fhir.version>
     </properties>
 
     <dependencies>
@@ -52,7 +52,7 @@
         <dependency>
             <groupId>ca.uhn.hapi.fhir</groupId>
             <artifactId>hapi-fhir-jaxrsserver-base</artifactId>
-            <version>${hapi.fihr.version}</version>
+            <version>${hapi.fhir.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
@@ -64,14 +64,14 @@
         <dependency>
             <groupId>ca.uhn.hapi.fhir</groupId>
             <artifactId>hapi-fhir-client-okhttp</artifactId>
-            <version>${hapi.fihr.version}</version>
+            <version>${hapi.fhir.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>ca.uhn.hapi.fhir</groupId>
             <artifactId>hapi-fhir-server-openapi</artifactId>
-            <version>${hapi.fihr.version}</version>
+            <version>${hapi.fhir.version}</version>
         </dependency>
 
 
