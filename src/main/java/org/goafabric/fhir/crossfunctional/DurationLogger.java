@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Component
 @Aspect
 public class DurationLogger {
-    private static Logger log = LoggerFactory.getLogger(DurationLogger.class);
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Around("execution(public * *(..)) && within(@org.goafabric.fhir.crossfunctional.DurationLog *)")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
