@@ -1,14 +1,15 @@
 package org.goafabric.fhir.crossfunctional;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
-@Slf4j
 @ControllerAdvice
 public class ExceptionHandler {
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
     @org.springframework.web.bind.annotation.ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
         log.warn(ex.getMessage(), ex);
@@ -19,18 +20,6 @@ public class ExceptionHandler {
     public ResponseEntity<String> handleIllegalArgumentException(IllegalStateException ex) {
         log.warn(ex.getMessage(), ex);
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.PRECONDITION_FAILED);
-    }
-
-    @org.springframework.web.bind.annotation.ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<String> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
-        log.warn(ex.getMessage(), ex);
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.PRECONDITION_FAILED);
-    }
-
-    @org.springframework.web.bind.annotation.ExceptionHandler(java.util.NoSuchElementException.class)
-    public ResponseEntity<String> handleDataRetrievalException(java.util.NoSuchElementException ex) {
-        log.warn(ex.getMessage(), ex);
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)

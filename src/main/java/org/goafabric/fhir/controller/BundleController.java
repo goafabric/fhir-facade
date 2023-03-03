@@ -1,8 +1,7 @@
 package org.goafabric.fhir.controller;
 
-import org.goafabric.fhir.logic.BundleLogic;
 import org.goafabric.fhir.controller.dto.Bundle;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.goafabric.fhir.logic.BundleLogic;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,8 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "fhir/Bundle", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, "application/fhir+json"})
 public class BundleController {
-    @Autowired
-    private BundleLogic bundleLogic;
+    private final BundleLogic bundleLogic;
+    public BundleController(BundleLogic bundleLogic) {
+        this.bundleLogic = bundleLogic;
+    }
 
     @GetMapping("{id}")
     public Bundle getBundle(String id) {

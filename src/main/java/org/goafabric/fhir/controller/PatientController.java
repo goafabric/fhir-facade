@@ -2,10 +2,9 @@ package org.goafabric.fhir.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.goafabric.fhir.logic.PatientLogic;
 import org.goafabric.fhir.controller.dto.Bundle;
 import org.goafabric.fhir.controller.dto.Patient;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.goafabric.fhir.logic.PatientLogic;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,9 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "fhir/Patient", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, "application/fhir+json"})
 @Slf4j
 public class PatientController {
-    @Autowired
-    private PatientLogic patientLogic;
+    private final PatientLogic patientLogic;
 
+    public PatientController(PatientLogic patientLogic) {
+        this.patientLogic = patientLogic;
+    }
 
     @GetMapping("/{id}")
     public Patient getPatient(@PathVariable String id) {

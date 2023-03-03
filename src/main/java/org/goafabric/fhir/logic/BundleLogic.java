@@ -1,20 +1,22 @@
 package org.goafabric.fhir.logic;
 
 import lombok.extern.slf4j.Slf4j;
-import org.goafabric.fhir.crossfunctional.DurationLog;
 import org.goafabric.fhir.controller.dto.Bundle;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.goafabric.fhir.crossfunctional.DurationLog;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
 @DurationLog
 public class BundleLogic {
-    @Autowired
-    PatientLogic patientLogic;
+    private final PatientLogic patientLogic;
 
-    @Autowired
-    PractitionerLogic practitionerLogic;
+    private final PractitionerLogic practitionerLogic;
+
+    public BundleLogic(PatientLogic patientLogic, PractitionerLogic practitionerLogic) {
+        this.patientLogic = patientLogic;
+        this.practitionerLogic = practitionerLogic;
+    }
 
     public Bundle getBundle(String id) {
 
