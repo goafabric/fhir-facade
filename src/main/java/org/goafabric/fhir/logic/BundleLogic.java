@@ -1,14 +1,16 @@
 package org.goafabric.fhir.logic;
 
-import lombok.extern.slf4j.Slf4j;
 import org.goafabric.fhir.controller.dto.Bundle;
 import org.goafabric.fhir.crossfunctional.DurationLog;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-@Slf4j
 @Component
 @DurationLog
 public class BundleLogic {
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
     private final PatientLogic patientLogic;
 
     private final PractitionerLogic practitionerLogic;

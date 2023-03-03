@@ -1,17 +1,19 @@
 package org.goafabric.fhir.controller;
 
 
-import lombok.extern.slf4j.Slf4j;
 import org.goafabric.fhir.controller.dto.Bundle;
 import org.goafabric.fhir.controller.dto.Patient;
 import org.goafabric.fhir.logic.PatientLogic;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "fhir/Patient", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, "application/fhir+json"})
-@Slf4j
 public class PatientController {
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
     private final PatientLogic patientLogic;
 
     public PatientController(PatientLogic patientLogic) {
