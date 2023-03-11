@@ -3,7 +3,6 @@ package org.goafabric.fhir.controller.custom;
 import ca.uhn.fhir.context.FhirVersionEnum;
 import ca.uhn.fhir.model.api.annotation.Child;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
-import lombok.*;
 import org.hl7.fhir.r4.model.DomainResource;
 import org.hl7.fhir.r4.model.Organization;
 import org.hl7.fhir.r4.model.ResourceType;
@@ -14,12 +13,17 @@ import org.hl7.fhir.r4.model.StringType;
  * See https://hapifhir.io/hapi-fhir/docs/model/custom_structures.html#custom-resource-structure
  */
 @ResourceDef(name = "TIConfiguration", profile = "http://hl7.org/fhir/profiles/custom-resource")
-@Getter
-@Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class TIConfiguration extends DomainResource {
+
+    public TIConfiguration(StringType clientSystemId, StringType mandantId, StringType workplaceId, Organization organization) {
+        this.clientSystemId = clientSystemId;
+        this.mandantId = mandantId;
+        this.workplaceId = workplaceId;
+        this.organization = organization;
+    }
+
+    public TIConfiguration() {
+    }
 
     private static final long serialVersionUID = 1L;
 
@@ -45,6 +49,22 @@ public class TIConfiguration extends DomainResource {
     @Override
     public FhirVersionEnum getStructureFhirVersionEnum() {
         return FhirVersionEnum.R4;
+    }
+
+    public StringType getClientSystemId() {
+        return clientSystemId;
+    }
+
+    public StringType getMandantId() {
+        return mandantId;
+    }
+
+    public StringType getWorkplaceId() {
+        return workplaceId;
+    }
+
+    public Organization getOrganization() {
+        return organization;
     }
 
     @Override
