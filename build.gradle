@@ -10,7 +10,7 @@ plugins {
 ext {
 	set('dockerRegistry', "goafabric")
 	set('baseImage', 'ibm-semeru-runtimes:open-17.0.6_10-jre-focal@sha256:739eab970ff538cf22a20b768d7755dad80922a89b73b2fddd80dd79f9b880a1')
-	set('hapi.fhir.version', '6.4.3')
+	set('hapiFhirVersion', '6.4.3')
 }
 
 dependencies {
@@ -53,18 +53,18 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
 
 	//hapi
-	implementation "ca.uhn.hapi.fhir:hapi-fhir-jaxrsserver-base:6.4.0"
-	implementation "ca.uhn.hapi.fhir:hapi-fhir-client-okhttp:6.4.0"
-	implementation "ca.uhn.hapi.fhir:hapi-fhir-server-openapi:6.4.0"
+	implementation "ca.uhn.hapi.fhir:hapi-fhir-jaxrsserver-base:${hapiFhirVersion}"
+	implementation "ca.uhn.hapi.fhir:hapi-fhir-server-openapi:${hapiFhirVersion}"
 
 	//code generation
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.projectlombok:lombok'
-	
+
 	//test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation "ca.uhn.hapi.fhir:hapi-fhir-client-okhttp:${hapiFhirVersion}"
 }
 
 test {
