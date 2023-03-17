@@ -10,5 +10,5 @@ public interface PatientAdapter {
 
     Patient findyByLastName(String lastName);
 
-    void sayMyName(String homer);
+    void sayMyName(String name);
 }

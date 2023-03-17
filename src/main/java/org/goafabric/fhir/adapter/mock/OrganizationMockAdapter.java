@@ -1,6 +1,5 @@
 package org.goafabric.fhir.adapter.mock;
 
-import lombok.NonNull;
 import org.goafabric.fhir.adapter.OrganizationAdapter;
 import org.hl7.fhir.r4.model.Address;
 import org.hl7.fhir.r4.model.IdType;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrganizationMockAdapter implements OrganizationAdapter {
     @Override
-    public Organization getOrganization(@NonNull IdType idType) {
+    public Organization getOrganization(IdType idType) {
         final Organization organization = new Organization()
                 .setName("Krusty Burger")
                 .addAddress(createAddress());

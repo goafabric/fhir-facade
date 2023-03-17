@@ -31,7 +31,7 @@ public class PatientMockAdapter implements PatientAdapter {
     }
 
     @Override
-    public void sayMyName(String homer) {
+    public void sayMyName(String name) {
     }
 
     @NotNull

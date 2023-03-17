@@ -20,13 +20,13 @@ public class PractionerMapper {
         final Practitioner practitioner = new Practitioner()
                 .addName(createName(person));
 
-        practitioner.setId(person.getId());
+        practitioner.setId(person.id());
         return practitioner;
     }
 
     private HumanName createName(Person person) {
         return new HumanName()
-                .addGiven(person.getFirstName())
-                .setFamily(person.getLastName());
+                .addGiven(person.firstName())
+                .setFamily(person.lastName());
     }
 }

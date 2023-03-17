@@ -19,13 +19,13 @@ public class PatientMapper {
         Patient patient = new Patient()
                 .addName(createName(person));
 
-        patient.setId(person.getId());
+        patient.setId(person.id());
         return patient;
     }
 
     private HumanName createName(Person person) {
         return new HumanName()
-                .addGiven(person.getFirstName())
-                .setFamily(person.getLastName());
+                .addGiven(person.firstName())
+                .setFamily(person.lastName());
     }
 }
