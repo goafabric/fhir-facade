@@ -21,9 +21,9 @@ repositories {
 
 dependencies {
 	constraints {
-		implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4")
-		implementation("org.mapstruct:mapstruct:1.5.3.Final")
-		annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
+		implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
+		implementation("org.mapstruct:mapstruct:1.5.4.Final")
+		annotationProcessor("org.mapstruct:mapstruct-processor:1.5.4.Final")
 		implementation("io.github.resilience4j:resilience4j-spring-boot3:2.0.2")
 	}
 
@@ -72,7 +72,6 @@ tasks.withType<Test> {
 
 val dockerRegistry = "goafabric"
 val baseImage = "ibm-semeru-runtimes:open-17.0.6_10-jre-focal@sha256:739eab970ff538cf22a20b768d7755dad80922a89b73b2fddd80dd79f9b880a1"
-val archSuffix = if (System.getProperty("os.arch").equals("aarch64")) "-arm64v8" else ""
 
 jib {
 	val amd64 = com.google.cloud.tools.jib.gradle.PlatformParameters(); amd64.os = "linux"; amd64.architecture = "amd64"
