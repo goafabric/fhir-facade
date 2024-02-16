@@ -1,7 +1,7 @@
 import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 group = "org.goafabric"
-version = "2.0.5-SNAPSHOT"
+version = "3.2.0-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 plugins {
@@ -74,3 +74,10 @@ jib {
 	container.jvmFlags = listOf("-Xms256m", "-Xmx256m")
 	from.platforms.set(listOf(amd64, arm64))
 }
+
+/*
+tasks.withType<JavaCompile> {
+	options.compilerArgs.add("-parameters")
+}
+
+ */
