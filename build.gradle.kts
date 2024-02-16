@@ -7,10 +7,10 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 plugins {
 	java
 	jacoco
-	id("org.springframework.boot") version "2.7.10"
-	id("io.spring.dependency-management") version "1.1.0"
-	id("org.graalvm.buildtools.native") version "0.9.20"
-	id("com.google.cloud.tools.jib") version "3.3.1"
+	id("org.springframework.boot") version "3.2.0"
+	id("io.spring.dependency-management") version "1.1.4"
+	//id("org.graalvm.buildtools.native") version "0.9.28"
+	id("com.google.cloud.tools.jib") version "3.4.0"
 }
 
 repositories {
@@ -21,18 +21,14 @@ repositories {
 
 dependencies {
 	constraints {
-		implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
-		implementation("org.mapstruct:mapstruct:1.5.4.Final")
-		annotationProcessor("org.mapstruct:mapstruct-processor:1.5.4.Final")
-		implementation("io.github.resilience4j:resilience4j-spring-boot3:2.0.2")
-	}
-
-	dependencyManagement.imports {
-		mavenBom("org.springframework.cloud:spring-cloud-dependencies:2021.0.4")
+		implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
+		implementation("org.mapstruct:mapstruct:1.5.5.Final")
+		annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
+		implementation("io.github.resilience4j:resilience4j-spring-boot3:2.1.0")
 	}
 }
 
-val hapiFhirVersion = "6.4.3"
+val hapiFhirVersion = "7.0.0"
 
 dependencies {
 	//web
@@ -43,17 +39,14 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("io.micrometer:micrometer-registry-prometheus")
 
-	implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
-	implementation("org.springframework.cloud:spring-cloud-sleuth-zipkin")
-
 	//crosscuting
-	implementation("org.springframework.boot:spring-boot-starter-security")
+	//implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-aop")
-	implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j")
 
 	//hapi
 	implementation("ca.uhn.hapi.fhir:hapi-fhir-jaxrsserver-base:${hapiFhirVersion}")
 	implementation("ca.uhn.hapi.fhir:hapi-fhir-server-openapi:${hapiFhirVersion}")
+	implementation("io.github.resilience4j:resilience4j-spring-boot3")
 
 	//code generation
 	testAnnotationProcessor("org.projectlombok:lombok")

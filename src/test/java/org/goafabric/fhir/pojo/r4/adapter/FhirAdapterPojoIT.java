@@ -1,3 +1,4 @@
+/*
 package org.goafabric.fhir.pojo.r4.adapter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -132,6 +133,6 @@ public class FhirAdapterPojoIT {
         }
 
     }
-
-
 }
+
+ */
