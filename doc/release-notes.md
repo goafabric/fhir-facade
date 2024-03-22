@@ -49,7 +49,7 @@
 
 - upgrade to Spring Boot 2.6.3
 - upgrade to Spring Native 0.11.1
-- Update to OpenAPI 1.6.4 + JIB 3.2.0
+- Update to OpenAPI 1.6.4 + JIB 3.2.4
 
 - Java 17 IBM Semeru Runtime for JVM Images
 - Java 17 Compiler Level and Native Image
