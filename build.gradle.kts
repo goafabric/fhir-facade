@@ -1,10 +1,11 @@
 import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
-group = "org.goafabric"
-version = "3.2.4-SNAPSHOT"
+val group: String by project
+val version: String by project
 java.sourceCompatibility = JavaVersion.VERSION_21
 
 val dockerRegistry = "goafabric"
+val nativeBuilder = "dashaun/builder:20240205"
 val baseImage = "ibm-semeru-runtimes:open-21.0.1_12-jre-focal@sha256:24d43669156684f7bc28536b22537a7533ab100bf0a5a89702b987ebb53215be"
 
 plugins {
@@ -13,9 +14,9 @@ plugins {
 	id("org.springframework.boot") version "3.2.4"
 	id("io.spring.dependency-management") version "1.1.4"
 	//id("org.graalvm.buildtools.native") version "0.9.28"
-	id("com.google.cloud.tools.jib") version "3.4.0"
+	id("com.google.cloud.tools.jib") version "3.4.2"
+	id("net.researchgate.release") version "3.0.2"
 }
-
 repositories {
 	mavenCentral()
 	maven { url = uri("https://repo.spring.io/milestone") }
@@ -81,3 +82,8 @@ tasks.withType<JavaCompile> {
 }
 
  */
+
+configure<net.researchgate.release.ReleaseExtension> {
+	buildTasks.set(listOf("build", "test", "jib"))
+	tagTemplate.set("v${version}".replace("-SNAPSHOT", ""))
+}
