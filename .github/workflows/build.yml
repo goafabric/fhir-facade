@@ -45,7 +45,7 @@ jobs:
         uses: gradle/gradle-build-action@v3
         with:
           gradle-version: 8.7
-          arguments: jib dockerImageNative
+          arguments: jib
           
   release:
     runs-on: ubuntu-latest
