@@ -17,11 +17,17 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Test
-        uses: gradle/gradle-build-action@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: 8.7
-          arguments: build test
+
+      - name: Test
+        run: gradle build test
+
+      - name: Sonar
+        continue-on-error: true
+        run: gradle sonar -Dsonar.plugins.downloadOnlyRequired=true -Dsonar.host.url=http://v2202402203466256255.megasrv.de/sonar -Dsonar.token=${{ secrets.SONAR_USER_TOKEN }}
 
   snapshot:
     runs-on: ubuntu-latest
@@ -40,12 +46,14 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-          
-      - name: Container Images
-        uses: gradle/gradle-build-action@v3
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: 8.7
-          arguments: jib
+          
+      - name: Container Images
+        run: gradle jib #dockerImageNative
           
   release:
     runs-on: ubuntu-latest
@@ -67,13 +75,26 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.7
+
       - name: Setup git config
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
 
       - name: Release
-        uses: gradle/gradle-build-action@v3
+        run: gradle release -Prelease.useAutomaticVersion=true
+
+      - name: Get Latest Tag
+        id: latest_tag
+        run: echo "tag=$(git describe --abbrev=0 --tags)" >> $GITHUB_OUTPUT
+
+      - name: Github Release
+        uses: ncipollo/release-action@v1
         with:
-          gradle-version: 8.7
-          arguments: release -Prelease.useAutomaticVersion=true
+          tag: ${{ steps.latest_tag.outputs.tag }}
+          body: |
+            [Release Notes](doc/release-notes.md)
