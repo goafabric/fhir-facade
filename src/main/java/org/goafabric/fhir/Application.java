@@ -41,8 +41,8 @@ public class Application {
 
             hints.reflection().registerType(org.goafabric.fhir.crossfunctional.ExceptionHandler.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
             hints.reflection().registerType(org.goafabric.fhir.crossfunctional.HttpInterceptor.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
-
             hints.reflection().registerType(org.goafabric.fhir.controller.custom.TIConfiguration.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
+
             hints.reflection().registerType(org.goafabric.fhir.controller.custom.TIConfigurationController.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
             hints.reflection().registerType(org.goafabric.fhir.controller.BundleController.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
             hints.reflection().registerType(org.goafabric.fhir.controller.OrganizationController.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
@@ -60,9 +60,19 @@ public class Application {
         ).getSubTypesOf(Object.class).stream()
                 .filter(clazz -> clazz.getName().startsWith(packageName))
                 .forEach(c -> {
+                    /*
+                    if (c.getName().contains("__BeanDefinitions")) { //stupid spring aot hack
+                        try {
+                            c = Class.forName(c.getName().replace("__BeanDefinitions", ""));
+                        } catch (ClassNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                    */
                     System.out.println(c);
                     hints.reflection().registerType(c,
                         MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS, MemberCategory.DECLARED_FIELDS);
                 });
     }
+
 }
