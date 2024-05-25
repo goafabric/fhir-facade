@@ -23,10 +23,10 @@ package org.goafabric.fhir.crossfunctional;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.jaxrs.server.AbstractJaxRsProvider;
-import ca.uhn.fhir.rest.openapi.OpenApiInterceptor;
 import ca.uhn.fhir.rest.server.HardcodedServerAddressStrategy;
 import ca.uhn.fhir.rest.server.IResourceProvider;
 import ca.uhn.fhir.rest.server.RestfulServer;
+import jakarta.servlet.ServletException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -38,7 +38,6 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import jakarta.servlet.ServletException;
 import java.util.List;
 
 /**
@@ -81,6 +80,6 @@ public class FhirRestfulServerConfiguration extends RestfulServer {
         registerInterceptor(new ExceptionHandler());
         registerInterceptor(new HttpInterceptor());
 
-        registerInterceptor(new OpenApiInterceptor());
+        //registerInterceptor(new OpenApiInterceptor());
     }
 }

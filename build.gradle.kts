@@ -50,7 +50,7 @@ dependencies {
 
 	//hapi
 	implementation("ca.uhn.hapi.fhir:hapi-fhir-jaxrsserver-base:${hapiFhirVersion}")
-	implementation("ca.uhn.hapi.fhir:hapi-fhir-server-openapi:${hapiFhirVersion}")
+	//implementation("ca.uhn.hapi.fhir:hapi-fhir-server-openapi:${hapiFhirVersion}")
 	implementation("io.github.resilience4j:resilience4j-spring-boot3")
 
 	//code generation

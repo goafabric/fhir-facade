@@ -1,8 +1,8 @@
 package org.goafabric.fhir.adapter.mock;
 
+import jakarta.validation.constraints.NotNull;
 import org.goafabric.fhir.adapter.PatientAdapter;
 import org.hl7.fhir.r4.model.*;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
