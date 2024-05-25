@@ -13,7 +13,7 @@ plugins {
 	jacoco
 	id("org.springframework.boot") version "3.3.0"
 	id("io.spring.dependency-management") version "1.1.5"
-	//id("org.graalvm.buildtools.native") version "0.10.2"
+	id("org.graalvm.buildtools.native") version "0.10.2"
 
 	id("com.google.cloud.tools.jib") version "3.4.2"
 	id("net.researchgate.release") version "3.0.2"
@@ -67,23 +67,29 @@ tasks.withType<Test> {
 	exclude("**/*NRIT*")
 	finalizedBy("jacocoTestReport")
 }
+tasks.jacocoTestReport { reports {csv.required.set(true); xml.required.set(true) } }
 
 jib {
-	val amd64 = com.google.cloud.tools.jib.gradle.PlatformParameters(); amd64.os = "linux"; amd64.architecture = "amd64"
-	val arm64 = com.google.cloud.tools.jib.gradle.PlatformParameters(); arm64.os = "linux"; arm64.architecture = "arm64"
+	val amd64 = com.google.cloud.tools.jib.gradle.PlatformParameters(); amd64.os = "linux"; amd64.architecture = "amd64"; val arm64 = com.google.cloud.tools.jib.gradle.PlatformParameters(); arm64.os = "linux"; arm64.architecture = "arm64"
 	from.image = baseImage
 	to.image = "${dockerRegistry}/${project.name}:${project.version}"
 	container.jvmFlags = listOf("-Xms256m", "-Xmx256m")
 	from.platforms.set(listOf(amd64, arm64))
 }
 
-/*
-tasks.withType<JavaCompile> {
-	options.compilerArgs.add("-parameters")
+tasks.register("dockerImageNative") { description= "Native Image"; group = "build"; dependsOn("bootBuildImage") }
+tasks.named<BootBuildImage>("bootBuildImage") {
+	val nativeImageName = "${dockerRegistry}/${project.name}-native" + (if (System.getProperty("os.arch").equals("aarch64")) "-arm64v8" else "") + ":${project.version}"
+	builder.set(nativeBuilder)
+	imageName.set(nativeImageName)
+	environment.set(mapOf("BP_NATIVE_IMAGE" to "true", "BP_JVM_VERSION" to "21", "BP_NATIVE_IMAGE_BUILD_ARGUMENTS" to "-J-Xmx5000m -march=compatibility"))
+	doLast {
+		exec { commandLine("/bin/sh", "-c", "docker run --rm $nativeImageName -check-integrity") }
+		exec { commandLine("/bin/sh", "-c", "docker push $nativeImageName") }
+	}
 }
-*/
 
 configure<net.researchgate.release.ReleaseExtension> {
-	buildTasks.set(listOf("build", "test", "jib"))
+	buildTasks.set(listOf("build", "test", "jib")) // "dockerImageNative"))
 	tagTemplate.set("v${version}".replace("-SNAPSHOT", ""))
 }
