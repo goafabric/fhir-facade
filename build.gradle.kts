@@ -92,6 +92,6 @@ tasks.named<BootBuildImage>("bootBuildImage") {
 }
 
 configure<net.researchgate.release.ReleaseExtension> {
-	buildTasks.set(listOf("build", "test", "jib")) // "dockerImageNative"))
+	buildTasks.set(listOf("build", "test", "jib", "dockerImageNative"))
 	tagTemplate.set("v${version}".replace("-SNAPSHOT", ""))
 }
