@@ -8,6 +8,7 @@ services:
     ports:
       - "${_Values_service_port}:${_Values_service_port}"
     entrypoint: ${_Values_resources_entrypoint}
+    command: [ "-Xmx${_Values_resources_requests_memory}" ]
 
     healthcheck:
       test: "curl -f http://localhost:${_Values_service_port}/actuator/health || exit 1"
