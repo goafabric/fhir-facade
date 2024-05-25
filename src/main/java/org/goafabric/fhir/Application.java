@@ -32,25 +32,25 @@ public class Application {
             hints.resources().registerPattern("ca/uhn/fhir/i18n/hapi-messages.properties");
             hints.resources().registerPattern("org/hl7/fhir/r4/hapi/model/fhirversion.properties");
 
-            hints.reflection().registerType(org.hl7.fhir.r4.hapi.ctx.FhirR4.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
-            hints.reflection().registerType(org.hl7.fhir.r4.hapi.ctx.FhirServerR4.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
-            hints.reflection().registerType(ca.uhn.fhir.rest.server.provider.ServerCapabilityStatementProvider.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
-            hints.reflection().registerType(ca.uhn.fhir.rest.server.PageProvider.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
+            registerReflection(org.hl7.fhir.r4.hapi.ctx.FhirR4.class, hints);
+            registerReflection(org.hl7.fhir.r4.hapi.ctx.FhirServerR4.class, hints);
+            registerReflection(ca.uhn.fhir.rest.server.provider.ServerCapabilityStatementProvider.class, hints);
+            registerReflection(ca.uhn.fhir.rest.server.PageProvider.class, hints);
 
             registerReflection("org.hl7.fhir.r4.model", hints);
 
-            hints.reflection().registerType(org.goafabric.fhir.crossfunctional.ExceptionHandler.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
-            hints.reflection().registerType(org.goafabric.fhir.crossfunctional.HttpInterceptor.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
-            hints.reflection().registerType(org.goafabric.fhir.controller.custom.TIConfiguration.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
+            registerReflection(org.goafabric.fhir.crossfunctional.ExceptionHandler.class, hints);
+            registerReflection(org.goafabric.fhir.crossfunctional.HttpInterceptor.class, hints);
+            registerReflection(org.goafabric.fhir.controller.custom.TIConfiguration.class, hints);
 
-            hints.reflection().registerType(org.goafabric.fhir.controller.custom.TIConfigurationController.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
-            hints.reflection().registerType(org.goafabric.fhir.controller.BundleController.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
-            hints.reflection().registerType(org.goafabric.fhir.controller.OrganizationController.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
-            hints.reflection().registerType(org.goafabric.fhir.controller.PatientController.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
-            hints.reflection().registerType(org.goafabric.fhir.controller.PractitionerController.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
+            registerReflection(org.goafabric.fhir.controller.custom.TIConfigurationController.class, hints);
+            registerReflection(org.goafabric.fhir.controller.BundleController.class, hints);
+            registerReflection(org.goafabric.fhir.controller.OrganizationController.class, hints);
+            registerReflection(org.goafabric.fhir.controller.PatientController.class, hints);
+            registerReflection(org.goafabric.fhir.controller.PractitionerController.class, hints);
 
             //hints.resources().registerPattern("META-INF/maven/org.webjars/swagger-ui/pom.properties");
-            //hints.reflection().registerType(net.sf.saxon.Configuration.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
+            //hints.reflection().registerType(net.sf.saxon.Configuration.class, hints);
         }
     }
 
@@ -70,9 +70,13 @@ public class Application {
                     }
                     */
                     System.out.println(c);
-                    hints.reflection().registerType(c,
-                        MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS, MemberCategory.DECLARED_FIELDS);
+                    registerReflection(c, hints);
                 });
     }
+
+    private static void registerReflection(Class<?> type, RuntimeHints hints) {
+        hints.reflection().registerType(type, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS, MemberCategory.DECLARED_FIELDS);
+    }
+
 
 }
