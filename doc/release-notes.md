@@ -1,3 +1,8 @@
+# 3.3.0
+- upgrade to Spring BOot 3.3.0
+- upgrade to Hapi FHIR 7.2.0
+- native image build is back
+
 # 2.0.5
 - maven build (re) moved to doc/maven in favour of gradle
 - kicked Lombok for implementation

@@ -21,12 +21,6 @@ management:
     circuitbreakers:
       enabled: true
 
-#jaeger / zipkin
-spring.zipkin.service.name: "fhir-facade"
-spring.zipkin.enabled: true
-spring.sleuth.enabled: ${spring.zipkin.enabled}
-logging.level.zipkin2: "FATAL"
-
 #security
 security.authentication.enabled: false
 
