@@ -3,25 +3,26 @@ package org.goafabric.fhir.controller;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.jaxrs.server.AbstractJaxRsResourceProvider;
-import ca.uhn.fhir.rest.annotation.*;
-import lombok.extern.slf4j.Slf4j;
+import ca.uhn.fhir.rest.annotation.IdParam;
+import ca.uhn.fhir.rest.annotation.OptionalParam;
+import ca.uhn.fhir.rest.annotation.Read;
+import ca.uhn.fhir.rest.annotation.Search;
 import org.goafabric.fhir.logic.PatientLogic;
 import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.StringType;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Component
-@Slf4j
 public class PatientController extends AbstractJaxRsResourceProvider<Patient> {
-    @Autowired
-    private PatientLogic patientLogic;
+    private final PatientLogic patientLogic;
 
-    public PatientController(FhirContext fhirContext) {
+    public PatientController(FhirContext fhirContext, PatientLogic patientLogic) {
         super(fhirContext);
+        this.patientLogic = patientLogic;
     }
 
     @Override
@@ -36,10 +37,11 @@ public class PatientController extends AbstractJaxRsResourceProvider<Patient> {
     }
 
     @Search
-    public List<Patient> findPatientsByFamilyName(@OptionalParam(name = Patient.SP_FAMILY) StringType familyName) {
-        log.info("familyName: {}", familyName);
-        return null;
+    public List<Patient> findPatientsByFamilyName(@OptionalParam(name = Patient.SP_FAMILY) StringType familyName,
+                                                  @OptionalParam(name = Patient.SP_NAME) StringType name) {
+        IdType idType = new IdType();
+        idType.setId("1");
+        return Arrays.asList(patientLogic.findyByLastName(familyName.getValue()));
     }
-
 
 }

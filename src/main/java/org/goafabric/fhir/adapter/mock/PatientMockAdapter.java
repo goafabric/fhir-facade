@@ -1,5 +1,6 @@
 package org.goafabric.fhir.adapter.mock;
 
+import jakarta.validation.constraints.NotNull;
 import org.goafabric.fhir.adapter.PatientAdapter;
 import org.hl7.fhir.r4.model.*;
 import org.springframework.context.annotation.Profile;
@@ -11,6 +12,30 @@ import static java.util.Arrays.asList;
 @Component
 public class PatientMockAdapter implements PatientAdapter {
     public Patient getPatient(IdType idType) {
+        Patient patient = createPatient(idType);
+        return patient;
+    }
+
+    @Override
+    public Patient findyFirstName(String firstName) {
+        IdType idType = new IdType();
+        idType.setId("1");
+        return createPatient(idType);
+    }
+
+    @Override
+    public Patient findyByLastName(String lastName) {
+        IdType idType = new IdType();
+        idType.setId("1");
+        return createPatient(idType);
+    }
+
+    @Override
+    public void sayMyName(String name) {
+    }
+
+    @NotNull
+    private Patient createPatient(IdType idType) {
         Patient patient = new Patient()
                 .addName(createName())
                 .addAddress(createAddress())
@@ -20,14 +45,14 @@ public class PatientMockAdapter implements PatientAdapter {
         return patient;
     }
 
-    @Override
-    public void sayMyName(String homer) {
-    }
 
     private HumanName createName() {
-        return new HumanName()
+        final HumanName humanName = new HumanName()
                 .addGiven("Homer")
                 .setFamily("Simpson");
+
+        humanName.getFamilyElement().addExtension(new Extension("http://fhir.de/StructureDefinition/humanname-namenszusatz/0.2", new StringType("The 3rd")));
+        return humanName;
     }
 
     private Address createAddress() {

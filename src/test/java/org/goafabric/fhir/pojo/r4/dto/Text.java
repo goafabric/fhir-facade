@@ -13,8 +13,8 @@ import java.util.Map;
 @Data
 public class Text {
 
-    public String status;
-    public String div;
+    private String status;
+    private String div;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

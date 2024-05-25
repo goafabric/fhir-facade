@@ -10,7 +10,7 @@ import org.hl7.fhir.r4.model.Practitioner;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -42,12 +42,10 @@ class BundleControllerIT {
         final IGenericClient client = ClientFactory.createClient(port);
 
         final Patient patient = patientMapper.map(
-                Person.builder().id("1")
-                        .firstName("Homer").lastName("Simpson").build());
+                new Person("1", "Homer", "Simpson"));
 
         final Practitioner practioner = practionerMapper.map(
-                Person.builder().id("1")
-                        .firstName("Homer").lastName("Simpson").build());
+                new Person("1", "Homer", "Simpson"));
 
         final Bundle bundle = new Bundle();
         bundle.addEntry(new Bundle.BundleEntryComponent().setResource(patient));

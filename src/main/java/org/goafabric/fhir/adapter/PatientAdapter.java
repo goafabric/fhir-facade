@@ -6,5 +6,9 @@ import org.hl7.fhir.r4.model.Patient;
 public interface PatientAdapter {
     Patient getPatient(IdType idType);
 
-    void sayMyName(String homer);
+    Patient findyFirstName(String firstName);
+
+    Patient findyByLastName(String lastName);
+
+    void sayMyName(String name);
 }

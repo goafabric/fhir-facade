@@ -20,7 +20,7 @@ public class OrganizationMockAdapter implements OrganizationAdapter {
         return organization;
     }
 
-    private Address createAddress() {
+    Address createAddress() {
         final Address address = new Address()
                 .setCity("Springfield")
                 .setPostalCode("78313")

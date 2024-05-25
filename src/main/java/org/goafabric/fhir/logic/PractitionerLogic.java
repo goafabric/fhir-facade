@@ -1,15 +1,20 @@
 package org.goafabric.fhir.logic;
 
-import lombok.experimental.Delegate;
 import org.goafabric.fhir.adapter.PractitionerAdapter;
-import org.goafabric.fhir.crossfunctional.DurationLog;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hl7.fhir.r4.model.IdType;
+import org.hl7.fhir.r4.model.Practitioner;
 import org.springframework.stereotype.Component;
 
 @Component
-@DurationLog
-public class PractitionerLogic {
-    @Autowired
-    @Delegate
-    PractitionerAdapter practitionerAdapter;
+public class PractitionerLogic implements PractitionerAdapter {
+    private final PractitionerAdapter practitionerAdapter;
+
+    public PractitionerLogic(PractitionerAdapter practitionerAdapter) {
+        this.practitionerAdapter = practitionerAdapter;
+    }
+
+    @Override
+    public Practitioner getPractitioner(IdType idType) {
+        return practitionerAdapter.getPractitioner(idType);
+    }
 }
