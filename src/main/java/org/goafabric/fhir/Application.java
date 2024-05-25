@@ -1,5 +1,7 @@
 package org.goafabric.fhir;
 
+import org.goafabric.fhir.extensions.ExceptionHandler;
+import org.goafabric.fhir.extensions.HttpInterceptor;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
 import org.reflections.util.ClasspathHelper;
@@ -39,8 +41,8 @@ public class Application {
 
             registerReflection("org.hl7.fhir.r4.model", hints);
 
-            registerReflection(org.goafabric.fhir.crossfunctional.ExceptionHandler.class, hints);
-            registerReflection(org.goafabric.fhir.crossfunctional.HttpInterceptor.class, hints);
+            registerReflection(ExceptionHandler.class, hints);
+            registerReflection(HttpInterceptor.class, hints);
 
             registerReflection(org.goafabric.fhir.controller.BundleController.class, hints);
             registerReflection(org.goafabric.fhir.controller.OrganizationController.class, hints);
@@ -58,16 +60,6 @@ public class Application {
         ).getSubTypesOf(Object.class).stream()
                 .filter(clazz -> clazz.getName().startsWith(packageName))
                 .forEach(c -> {
-                    /*
-                    if (c.getName().contains("__BeanDefinitions")) { //stupid spring aot hack
-                        try {
-                            c = Class.forName(c.getName().replace("__BeanDefinitions", ""));
-                        } catch (ClassNotFoundException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                    */
-                    System.out.println(c);
                     registerReflection(c, hints);
                 });
     }

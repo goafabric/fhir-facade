@@ -1,7 +1,7 @@
 package org.goafabric.fhir.adapter.remote.client;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-import org.goafabric.fhir.crossfunctional.BaseUrlBean;
+import org.goafabric.fhir.extensions.BaseUrlBean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;

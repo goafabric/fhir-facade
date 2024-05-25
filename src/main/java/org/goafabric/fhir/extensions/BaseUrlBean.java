@@ -1,4 +1,4 @@
-package org.goafabric.fhir.crossfunctional;
+package org.goafabric.fhir.extensions;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -16,12 +16,12 @@ public class BaseUrlBean {
 
     public String getUrl() {
         return multiTenancyEnabled
-                ? baseUrl.replaceAll("%TENANT_ID%", HttpInterceptor.getTenantId())
+                ? baseUrl.replaceAll("%TENANT_ID%", TenantContext.getTenantId())
                 : baseUrl;
     }
 
     public String getCBName() {
-        final String tenantId = multiTenancyEnabled ? HttpInterceptor.getTenantId() : "none";
+        final String tenantId = multiTenancyEnabled ? TenantContext.getTenantId() : "none";
         return "personservice-tenant-" + tenantId;
     }
 }
