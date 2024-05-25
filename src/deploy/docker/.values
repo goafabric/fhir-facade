@@ -4,6 +4,6 @@ _Values_image_repository=goafabric/fhir-facade
 
 _Values_service_port=50700
 _Values_resources_entrypoint="java -Xms256M -Xmx256M -cp /app/resources:/app/classes:/app/libs/* org.goafabric.fhir.Application"
-_Values_resources_requests_memory=64M
+_Values_resources_entrypoint_native="/workspace/org.goafabric.fhir.Application -Xmx64m"
 
 _Values_health_check_disabled=false
