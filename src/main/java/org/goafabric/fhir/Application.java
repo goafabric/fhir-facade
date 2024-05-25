@@ -41,9 +41,7 @@ public class Application {
 
             registerReflection(org.goafabric.fhir.crossfunctional.ExceptionHandler.class, hints);
             registerReflection(org.goafabric.fhir.crossfunctional.HttpInterceptor.class, hints);
-            registerReflection(org.goafabric.fhir.controller.custom.TIConfiguration.class, hints);
 
-            registerReflection(org.goafabric.fhir.controller.custom.TIConfigurationController.class, hints);
             registerReflection(org.goafabric.fhir.controller.BundleController.class, hints);
             registerReflection(org.goafabric.fhir.controller.OrganizationController.class, hints);
             registerReflection(org.goafabric.fhir.controller.PatientController.class, hints);

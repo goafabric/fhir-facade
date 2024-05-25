@@ -1,13 +1,11 @@
 package org.goafabric.fhir.logic;
 
 import org.goafabric.fhir.adapter.PatientAdapter;
-import org.goafabric.fhir.crossfunctional.DurationLog;
 import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Patient;
 import org.springframework.stereotype.Component;
 
 @Component
-@DurationLog
 public class PatientLogic implements PatientAdapter {
     private final PatientAdapter patientAdapter;
 
