@@ -40,6 +40,7 @@ public class Application {
             registerReflection("org.hl7.fhir.r4.model", hints);
 
             hints.reflection().registerType(org.goafabric.fhir.crossfunctional.ExceptionHandler.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
+            hints.reflection().registerType(org.goafabric.fhir.crossfunctional.HttpInterceptor.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
 
             hints.reflection().registerType(org.goafabric.fhir.controller.custom.TIConfiguration.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
             hints.reflection().registerType(org.goafabric.fhir.controller.custom.TIConfigurationController.class, MemberCategory.DECLARED_CLASSES, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
