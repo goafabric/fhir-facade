@@ -1,4 +1,6 @@
-# 3.3.2
+# 3.3.3
+- upgrade to Spring BOot 3.3.3
+- upgrade to Hapi FHIR 7.2.3
 
 # 3.3.1
 - upgrade to Spring BOot 3.3.0
