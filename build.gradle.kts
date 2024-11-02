@@ -5,19 +5,23 @@ val version: String by project
 java.sourceCompatibility = JavaVersion.VERSION_21
 
 val dockerRegistry = "goafabric"
-val nativeBuilder = "dashaun/builder:20240403"
-val baseImage = "ibm-semeru-runtimes:open-21.0.1_12-jre-focal@sha256:24d43669156684f7bc28536b22537a7533ab100bf0a5a89702b987ebb53215be"
+val nativeBuilder = "paketobuildpacks/java-native-image:10.1.0"
+val baseImage = "ibm-semeru-runtimes:open-21.0.4.1_7-jre-focal@sha256:8b94f8b14fd1d4660f9dc777b1ad3630f847b8e3dc371203bcb857a5e74d6c39"
 
 plugins {
 	java
 	jacoco
-	id("org.springframework.boot") version "3.3.3"
+	id("org.springframework.boot") version "3.3.5"
 	id("io.spring.dependency-management") version "1.1.6"
-	id("org.graalvm.buildtools.native") version "0.10.2"
+	id("org.graalvm.buildtools.native") version "0.10.3"
 
-	id("com.google.cloud.tools.jib") version "3.4.2"
+	id("com.google.cloud.tools.jib") version "3.4.4"
 	id("net.researchgate.release") version "3.0.2"
+	id("org.sonarqube") version "5.1.0.4882"
+
+	id("org.cyclonedx.bom") version "1.10.0"
 }
+
 repositories {
 	mavenCentral()
 	maven { url = uri("https://repo.spring.io/milestone") }
@@ -26,14 +30,15 @@ repositories {
 
 dependencies {
 	constraints {
-		implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
-		implementation("org.mapstruct:mapstruct:1.5.5.Final")
-		annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
-		implementation("io.github.resilience4j:resilience4j-spring-boot3:2.1.0")
+		annotationProcessor("org.mapstruct:mapstruct-processor:1.6.2")
+		implementation("org.mapstruct:mapstruct:1.6.2")
+		implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+		implementation("io.github.resilience4j:resilience4j-spring-boot3:2.2.0")
+		implementation("net.ttddyy.observation:datasource-micrometer-spring-boot:1.0.5")
 	}
 }
 
-val hapiFhirVersion = "7.2.3"
+val hapiFhirVersion = "7.4.5"
 
 dependencies {
 	//web
